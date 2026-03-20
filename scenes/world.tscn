@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ba2nu1lmh6c4v"]
+
+[ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="1_nnsk1"]
+
+[node name="World" type="Node2D" unique_id=1661724611]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2103256678]
+position = Vector2(576, 162)
+script = ExtResource("1_nnsk1")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1503767547]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

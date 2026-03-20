@@ -3,7 +3,14 @@
     "allow": [
       "mcp__godot__get_godot_version",
       "mcp__godot__list_projects",
-      "mcp__godot__get_project_info"
+      "mcp__godot__get_project_info",
+      "mcp__godot__create_scene",
+      "mcp__godot__add_node",
+      "WebSearch",
+      "WebFetch(domain:docs.godotengine.org)",
+      "WebFetch(domain:godotforums.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
