@@ -28,6 +28,7 @@ var placing_rune_id: String = ""
 # --- 畫布平移 ---
 var canvas_offset: Vector2 = Vector2.ZERO
 var is_panning: bool = false
+var is_drag_panning: bool = false
 
 # --- 連線懸停 ---
 var hovered_edge_index: int = -1
@@ -274,7 +275,7 @@ func _input(event: InputEvent) -> void:
 		var motion_event: InputEventMouseMotion = event as InputEventMouseMotion
 		if is_connecting:
 			queue_redraw()
-		if is_panning:
+		if is_panning or is_drag_panning:
 			var delta: Vector2 = motion_event.relative
 			canvas_offset += delta
 			for id: String in node_widgets:
@@ -282,8 +283,8 @@ func _input(event: InputEvent) -> void:
 				var node_data: Dictionary = graph.nodes[id]
 				w.position = (node_data["position"] as Vector2) + canvas_offset
 			queue_redraw()
-		# 連線懸停偵測（非連線/放置模式時）
-		if not is_connecting and not is_placing and not is_panning:
+		# 連線懸停偵測（非連線/放置/拖拽模式時）
+		if not is_connecting and not is_placing and not is_panning and not is_drag_panning:
 			_update_edge_hover(get_local_mouse_position())
 			queue_redraw()
 
@@ -292,7 +293,10 @@ func _input(event: InputEvent) -> void:
 		# 中鍵拖拽畫布
 		if mb.button_index == MOUSE_BUTTON_MIDDLE:
 			is_panning = mb.pressed
-		# 左鍵
+		# 左鍵放開：停止拖拽平移
+		elif mb.button_index == MOUSE_BUTTON_LEFT and not mb.pressed:
+			is_drag_panning = false
+		# 左鍵按下
 		elif mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed:
 			if is_placing:
 				add_rune_at(placing_rune_id, get_local_mouse_position())
@@ -305,6 +309,8 @@ func _input(event: InputEvent) -> void:
 						_finish_reroute_on_empty()
 					else:
 						_cancel_connection()
+			elif not _is_click_on_widget(get_local_mouse_position()):
+				is_drag_panning = true
 		# 右鍵：取消連線/放置
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
 			if is_connecting:
