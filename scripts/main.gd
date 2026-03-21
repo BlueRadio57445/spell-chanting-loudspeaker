@@ -43,6 +43,8 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("poison_ball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("giant"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("orbit"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
 
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:

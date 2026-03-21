@@ -21,8 +21,7 @@
 | `HP` | 血量（可作為施放成本） |
 | `DirectionVector` | 方向（單個或 List） |
 | `Target` | 目標敵人 |
-| `Spell` | 法術實例（可被後續修飾） |
-| `SpellList` | 複數法術 |
+| `Spell` | 法術 List（Array of Dict），每個元素含 node、scene、direction 等出生資料與掛載的後修飾 |
 
 ### 執行流程
 ```

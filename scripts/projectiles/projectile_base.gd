@@ -76,16 +76,17 @@ func set_movement_module(new_module: MovementModule) -> void:
 	if is_inside_tree():
 		movement_module.init(self)
 
+# 命中時共用邏輯（傷害、狀態），後修飾行為由子節點 PostModifier 處理
+func _apply_hit(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+
+	if effect != "None" and body.has_method("apply_effect"):
+		body.apply_effect(effect, effect_time)
+
 # 碰撞處理，子類可覆寫
 func _on_body_entered(body: Node2D) -> void:
 	if body == owner_node:
 		return
-		
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
-		
-	print("Effect=", effect)
-	if effect != "None" and body.has_method("apply_effect"):
-		print("Effect1=", effect)
-		body.apply_effect(effect, effect_time)
+	_apply_hit(body)
 	queue_free()

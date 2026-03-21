@@ -16,6 +16,8 @@ func _register_all() -> void:
 	_register("poison_ball", EffectRunes.PoisonBall.new())
 	_register("giant", ModifierRunes.Giant.new())
 	_register("orbit", ModifierRunes.Orbit.new())
+	_register("multi_shot", ModifierRunes.MultiShot.new())
+	_register("quad_shot", ModifierRunes.QuadShot.new())
 	_register("heal", EffectRunes.Heal.new())
 	_register("debuff", EffectRunes.Debuff.new())
 

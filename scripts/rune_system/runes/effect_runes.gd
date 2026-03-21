@@ -17,16 +17,20 @@ class Fireball extends RuneBase:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 10.0
 		var form: Dictionary = inputs.get("form", {})
+		var scene: PackedScene = preload("res://scenes/projectiles/fireball.tscn")
 
-		var proj: ProjectileBase = preload("res://scenes/projectiles/fireball.tscn").instantiate()
+		var proj: ProjectileBase = scene.instantiate()
 		var player: Node2D = Player.Instance
+		var direction: Vector2 = Main.Instance._get_aim_direction()
 		proj.global_position = player.global_position
-		proj.setup(player, Main.Instance._get_aim_direction(), 400.0, damage, "burn", 5.0)
+		proj.setup(player, direction, 400.0, damage, "burn", 5.0)
 		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[火球術] 執行成功，消耗能量: %s" % energy)
-		return {"spell": {"type": "fireball", "damage": damage}}
+		return {"spell": [{"node": proj, "scene": scene, "form": form,
+			"direction": direction, "damage": damage,
+			"speed": 400.0, "effect": "burn", "effect_time": 5.0}]}
 
 class EnergyBall extends RuneBase:
 	func _init() -> void:
@@ -45,16 +49,20 @@ class EnergyBall extends RuneBase:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 10.0
 		var form: Dictionary = inputs.get("form", {})
+		var scene: PackedScene = preload("res://scenes/projectiles/energy_ball.tscn")
 
-		var proj: ProjectileBase = preload("res://scenes/projectiles/energy_ball.tscn").instantiate()
+		var proj: ProjectileBase = scene.instantiate()
 		var player: Node2D = Player.Instance
+		var direction: Vector2 = Main.Instance._get_aim_direction()
 		proj.global_position = player.global_position
-		proj.setup(player, Main.Instance._get_aim_direction(), 500.0, damage, "None", 0.0)
+		proj.setup(player, direction, 500.0, damage, "None", 0.0)
 		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[能量彈] 執行成功，消耗能量: %s" % energy)
-		return {"spell": {"type": "energy_ball", "damage": damage}}
+		return {"spell": [{"node": proj, "scene": scene, "form": form,
+			"direction": direction, "damage": damage,
+			"speed": 500.0, "effect": "None", "effect_time": 0.0}]}
 
 class IceBall extends RuneBase:
 	func _init() -> void:
@@ -73,16 +81,20 @@ class IceBall extends RuneBase:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 5.0
 		var form: Dictionary = inputs.get("form", {})
+		var scene: PackedScene = preload("res://scenes/projectiles/ice_ball.tscn")
 
-		var proj: ProjectileBase = preload("res://scenes/projectiles/ice_ball.tscn").instantiate()
+		var proj: ProjectileBase = scene.instantiate()
 		var player: Node2D = Player.Instance
+		var direction: Vector2 = Main.Instance._get_aim_direction()
 		proj.global_position = player.global_position
-		proj.setup(player, Main.Instance._get_aim_direction(), 350.0, damage, "slow", 3.0)
+		proj.setup(player, direction, 350.0, damage, "slow", 3.0)
 		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[冰霰] 執行成功，消耗能量: %s" % energy)
-		return {"spell": {"type": "ice_ball", "damage": damage}}
+		return {"spell": [{"node": proj, "scene": scene, "form": form,
+			"direction": direction, "damage": damage,
+			"speed": 350.0, "effect": "slow", "effect_time": 3.0}]}
 
 class PoisonBall extends RuneBase:
 	func _init() -> void:
@@ -104,16 +116,20 @@ class PoisonBall extends RuneBase:
 		var total_energy: float = energy + energy2
 		var damage: float = total_energy * 2.5
 		var form: Dictionary = inputs.get("form", {})
+		var scene: PackedScene = preload("res://scenes/projectiles/poison_ball.tscn")
 
-		var proj: PenetratingProjectile = preload("res://scenes/projectiles/poison_ball.tscn").instantiate()
+		var proj: PenetratingProjectile = scene.instantiate()
 		var player: Node2D = Player.Instance
+		var direction: Vector2 = Main.Instance._get_aim_direction()
 		proj.global_position = player.global_position
-		proj.setup(player, Main.Instance._get_aim_direction(), 300.0, damage, "poison", total_energy)
+		proj.setup(player, direction, 300.0, damage, "poison", total_energy)
 		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[毒球] 執行成功，消耗能量: %s" % total_energy)
-		return {"spell": {"type": "poison_ball", "damage": damage}}
+		return {"spell": [{"node": proj, "scene": scene, "form": form,
+			"direction": direction, "damage": damage,
+			"speed": 300.0, "effect": "poison", "effect_time": total_energy}]}
 
 class Heal extends RuneBase:
 	func _init() -> void:

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://meht7tvp030q"]
 
 [ext_resource type="Script" uid="uid://i0a0gl8drno5" path="res://scripts/main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
 [ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://hfq260wxot8b" path="res://resources/UI/Background/grass.png" id="2_a8y0u"]
 [ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
 [ext_resource type="PackedScene" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://c4acrhpod6eko" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(5760, 100)
@@ -376,7 +376,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4")
 
-[node name="HpBar" parent="." instance=ExtResource("hp_bar")]
+[node name="HpBar" parent="." unique_id=1815550483 instance=ExtResource("hp_bar")]
+layout_mode = 0
 
 [node name="RuneExecutor" type="Node" parent="." unique_id=25453600]
 script = ExtResource("5")
