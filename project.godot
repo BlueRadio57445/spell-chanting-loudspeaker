@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Spell-chanting Loudspeaker"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-run/main_scene="res://scenes/main.tscn"
 
 [autoload]
 
 RuneRegistry="*res://scripts/rune_system/rune_registry.gd"
+
+[global_group]
+
+mobs="敵方怪物的群組"
+player="玩家"
 
 [physics]
 
