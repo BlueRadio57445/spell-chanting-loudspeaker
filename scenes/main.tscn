@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://ogn0b16no58x" path="res://resources/tmpPlayer.png" id="3_tipki"]
 [ext_resource type="Script" uid="uid://d2778v36qu8fj" path="res://scripts/ui/rune_inventory.gd" id="4"]
-[ext_resource type="PackedScene" uid="uid://cxpvvm3jimsot" path="res://scenes/enemy/EnemyBase.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://ca5sebxocvhlg" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
@@ -63,7 +63,7 @@ shape = SubResource("RectangleShape2D_ya4ey")
 [node name="HurtCollision" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" unique_id=743019441]
 shape = SubResource("RectangleShape2D_eb6dy")
 
-[node name="EnemyBase" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1417908132 instance=ExtResource("4_o6xl0")]
+[node name="Spawner" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
 
 [node name="RuneUI" type="Panel" parent="VBoxContainer" unique_id=2004242461]
 layout_mode = 2

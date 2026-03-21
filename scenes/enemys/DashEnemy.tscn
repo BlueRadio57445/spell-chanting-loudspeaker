@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ch6hdxiafx51o"]
+
+[ext_resource type="PackedScene" uid="uid://cxpvvm3jimsot" path="res://scenes/enemys/EnemyBase.tscn" id="1_0hxxw"]
+[ext_resource type="Script" uid="uid://5ovelps6fjgd" path="res://scripts/enemys/DashEnemy.gd" id="2_apx1p"]
+
+[node name="DashEnemy" unique_id=1417908132 instance=ExtResource("1_0hxxw")]
+script = ExtResource("2_apx1p")
+dash_speed = 600.0
