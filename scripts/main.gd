@@ -1,4 +1,5 @@
 extends Control
+class_name Main
 
 @onready var game_viewport_container: SubViewportContainer = $VBoxContainer/GameViewportContainer
 @onready var rune_ui: Panel = $VBoxContainer/RuneUI
@@ -9,10 +10,12 @@ extends Control
 @onready var world: Node2D = $VBoxContainer/GameViewportContainer/GameViewport/World
 @onready var player: CharacterBody2D = $VBoxContainer/GameViewportContainer/GameViewport/World/Player
 
+static var Instance: Main
 var fullscreen_rune_ui: bool = false
 var projectile_scene: PackedScene = preload("res://scenes/projectiles/projectile_base.tscn")
 
 func _ready() -> void:
+	Instance = self
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	rune_executor.graph = rune_canvas.graph
 
@@ -73,7 +76,7 @@ func _get_aim_direction() -> Vector2:
 func _test_spawn_projectile_linear() -> void:
 	var proj: ProjectileBase = projectile_scene.instantiate()
 	proj.global_position = player.global_position
-	proj.setup(player, _get_aim_direction(), 400.0, 10.0)
+	proj.setup(player, _get_aim_direction(), 400.0, 10.0, "None", 0)
 	# 預設就是 LinearMovement，不用額外設定
 	world.add_child(proj)
 	print("[Test] 直線子彈 → 方向: ", _get_aim_direction())
@@ -81,7 +84,7 @@ func _test_spawn_projectile_linear() -> void:
 func _test_spawn_projectile_stationary() -> void:
 	var proj: ProjectileBase = projectile_scene.instantiate()
 	proj.global_position = _get_mouse_world_pos()
-	proj.setup(player, Vector2.ZERO, 0.0, 10.0)
+	proj.setup(player, Vector2.ZERO, 0.0, 10.0, "None", 0)
 	proj.set_movement_module(StationaryMovement.new())
 	world.add_child(proj)
 	print("[Test] 靜止子彈 → 位置: ", proj.global_position)
@@ -89,7 +92,7 @@ func _test_spawn_projectile_stationary() -> void:
 func _test_spawn_projectile_orbit() -> void:
 	var proj: ProjectileBase = projectile_scene.instantiate()
 	proj.global_position = player.global_position + Vector2(80, 0)
-	proj.setup(player, Vector2.ZERO, 0.0, 10.0)
+	proj.setup(player, Vector2.ZERO, 0.0, 10.0, "None", 0)
 	proj.set_movement_module(OrbitMovement.new())
 	world.add_child(proj)
 	print("[Test] 環繞子彈")
@@ -97,7 +100,7 @@ func _test_spawn_projectile_orbit() -> void:
 func _test_spawn_projectile_homing() -> void:
 	var proj: ProjectileBase = projectile_scene.instantiate()
 	proj.global_position = player.global_position
-	proj.setup(player, _get_aim_direction(), 300.0, 10.0)
+	proj.setup(player, _get_aim_direction(), 300.0, 10.0, "None", 0)
 	proj.set_movement_module(HomingMovement.new())
 	world.add_child(proj)
 	print("[Test] 追蹤子彈")

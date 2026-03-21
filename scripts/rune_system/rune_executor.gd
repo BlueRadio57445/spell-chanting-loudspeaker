@@ -46,7 +46,7 @@ func _execute_chain(starter_id: String) -> void:
 			await audio_player.finished
 
 		# 執行符文
-		var outputs: Dictionary = rune.execute(inputs)
+		var outputs: Dictionary = rune.execute(inputs, get_parent())
 		port_data[node_id] = outputs
 		rune_executed.emit(node_id, rune)
 		print("[RuneExecutor] 執行: %s -> %s" % [rune.rune_name, outputs])

@@ -1,18 +1,20 @@
-[gd_scene format=3 uid="uid://dj2u6v36s3eti"]
+[gd_scene format=3 uid="uid://kw2tx41i2026"]
 
-[ext_resource type="Script" uid="uid://bo7voiolb4676" path="res://scripts/projectiles/projectile_base.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bb66oaev8uay1" path="res://resources/Projectile/fire.png" id="2_iupiv"]
+[ext_resource type="Script" uid="uid://bo7voiolb4676" path="res://scripts/projectiles/projectile_base.gd" id="1_t07v1"]
+[ext_resource type="Texture2D" uid="uid://bb66oaev8uay1" path="res://resources/Projectile/fire.png" id="2_s73vv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_col"]
 radius = 8.0
 
 [node name="ProjectileBase" type="Area2D" unique_id=937835577]
 collision_mask = 5
-script = ExtResource("1_script")
+script = ExtResource("1_t07v1")
+effect = "burn"
+effect_time = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991597844]
 scale = Vector2(0.109375, 0.109375)
-texture = ExtResource("2_iupiv")
+texture = ExtResource("2_s73vv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511121895]
 shape = SubResource("CircleShape2D_col")

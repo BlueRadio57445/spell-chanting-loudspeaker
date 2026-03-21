@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var SPEED = 200.0
@@ -5,6 +6,7 @@ extends CharacterBody2D
 @export var hp = 100
 @export var STOP_DISTANCE = 100 # 離目的地多近要停下
 
+static var Instance : Player
 var can_take_damage = true
 var is_moving = false
 var direction
@@ -16,6 +18,7 @@ var invisible_timer = 0.0
 @onready var anim = $AnimatedSprite2D
 
 func _ready() -> void:
+	Instance = self
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -48,6 +51,7 @@ func _physics_process(_delta: float) -> void:
 	if speed_mod_timer > 0:
 		speed_mod_timer -= _delta
 		if speed_mod_timer <= 0: speed_modifier = 0.0
+	anim.speed_scale = speed_modifier + 1
 		
 	if invisible_timer > 0:
 		invisible_timer -= _delta
@@ -67,6 +71,7 @@ func run_animated():
 		# 播放走路動畫
 		if anim.animation != "walk":
 			anim.play("walk")
+		
 	else:
 		anim.play("idle")
 
@@ -124,10 +129,8 @@ func attack_nearest_enemy():
 		print("對最近的敵人造成中毒！距離：", min_dist)
 		
 		# 這裡呼叫我們在 EnemyBase 寫好的 take_damage
-		apply_invisibility(3)
-			
-		# 額外視覺回饋：在玩家與目標之間畫一條簡單的線 (測試用)
-		# draw_debug_line(nearest_enemy.global_position)
+	
+	apply_speed_modifier(-0.8, 5)
 
 func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 	print(area.name)

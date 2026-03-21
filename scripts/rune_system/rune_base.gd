@@ -9,7 +9,7 @@ class_name RuneBase extends Resource
 var ports_in: Array[RunePort] = []
 var ports_out: Array[RunePort] = []
 
-func execute(inputs: Dictionary) -> Dictionary:
+func execute(inputs: Dictionary, context: Node) -> Dictionary:
 	return {}
 
 func get_display_name() -> String:

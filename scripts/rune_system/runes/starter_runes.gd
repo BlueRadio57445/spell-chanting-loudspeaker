@@ -8,7 +8,7 @@ class StarterQ extends RuneBase:
 		icon_color = Color(1.0, 0.9, 0.3)
 		ports_out = [RunePort.create("energy", RuneEnums.PortType.ENERGY)]
 
-	func execute(_inputs: Dictionary) -> Dictionary:
+	func execute(_inputs: Dictionary, context: Node) -> Dictionary:
 		return {"energy": 1.0}
 
 class StarterW extends RuneBase:
@@ -19,7 +19,7 @@ class StarterW extends RuneBase:
 		icon_color = Color(0.3, 1.0, 0.5)
 		ports_out = [RunePort.create("energy", RuneEnums.PortType.ENERGY)]
 
-	func execute(_inputs: Dictionary) -> Dictionary:
+	func execute(_inputs: Dictionary, context: Node) -> Dictionary:
 		return {"energy": 1.0}
 
 class StarterE extends RuneBase:
@@ -30,7 +30,7 @@ class StarterE extends RuneBase:
 		icon_color = Color(0.3, 0.6, 1.0)
 		ports_out = [RunePort.create("energy", RuneEnums.PortType.ENERGY)]
 
-	func execute(_inputs: Dictionary) -> Dictionary:
+	func execute(_inputs: Dictionary, context: Node) -> Dictionary:
 		return {"energy": 1.0}
 
 class StarterR extends RuneBase:
@@ -41,5 +41,5 @@ class StarterR extends RuneBase:
 		icon_color = Color(1.0, 0.4, 0.4)
 		ports_out = [RunePort.create("energy", RuneEnums.PortType.ENERGY)]
 
-	func execute(_inputs: Dictionary) -> Dictionary:
+	func execute(_inputs: Dictionary, context: Node) -> Dictionary:
 		return {"energy": 1.0}
