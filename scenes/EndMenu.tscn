@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bagidqd5jp0vo"]
+
+[ext_resource type="Script" uid="uid://dktll4rwufi0u" path="res://scripts/EndMenu.gd" id="1_7h87m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckmov"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfns0"]
+font_size = 32
+
+[node name="EndMenu" type="CanvasLayer" unique_id=776264141]
+visible = false
+script = ExtResource("1_7h87m")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1439057720]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.27058825, 0.59607846, 0.49411765, 0.5254902)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=786461561]
+offset_left = 141.0
+offset_top = 113.0
+offset_right = 1010.0
+offset_bottom = 342.0
+text = "你人沒了"
+label_settings = SubResource("LabelSettings_ckmov")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryButton" type="Button" parent="." unique_id=65232265]
+offset_left = 431.0
+offset_top = 337.0
+offset_right = 710.0
+offset_bottom = 434.0
+text = "重來"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="." unique_id=505054249]
+offset_left = 898.0
+offset_top = 396.0
+offset_right = 1127.0
+offset_bottom = 625.0
+text = "企劃 : 幻夜
+程式 : 收音機
+美術 : 零夜
+打雜 : 遊戲亡"
+label_settings = SubResource("LabelSettings_wfns0")
+metadata/_edit_use_anchors_ = true
+
+[node name="HomeButton" type="Button" parent="." unique_id=1086051261]
+offset_left = 428.0
+offset_top = 458.0
+offset_right = 707.0
+offset_bottom = 555.0
+text = "爛遊戲不玩了 :("
+metadata/_edit_use_anchors_ = true

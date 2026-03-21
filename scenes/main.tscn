@@ -3,10 +3,62 @@
 [ext_resource type="Script" uid="uid://i0a0gl8drno5" path="res://scripts/main.gd" id="1"]
 [ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="2"]
 [ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://ogn0b16no58x" path="res://resources/tmpPlayer.png" id="3_tipki"]
+[ext_resource type="Texture2D" uid="uid://c6eun8uedpeid" path="res://resources/Character/walk1.png" id="3_choun"]
+[ext_resource type="Texture2D" uid="uid://d3c8ljpsf4ww7" path="res://resources/Character/attack1.png" id="3_trceg"]
 [ext_resource type="Script" uid="uid://d2778v36qu8fj" path="res://scripts/ui/rune_inventory.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://w2wnm6ywidqo" path="res://resources/Character/attack2.png" id="4_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://ca5sebxocvhlg" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://btd50mn2qp7c0" path="res://resources/Character/walk2.png" id="4_ya4ey"]
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://duyp2f2c5jvvy" path="res://resources/Character/walk3.png" id="5_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://hlepvsuochqs" path="res://resources/Character/attack3.png" id="5_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://bo1wjljt38evo" path="res://scenes/enemys/FastEnemy.tscn" id="10_trceg"]
+[ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_trceg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a8y0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jkv2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a8y0u")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ya4ey")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_choun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ya4ey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eb6dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ya4ey")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
 size = Vector2(64, 64)
@@ -45,15 +97,20 @@ render_target_update_mode = 4
 
 [node name="Player" type="CharacterBody2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=914802439 groups=["player"]]
 position = Vector2(576, 162)
-scale = Vector2(0.5, 0.5)
 script = ExtResource("2")
+hp = 3
+STOP_DISTANCE = 25
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1079541265]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=600902360]
-texture = ExtResource("3_tipki")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1391518190]
+position = Vector2(-8.000009, -2.499999)
+scale = Vector2(0.21199995, 0.21000002)
+sprite_frames = SubResource("SpriteFrames_trceg")
+animation = &"attack"
+frame_progress = 0.8788089
 
 [node name="CharCollison" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=695486371]
 shape = SubResource("RectangleShape2D_ya4ey")
@@ -64,6 +121,8 @@ shape = SubResource("RectangleShape2D_ya4ey")
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="Spawner" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
+
+[node name="EnemyBase" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1417908132 instance=ExtResource("10_trceg")]
 
 [node name="RuneUI" type="Panel" parent="VBoxContainer" unique_id=2004242461]
 layout_mode = 2
@@ -92,3 +151,5 @@ script = ExtResource("4")
 script = ExtResource("5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RuneExecutor" unique_id=73730906]
+
+[node name="EndMenu" parent="." unique_id=776264141 instance=ExtResource("13_a8y0u")]
