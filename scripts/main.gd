@@ -5,8 +5,12 @@ extends Control
 @onready var rune_canvas: RuneCanvas = $VBoxContainer/RuneUI/HSplitContainer/RuneCanvas
 @onready var rune_inventory: RuneInventory = $VBoxContainer/RuneUI/HSplitContainer/RuneInventory
 @onready var rune_executor: RuneExecutor = $RuneExecutor
+@onready var game_viewport: SubViewport = $VBoxContainer/GameViewportContainer/GameViewport
+@onready var world: Node2D = $VBoxContainer/GameViewportContainer/GameViewport/World
+@onready var player: CharacterBody2D = $VBoxContainer/GameViewportContainer/GameViewport/World/Player
 
 var fullscreen_rune_ui: bool = false
+var projectile_scene: PackedScene = preload("res://scenes/projectiles/projectile_base.tscn")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -52,6 +56,53 @@ func _input(event: InputEvent) -> void:
 					KEY_W: rune_executor.trigger_starter(1)
 					KEY_E: rune_executor.trigger_starter(2)
 					KEY_R: rune_executor.trigger_starter(3)
+					KEY_A: _test_spawn_projectile_linear()
+					KEY_S: _test_spawn_projectile_stationary()
+					KEY_D: _test_spawn_projectile_orbit()
+					KEY_F: _test_spawn_projectile_homing()
+
+# ===== 測試投射物（按 A/S/D/F）=====
+
+func _get_mouse_world_pos() -> Vector2:
+	return game_viewport.get_mouse_position() + player.global_position - Vector2(game_viewport.size) / 2
+
+func _get_aim_direction() -> Vector2:
+	var mouse_pos: Vector2 = _get_mouse_world_pos()
+	return (mouse_pos - player.global_position).normalized()
+
+func _test_spawn_projectile_linear() -> void:
+	var proj: ProjectileBase = projectile_scene.instantiate()
+	proj.global_position = player.global_position
+	proj.setup(player, _get_aim_direction(), 400.0, 10.0)
+	# 預設就是 LinearMovement，不用額外設定
+	world.add_child(proj)
+	print("[Test] 直線子彈 → 方向: ", _get_aim_direction())
+
+func _test_spawn_projectile_stationary() -> void:
+	var proj: ProjectileBase = projectile_scene.instantiate()
+	proj.global_position = _get_mouse_world_pos()
+	proj.setup(player, Vector2.ZERO, 0.0, 10.0)
+	proj.set_movement_module(StationaryMovement.new())
+	world.add_child(proj)
+	print("[Test] 靜止子彈 → 位置: ", proj.global_position)
+
+func _test_spawn_projectile_orbit() -> void:
+	var proj: ProjectileBase = projectile_scene.instantiate()
+	proj.global_position = player.global_position + Vector2(80, 0)
+	proj.setup(player, Vector2.ZERO, 0.0, 10.0)
+	proj.set_movement_module(OrbitMovement.new())
+	world.add_child(proj)
+	print("[Test] 環繞子彈")
+
+func _test_spawn_projectile_homing() -> void:
+	var proj: ProjectileBase = projectile_scene.instantiate()
+	proj.global_position = player.global_position
+	proj.setup(player, _get_aim_direction(), 300.0, 10.0)
+	proj.set_movement_module(HomingMovement.new())
+	world.add_child(proj)
+	print("[Test] 追蹤子彈")
+
+# ===== 正式邏輯 =====
 
 func _toggle_rune_ui_fullscreen() -> void:
 	fullscreen_rune_ui = !fullscreen_rune_ui
