@@ -16,9 +16,9 @@ func _ready() -> void:
 	custom_minimum_size = Vector2(180, 0)
 
 	var bg_style := StyleBoxFlat.new()
-	bg_style.bg_color = Color(0.1, 0.1, 0.15, 0.95)
+	bg_style.bg_color = Color(0.1, 0.1, 0.15, 0.7)
 	bg_style.set_border_width_all(1)
-	bg_style.border_color = Color(0.3, 0.3, 0.4)
+	bg_style.border_color = Color(0.3, 0.3, 0.4, 0.8)
 	bg_style.set_content_margin_all(0)
 	add_theme_stylebox_override("panel", bg_style)
 

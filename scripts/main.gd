@@ -1,14 +1,14 @@
 extends Control
 class_name Main
 
-@onready var game_viewport_container: SubViewportContainer = $VBoxContainer/GameViewportContainer
-@onready var rune_ui: Panel = $VBoxContainer/RuneUI
-@onready var rune_canvas: RuneCanvas = $VBoxContainer/RuneUI/HSplitContainer/RuneCanvas
-@onready var rune_inventory: RuneInventory = $VBoxContainer/RuneUI/HSplitContainer/RuneInventory
+@onready var game_viewport_container: SubViewportContainer = $GameViewportContainer
+@onready var rune_ui: Panel = $RuneUI
+@onready var rune_canvas: RuneCanvas = $RuneUI/HSplitContainer/RuneCanvas
+@onready var rune_inventory: RuneInventory = $RuneUI/HSplitContainer/RuneInventory
 @onready var rune_executor: RuneExecutor = $RuneExecutor
-@onready var game_viewport: SubViewport = $VBoxContainer/GameViewportContainer/GameViewport
-@onready var world: Node2D = $VBoxContainer/GameViewportContainer/GameViewport/World
-@onready var player: CharacterBody2D = $VBoxContainer/GameViewportContainer/GameViewport/World/Player
+@onready var game_viewport: SubViewport = $GameViewportContainer/GameViewport
+@onready var world: Node2D = $GameViewportContainer/GameViewport/World
+@onready var player: CharacterBody2D = $GameViewportContainer/GameViewport/World/Player
 
 static var Instance: Main
 var fullscreen_rune_ui: bool = false
@@ -18,6 +18,16 @@ func _ready() -> void:
 	Instance = self
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	rune_executor.graph = rune_canvas.graph
+
+	# 遊戲世界在暫停時停止，UI 保持可操作
+	game_viewport_container.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+	# 符文 UI 半透明背景
+	var ui_style := StyleBoxFlat.new()
+	ui_style.bg_color = Color(0.05, 0.05, 0.1, 0.65)
+	ui_style.set_border_width_all(1)
+	ui_style.border_color = Color(0.3, 0.3, 0.5, 0.8)
+	rune_ui.add_theme_stylebox_override("panel", ui_style)
 
 	# 雙向注入引用：畫布需要知道背包位置（canvas→inventory），背包需要知道畫布（inventory→canvas）
 	rune_canvas.rune_inventory = rune_inventory
@@ -50,7 +60,7 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):  # 空白鍵
+	if event.is_action_pressed("pause"):  # 空白鍵
 		get_tree().paused = !get_tree().paused
 		_toggle_rune_ui_fullscreen()
 
@@ -115,8 +125,6 @@ func _test_spawn_projectile_homing() -> void:
 func _toggle_rune_ui_fullscreen() -> void:
 	fullscreen_rune_ui = !fullscreen_rune_ui
 	if fullscreen_rune_ui:
-		game_viewport_container.visible = false
-		rune_ui.size_flags_stretch_ratio = 1.0
+		rune_ui.anchor_top = 0.0  # 全螢幕覆蓋
 	else:
-		game_viewport_container.visible = true
-		rune_ui.size_flags_stretch_ratio = 1.0
+		rune_ui.anchor_top = 0.7  # 只覆蓋下半部
