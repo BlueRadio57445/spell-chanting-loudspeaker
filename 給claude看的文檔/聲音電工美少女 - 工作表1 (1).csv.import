@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dtu7pa6esf6tc"
+
+[deps]
+
+files=["res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).名稱.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).類型.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).必要輸入.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).可選輸入.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).輸出.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).效果.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).吟唱時間.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).傷害.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).特殊傷害or效果.translation"]
+
+source_file="res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).csv"
+dest_files=["res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).名稱.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).類型.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).必要輸入.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).可選輸入.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).輸出.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).效果.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).吟唱時間.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).傷害.translation", "res://給claude看的文檔/聲音電工美少女 - 工作表1 (1).特殊傷害or效果.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

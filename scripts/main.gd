@@ -28,6 +28,9 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("debuff"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("energy_ball"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("ice_ball"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("poison_ball"))
 
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:

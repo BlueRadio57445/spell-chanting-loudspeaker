@@ -11,6 +11,9 @@ func _register_all() -> void:
 	_register("starter_e", StarterRunes.StarterE.new())
 	_register("starter_r", StarterRunes.StarterR.new())
 	_register("fireball", EffectRunes.Fireball.new())
+	_register("energy_ball", EffectRunes.EnergyBall.new())
+	_register("ice_ball", EffectRunes.IceBall.new())
+	_register("poison_ball", EffectRunes.PoisonBall.new())
 	_register("heal", EffectRunes.Heal.new())
 	_register("debuff", EffectRunes.Debuff.new())
 
