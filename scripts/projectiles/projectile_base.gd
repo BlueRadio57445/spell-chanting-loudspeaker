@@ -67,7 +67,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.take_damage(damage)
 		
 	print("Effect=", effect)
-	if effect != "None":
+	if effect != "None" and body.has_method("apply_effect"):
 		print("Effect1=", effect)
 		body.apply_effect(effect, effect_time)
 	queue_free()
