@@ -10,7 +10,7 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3s64"]
 size = Vector2(69, 69)
 
-[node name="EnemyBase" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
+[node name="EnemyBase2" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_80u3f")
 loot_item_scene = ExtResource("2_ir53m")

@@ -46,7 +46,7 @@ func move(projectile: ProjectileBase, delta: float) -> void:
 	projectile.position += projectile.direction * projectile.speed * delta
 
 func _find_nearest_target(projectile: ProjectileBase) -> void:
-	var mobs: Array[Node] = projectile.get_tree().get_nodes_in_group("mobs")
+	var mobs: Array[Node] = projectile.get_tree().get_nodes_in_group("Enemy")
 	var min_dist: float = INF
 	target = null
 	for mob in mobs:
