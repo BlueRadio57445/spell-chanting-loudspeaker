@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bo1wjljt38evo"]
 
-[ext_resource type="Script" uid="uid://bbjgel3jle0ab" path="res://scripts/enemys/BaseEnemy.gd" id="1_5fu35"]
-[ext_resource type="Texture2D" uid="uid://d44cye8df5fw" path="res://resources/tmpEnemy.png" id="2_f8xxg"]
+[ext_resource type="Script" uid="uid://bnbvvy5yf2qga" path="res://scripts/enemys/FastEnemy.gd" id="1_5fu35"]
+[ext_resource type="Texture2D" uid="uid://c4x11i5m22cqn" path="res://resources/Enemy/FastEnemy.png" id="2_5fu35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgmxi"]
 size = Vector2(64, 64)
@@ -10,16 +10,20 @@ size = Vector2(64, 64)
 size = Vector2(69, 69)
 
 [node name="EnemyBase" type="CharacterBody2D" unique_id=1417908132]
+collision_layer = 4
 script = ExtResource("1_5fu35")
-speed = 150.0
+speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=270864752]
-texture = ExtResource("2_f8xxg")
+position = Vector2(1.9073486e-06, 2.9999995)
+scale = Vector2(0.16000001, 0.16)
+texture = ExtResource("2_5fu35")
 
 [node name="CharCollision" type="CollisionShape2D" parent="." unique_id=1190225617]
 shape = SubResource("RectangleShape2D_vgmxi")
 
 [node name="EnemyHurtBox" type="Area2D" parent="." unique_id=893333626]
+collision_layer = 4
 
 [node name="HurtCollision" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=739336120]
 position = Vector2(-0.5, 0.5)
