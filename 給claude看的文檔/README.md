@@ -87,18 +87,7 @@
 - **玩家移動**：WASD，速度 200，`CharacterBody2D` + `Camera2D`（跟隨）
 - **分割畫面**：`SubViewportContainer`（上半）+ `Panel`（下半佔位）
 - **空白鍵暫停**：`get_tree().paused`，main.gd 設 `PROCESS_MODE_ALWAYS`
-
-### 場景結構
-```
-scenes/
-├── main.tscn          ← 主場景（分割畫面 + 暫停邏輯）
-├── world.tscn         ← 戰鬥世界（Player + Camera2D）
-└── ui/
-    └── rune_graph_edit.tscn  ← 符文圖編輯器（佔位）
-scripts/
-├── main.gd
-└── player.gd
-```
+- **符文系統**：完整四層架構（資料/圖/執行/UI），詳見 [符文系統.md](符文系統.md)
 
 ## 延伸方向（有時間再做）
 
