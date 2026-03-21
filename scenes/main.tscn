@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://i0a0gl8drno5" path="res://scripts/main.gd" id="1"]
 [ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="2"]
+[ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
+[ext_resource type="Script" uid="uid://d2778v36qu8fj" path="res://scripts/ui/rune_inventory.gd" id="4"]
+[ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
 
 [node name="root" type="Control" unique_id=619365517]
 layout_mode = 3
@@ -43,3 +46,27 @@ drag_vertical_enabled = true
 [node name="RuneUI" type="Panel" parent="VBoxContainer" unique_id=2004242461]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/RuneUI" unique_id=235767389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RuneCanvas" type="Control" parent="VBoxContainer/RuneUI/HSplitContainer" unique_id=1828325534]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+script = ExtResource("3")
+
+[node name="RuneInventory" type="PanelContainer" parent="VBoxContainer/RuneUI/HSplitContainer" unique_id=363870573]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4")
+
+[node name="RuneExecutor" type="Node" parent="." unique_id=25453600]
+script = ExtResource("5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RuneExecutor" unique_id=73730906]
