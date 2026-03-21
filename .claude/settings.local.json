@@ -10,7 +10,10 @@
       "WebFetch(domain:docs.godotengine.org)",
       "WebFetch(domain:godotforums.org)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "mcp__godot__run_project",
+      "mcp__godot__get_debug_output",
+      "mcp__godot__stop_project"
     ]
   }
 }

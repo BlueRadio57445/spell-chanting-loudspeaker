@@ -3,6 +3,7 @@ class_name RuneNodeWidget extends PanelContainer
 signal port_clicked(node_id: String, port_name: String, is_input: bool)
 signal node_moved(node_id: String, new_pos: Vector2)
 signal node_delete_requested(node_id: String)
+signal node_drag_released(node_id: String, global_pos: Vector2)
 
 var node_id: String
 var rune: RuneBase
@@ -209,6 +210,8 @@ func _gui_input(event: InputEvent) -> void:
 				is_dragging = true
 				drag_offset = mb.position
 			else:
+				if is_dragging:
+					node_drag_released.emit(node_id, get_global_mouse_position())
 				is_dragging = false
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
 			if not node_id.begins_with("starter_"):

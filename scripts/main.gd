@@ -12,10 +12,15 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	rune_executor.graph = rune_canvas.graph
 
-	# 背包選擇符文 → 畫布進入放置模式
-	rune_inventory.rune_selected.connect(func(rune_id: String) -> void:
-		rune_canvas.start_placing(rune_id)
-	)
+	# 雙向注入引用：畫布需要知道背包位置（canvas→inventory），背包需要知道畫布（inventory→canvas）
+	rune_canvas.rune_inventory = rune_inventory
+	rune_inventory.canvas = rune_canvas
+
+	# 測試：給玩家幾個初始符文
+	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("debuff"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
 
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:

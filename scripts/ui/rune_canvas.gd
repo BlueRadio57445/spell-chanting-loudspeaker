@@ -5,6 +5,8 @@ signal graph_changed
 var graph: RuneGraph = RuneGraph.new()
 var node_widgets: Dictionary = {}  # node_id -> RuneNodeWidget
 
+var rune_inventory: RuneInventory  # 由 main.gd 注入
+
 # --- 連線狀態 ---
 var is_connecting: bool = false
 var connect_from_node: String = ""
@@ -20,10 +22,6 @@ var reroute_original_to_node: String = ""
 var reroute_original_to_port: String = ""
 var reroute_origin_pos: Vector2 = Vector2.ZERO  # 安全圓圈中心
 const REROUTE_SAFE_RADIUS: float = 35.0
-
-# --- 放置模式 ---
-var is_placing: bool = false
-var placing_rune_id: String = ""
 
 # --- 畫布平移 ---
 var canvas_offset: Vector2 = Vector2.ZERO
@@ -54,18 +52,13 @@ func _setup_starters() -> void:
 		graph.add_node(node_id, rune, pos)
 		_create_widget(node_id, rune, pos)
 
-func add_rune_at(rune_id: String, pos: Vector2) -> void:
-	var rune: RuneBase = RuneRegistry.create_instance(rune_id)
+func add_rune_instance(rune: RuneBase, pos: Vector2) -> void:
 	var node_id: String = "node_%d" % Time.get_ticks_msec()
 	var canvas_pos: Vector2 = pos - canvas_offset
 	graph.add_node(node_id, rune, canvas_pos)
-	_create_widget(node_id, rune, canvas_pos + canvas_offset)
+	_create_widget(node_id, rune, pos)
 	graph_changed.emit()
 	_refresh_all_connection_states()
-
-func start_placing(rune_id: String) -> void:
-	is_placing = true
-	placing_rune_id = rune_id
 
 # =============================================================================
 #  Widget 管理
@@ -79,6 +72,7 @@ func _create_widget(node_id: String, rune: RuneBase, screen_pos: Vector2) -> voi
 	widget.port_clicked.connect(_on_port_clicked)
 	widget.node_moved.connect(_on_node_moved)
 	widget.node_delete_requested.connect(_on_node_delete)
+	widget.node_drag_released.connect(_on_widget_drag_released)
 	node_widgets[node_id] = widget
 
 func _on_node_moved(node_id: String, new_pos: Vector2) -> void:
@@ -284,7 +278,7 @@ func _input(event: InputEvent) -> void:
 				w.position = (node_data["position"] as Vector2) + canvas_offset
 			queue_redraw()
 		# 連線懸停偵測（非連線/放置/拖拽模式時）
-		if not is_connecting and not is_placing and not is_panning and not is_drag_panning:
+		if not is_connecting and not is_panning and not is_drag_panning:
 			_update_edge_hover(get_local_mouse_position())
 			queue_redraw()
 
@@ -298,20 +292,16 @@ func _input(event: InputEvent) -> void:
 			is_drag_panning = false
 		# 左鍵按下
 		elif mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed:
-			if is_placing:
-				add_rune_at(placing_rune_id, get_local_mouse_position())
-				is_placing = false
-				placing_rune_id = ""
-			elif is_connecting:
+			if is_connecting:
 				# 只有點擊在空白處才取消，點在 widget 上讓 port button 處理
 				if not _is_click_on_widget(get_local_mouse_position()):
 					if is_rerouting:
 						_finish_reroute_on_empty()
 					else:
 						_cancel_connection()
-			elif not _is_click_on_widget(get_local_mouse_position()):
+			elif not _is_click_on_widget(get_local_mouse_position()) and get_global_rect().has_point(mb.global_position):
 				is_drag_panning = true
-		# 右鍵：取消連線/放置
+		# 右鍵：取消連線
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
 			if is_connecting:
 				if is_rerouting:
@@ -322,9 +312,6 @@ func _input(event: InputEvent) -> void:
 					_refresh_all_connection_states()
 					graph_changed.emit()
 				_cancel_connection()
-			if is_placing:
-				is_placing = false
-				placing_rune_id = ""
 
 	# Escape 取消
 	if event is InputEventKey:
@@ -338,16 +325,13 @@ func _input(event: InputEvent) -> void:
 					_refresh_all_connection_states()
 					graph_changed.emit()
 				_cancel_connection()
-			if is_placing:
-				is_placing = false
-				placing_rune_id = ""
 
 # =============================================================================
 #  邊緣自動捲動
 # =============================================================================
 
 func _do_auto_scroll(delta: float) -> void:
-	if not is_connecting and not is_placing:
+	if not is_connecting:
 		return
 	var mouse_local: Vector2 = get_local_mouse_position()
 	var scroll_dir: Vector2 = Vector2.ZERO
@@ -461,3 +445,31 @@ func _is_click_on_widget(local_pos: Vector2) -> bool:
 		if rect.has_point(local_pos):
 			return true
 	return false
+
+# =============================================================================
+#  節點拖回背包
+# =============================================================================
+
+func _on_widget_drag_released(node_id: String, global_pos: Vector2) -> void:
+	if get_global_rect().has_point(global_pos):
+		return  # 在畫布內，正常拖拽結束
+	if node_id.begins_with("starter_"):
+		_snap_widget_to_canvas(node_id)
+		return
+	if not graph.nodes.has(node_id):
+		return
+	if rune_inventory and rune_inventory.get_global_rect().has_point(global_pos):
+		var rune: RuneBase = graph.nodes[node_id]["rune"] as RuneBase
+		rune_inventory.add_rune(rune)
+		_on_node_delete(node_id)
+	else:
+		_snap_widget_to_canvas(node_id)
+
+func _snap_widget_to_canvas(node_id: String) -> void:
+	if not node_widgets.has(node_id) or not graph.nodes.has(node_id):
+		return
+	var widget: RuneNodeWidget = node_widgets[node_id]
+	var clamped: Vector2 = widget.position.clamp(Vector2.ZERO, size - widget.size)
+	widget.position = clamped
+	graph.move_node(node_id, clamped - canvas_offset)
+	queue_redraw()
