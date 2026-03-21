@@ -17,6 +17,13 @@ class_name EnemyBase # 定義類別名稱，讓子類別可以 extends 它
 }
 @export var loot_item_scene: PackedScene # 放剛才建立的 RuneItem.tscn
 
+var status_effects = {
+	"burn": { "stacks": 0, "timer": 0.0 },
+	"slow": { "time_left": 0.0 },
+	"freeze": { "time_left": 0.0 },
+	"poison": { "stacks": 0, "timer": 0.0 }
+}
+
 var player = null
 var is_stunned = false
 
@@ -30,12 +37,14 @@ func setup_enemy():
 func _physics_process(_delta):
 	if !player or health <= 0 or is_stunned: return
 	handle_movement(_delta) # 讓子類別決定怎麼動
+	handle_effect_timers(_delta)
 
 func handle_movement(_delta):
 	# 預設追蹤邏輯
-	var direction = (player.global_position - global_position).normalized()
-	velocity = direction * speed
-	move_and_slide()
+	if not player.is_invisible():
+		var direction = (player.global_position - global_position).normalized()
+		velocity = direction * get_modified_speed(speed)
+		move_and_slide()
 
 func take_damage(amount):
 	health -= amount
@@ -69,11 +78,10 @@ func _on_hitbox_area_entered(area):
 	
 	if is_stunned: return
 	
-	if area.name == "PlayerHurtbox":
+	if area.name == "PlayerHurtbox" and status_effects["freeze"]["time_left"] <= 0:
 		if player.has_method("take_damage"):
 			player.take_damage(attack)
 			apply_hit_stop()
-
 
 # 死亡的邏輯
 func die():
@@ -104,3 +112,65 @@ func spawn_loot(type):
 		item.global_position = global_position # 掉在怪物死掉的位置
 		get_parent().add_child(item)
 		item.onSummon(type) # 通知掉落物它是哪種符文
+
+# 效果邏輯
+func apply_effect(effect_name: String, value: float = 0.0):
+	match effect_name:
+		"burn":
+			# 衝突檢查：移除緩速與冰凍
+			status_effects["slow"]["time_left"] = 0.0
+			status_effects["freeze"]["time_left"] = 0.0
+			status_effects["burn"]["stacks"] += value
+			
+		"slow":
+			# 衝突檢查：如果有冰凍，移除緩速
+			if status_effects["freeze"]["time_left"] > 0:
+				status_effects["slow"]["time_left"] = 0.0
+				return
+			# 衝突檢查：移除燃燒
+			status_effects["burn"]["stacks"] = 0.0
+			status_effects["burn"]["timer"] = 0.0
+			# 疊加持續時間
+			status_effects["slow"]["time_left"] += value
+			
+		"freeze":
+			# 衝突檢查：移除燃燒與緩速
+			status_effects["burn"]["stacks"] = 0.0
+			status_effects["burn"]["timer"] = 0.0
+			status_effects["slow"]["time_left"] = 0.0
+			status_effects["freeze"]["time_left"] += value
+			
+		"poison":
+			# 無衝突，無限持續
+			status_effects["poison"]["stacks"] += value
+	
+
+func handle_effect_timers(delta):
+	# 處理緩速與冰凍的倒數
+	if status_effects["slow"]["time_left"] > 0:
+		status_effects["slow"]["time_left"] -= delta
+		
+	if status_effects["freeze"]["time_left"] > 0:
+		status_effects["freeze"]["time_left"] -= delta
+
+	# 每 1 秒觸發一次 Dot (燃燒 & 中毒)
+	tick_dot_damage(delta, "burn")
+	tick_dot_damage(delta, "poison")
+
+func tick_dot_damage(delta, type):
+	status_effects[type]["timer"] += delta
+	if status_effects[type]["timer"] >= 1.0:
+		var s = status_effects[type]["stacks"]
+		if s > 0:
+			take_damage(s) # 受到 n 點傷害
+			if type == "burn":
+				status_effects[type]["stacks"] -= 1 # 燃燒每秒減 1 層
+		status_effects[type]["timer"] = 0.0
+
+# 修改原本的 handle_movement 來套用效果
+func get_modified_speed(s) -> float:
+	if status_effects["freeze"]["time_left"] > 0:
+		return 0.0 # 冰凍無法行動
+	if status_effects["slow"]["time_left"] > 0:
+		return s * 0.25 # 減少 75%
+	return s

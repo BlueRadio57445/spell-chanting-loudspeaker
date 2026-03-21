@@ -1,11 +1,17 @@
 extends CharacterBody2D
 
 @export var SPEED = 200.0
+@export var max_hp = 100
 @export var hp = 100
 @export var STOP_DISTANCE = 100 # 離目的地多近要停下
+
 var can_take_damage = true
 var is_moving = false
 var direction
+
+var speed_modifier = 0.0 # 百分比，例如 0.2 代表 +20%
+var speed_mod_timer = 0.0
+var invisible_timer = 0.0
 
 @onready var anim = $AnimatedSprite2D
 
@@ -29,14 +35,24 @@ func _input(event: InputEvent) -> void:
 		attack_nearest_enemy()
 
 func _physics_process(_delta: float) -> void:
+	var current_speed = SPEED * (1.0 + speed_modifier)
 	if is_moving:
 		# 如果距離大於停止距離，就移動
-		velocity = direction * SPEED
+		velocity = direction * current_speed
 		# 簡單的轉向：讓角色面向移動方向
 		if direction.x != 0:
 			$AnimatedSprite2D.flip_h = direction.x > 0
 		move_and_slide()
-	
+		
+	# 效果部分
+	if speed_mod_timer > 0:
+		speed_mod_timer -= _delta
+		if speed_mod_timer <= 0: speed_modifier = 0.0
+		
+	if invisible_timer > 0:
+		invisible_timer -= _delta
+		if invisible_timer <= 0: modulate.a = 1.0 # 恢復可見
+
 	# 動畫部分
 	run_animated()
 
@@ -105,14 +121,13 @@ func attack_nearest_enemy():
 			
 	# 3. 執行傷害
 	if nearest_enemy != null:
-		print("對最近的敵人造成傷害！距離：", min_dist)
+		print("對最近的敵人造成中毒！距離：", min_dist)
 		
 		# 這裡呼叫我們在 EnemyBase 寫好的 take_damage
-		if nearest_enemy.has_method("take_damage"):
-			nearest_enemy.take_damage(100) 
+		apply_invisibility(3)
 			
-			# 額外視覺回饋：在玩家與目標之間畫一條簡單的線 (測試用)
-			# draw_debug_line(nearest_enemy.global_position)
+		# 額外視覺回饋：在玩家與目標之間畫一條簡單的線 (測試用)
+		# draw_debug_line(nearest_enemy.global_position)
 
 func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 	print(area.name)
@@ -121,3 +136,18 @@ func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 		move_and_slide() # 執行一次彈開
 		
 		is_moving = false
+		
+func apply_speed_modifier(percent: float, duration: float):
+	# 覆蓋原本效果
+	speed_modifier = percent
+	speed_mod_timer = duration
+
+func apply_invisibility(duration: float):
+	# 增加持續時間
+	invisible_timer += duration
+	# 視覺回饋：變半透明
+	modulate.a = 0.3
+
+# 提供一個介面給敵人檢查
+func is_invisible() -> bool:
+	return invisible_timer > 0

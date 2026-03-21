@@ -23,10 +23,11 @@ func handle_movement(_delta):
 		# 衝刺中：根據你的邏輯持續追蹤或直線衝刺
 		velocity = (player.global_position - global_position).normalized() * dash_speed
 		move_and_slide()
-	elif can_dash and dist < 200:
-		start_dash()
-	else:
-		super.handle_movement(_delta)
+	elif not player.is_invisible(): 
+		if can_dash and dist < 200:
+			start_dash()
+		else:
+			super.handle_movement(_delta)
 
 func start_dash():
 	can_dash = false
