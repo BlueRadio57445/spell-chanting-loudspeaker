@@ -3,7 +3,7 @@ class_name ModifierRunes
 class Giant extends RuneBase:
 	func _init() -> void:
 		rune_name = "巨化"
-		description = "消耗能量，投射物體積增大"
+		description = "投射物體積增大"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.6, 0.0)
 		ports_in = [
@@ -98,7 +98,7 @@ class QuadShot extends RuneBase:
 class Orbit extends RuneBase:
 	func _init() -> void:
 		rune_name = "環繞"
-		description = "消耗能量，投射物環繞玩家旋轉"
+		description = "投射物環繞玩家旋轉"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.2, 0.8, 0.9)
 		ports_in = [
