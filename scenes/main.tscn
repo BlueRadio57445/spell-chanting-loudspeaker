@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i0a0gl8drno5" path="res://scripts/main.gd" id="1"]
 [ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://hfq260wxot8b" path="res://resources/UI/Background/grass.png" id="2_a8y0u"]
 [ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c6eun8uedpeid" path="res://resources/Character/walk1.png" id="3_choun"]
 [ext_resource type="Texture2D" uid="uid://d3c8ljpsf4ww7" path="res://resources/Character/attack1.png" id="3_trceg"]
@@ -12,8 +13,16 @@
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://duyp2f2c5jvvy" path="res://resources/Character/walk3.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://hlepvsuochqs" path="res://resources/Character/attack3.png" id="5_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://bo1wjljt38evo" path="res://scenes/enemys/FastEnemy.tscn" id="10_trceg"]
 [ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
+size = Vector2(5760, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
+size = Vector2(5760, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+size = Vector2(100, 3240)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
 animations = [{
@@ -90,16 +99,79 @@ stretch = true
 
 [node name="GameViewport" type="SubViewport" parent="VBoxContainer/GameViewportContainer" unique_id=327964235]
 handle_input_locally = false
-size = Vector2i(1152, 322)
+size = Vector2i(1600, 448)
 render_target_update_mode = 4
 
 [node name="World" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport" unique_id=1056802089]
 
+[node name="BackGround" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1479272225]
+
+[node name="ALotOfGrass" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround" unique_id=275968008]
+
+[node name="Grass" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1163399177]
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass2" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=2081458441]
+position = Vector2(1920, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass3" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=360925062]
+position = Vector2(0, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass4" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=331306327]
+position = Vector2(1920, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass5" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=151954584]
+position = Vector2(0, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass6" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1792295200]
+position = Vector2(1920, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass7" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=542906649]
+position = Vector2(-1920, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass8" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1662774446]
+position = Vector2(-1920, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass9" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1769230155]
+position = Vector2(-1920, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Area2D" type="StaticBody2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround" unique_id=1333457727]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Down" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1091572243]
+position = Vector2(0, 1520)
+shape = SubResource("RectangleShape2D_a8y0u")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Up" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1841695630]
+position = Vector2(0, -1520)
+shape = SubResource("RectangleShape2D_jkv2x")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Left" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1224964594]
+position = Vector2(2780, 0)
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Right" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=125581537]
+position = Vector2(-2780, 0)
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
 [node name="Player" type="CharacterBody2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=914802439 groups=["player"]]
 position = Vector2(576, 162)
+collision_mask = 9
 script = ExtResource("2")
-hp = 3
-STOP_DISTANCE = 25
+STOP_DISTANCE = 50
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1079541265]
 drag_horizontal_enabled = true
@@ -116,13 +188,12 @@ frame_progress = 0.8788089
 shape = SubResource("RectangleShape2D_ya4ey")
 
 [node name="PlayerHurtbox" type="Area2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1607777653]
+collision_mask = 3
 
 [node name="HurtCollision" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" unique_id=743019441]
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="Spawner" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
-
-[node name="EnemyBase" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1417908132 instance=ExtResource("10_trceg")]
 
 [node name="RuneUI" type="Panel" parent="VBoxContainer" unique_id=2004242461]
 layout_mode = 2

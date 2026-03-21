@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbjgel3jle0ab" path="res://scripts/enemys/BaseEnemy.gd" id="1_3wklq"]
 [ext_resource type="Texture2D" uid="uid://d44cye8df5fw" path="res://resources/tmpEnemy.png" id="2_7am4l"]
+[ext_resource type="PackedScene" uid="uid://boqnqj2ku44l2" path="res://scenes/RuneDrops.tscn" id="2_37sun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgmxi"]
 size = Vector2(64, 64)
@@ -9,9 +10,10 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3s64"]
 size = Vector2(69, 69)
 
-[node name="EnemyBase" type="CharacterBody2D" unique_id=1417908132]
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_3wklq")
+loot_item_scene = ExtResource("2_37sun")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=270864752]
 texture = ExtResource("2_7am4l")

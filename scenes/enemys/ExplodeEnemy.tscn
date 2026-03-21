@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cxpvvm3jimsot" path="res://scenes/enemys/EnemyBase.tscn" id="1_kykiv"]
 [ext_resource type="Script" uid="uid://hmslppp56mx2" path="res://scripts/enemys/ExplodeEnemy.gd" id="2_s06hd"]
 [ext_resource type="Texture2D" uid="uid://c5j0wkq1lccbe" path="res://resources/Enemy/ExplodeEnemy.png" id="3_1mn1v"]
+[ext_resource type="PackedScene" uid="uid://boqnqj2ku44l2" path="res://scenes/RuneDrops.tscn" id="3_na7us"]
 [ext_resource type="Texture2D" uid="uid://vrvu1dog8x2b" path="res://resources/Enemy/ExplodeEnemyParticle.png" id="4_4qrwd"]
 
 [node name="ExplodeEnemy" unique_id=1417908132 instance=ExtResource("1_kykiv")]
 script = ExtResource("2_s06hd")
 explode_range = 80.0
+loot_item_scene = ExtResource("3_na7us")
 
 [node name="Sprite2D" parent="." index="0" unique_id=270864752]
 position = Vector2(3.000006, -6.499997)

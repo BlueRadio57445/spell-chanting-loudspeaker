@@ -24,6 +24,9 @@ func _input(event: InputEvent) -> void:
 			else:
 				direction = (target_position - global_position).normalized()
 				is_moving = true
+				
+	if event.is_action_pressed("Die"): # 預設是空白鍵或 Enter
+		attack_nearest_enemy()
 
 func _physics_process(_delta: float) -> void:
 	if is_moving:
@@ -75,3 +78,33 @@ func die():
 	var game_over_screen = get_tree().root.find_child("EndMenu", true, false)
 	if game_over_screen:
 		game_over_screen.show_screen()
+	
+
+func attack_nearest_enemy():
+	# 1. 取得所有在 "mobs" 群組裡的怪物 (記得你的怪物要加入這個群組)
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	
+	if enemies.size() == 0:
+		print("場面上沒有敵人可以測試")
+		return
+		
+	var nearest_enemy = null
+	var min_dist = INF # 初始值設為無限大
+	
+	# 2. 遍歷所有怪物找出最近的
+	for enemy in enemies:
+		var dist = global_position.distance_to(enemy.global_position)
+		if dist < min_dist:
+			min_dist = dist
+			nearest_enemy = enemy
+			
+	# 3. 執行傷害
+	if nearest_enemy != null:
+		print("對最近的敵人造成傷害！距離：", min_dist)
+		
+		# 這裡呼叫我們在 EnemyBase 寫好的 take_damage
+		if nearest_enemy.has_method("take_damage"):
+			nearest_enemy.take_damage(100) 
+			
+			# 額外視覺回饋：在玩家與目標之間畫一條簡單的線 (測試用)
+			# draw_debug_line(nearest_enemy.global_position)

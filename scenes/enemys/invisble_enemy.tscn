@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://fxffmdembrke" path="res://scripts/enemys/InvisibleEnemy.gd" id="2_tm65q"]
 [ext_resource type="Texture2D" uid="uid://bfcqrrake8rnu" path="res://resources/Enemy/InvisibleEnemy.png" id="3_tm65q"]
 
-[node name="InvisbleEnemy" unique_id=1417908132 instance=ExtResource("1_8xujc")]
+[node name="InvisbleEnemy" unique_id=1417908132 groups=["Enemy"] instance=ExtResource("1_8xujc")]
 script = ExtResource("2_tm65q")
 speed = 150.0
 
