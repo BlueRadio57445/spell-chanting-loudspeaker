@@ -73,14 +73,37 @@ func _on_widget_drag_released(node_id: String, global_pos: Vector2) -> void:
 	if canvas and canvas.get_global_rect().has_point(global_pos):
 		var rune: RuneBase = _get_rune_by_node_id(node_id)
 		if rune:
-			# 移除背包 widget
+			var drag_offset: Vector2 = Vector2.ZERO
 			if _widgets.has(rune):
+				drag_offset = (_widgets[rune] as RuneNodeWidget).drag_offset
 				(_widgets[rune] as RuneNodeWidget).queue_free()
 				_widgets.erase(rune)
 			_runes.erase(rune)
-			# 在畫布上放置
-			canvas.add_rune_instance(rune, global_pos - canvas.global_position)
+			canvas.add_rune_instance(rune, global_pos - canvas.global_position - drag_offset)
+	elif get_global_rect().has_point(global_pos):
+		# 在背包內放開 → 重新排序
+		var rune: RuneBase = _get_rune_by_node_id(node_id)
+		if rune:
+			var local_y: float = global_pos.y - _widget_area.global_position.y
+			var new_index: int = _get_drop_index(rune, local_y)
+			_runes.erase(rune)
+			_runes.insert(new_index, rune)
 	_rebuild_positions.call_deferred()
+
+
+func _get_drop_index(dragged_rune: RuneBase, local_y: float) -> int:
+	var idx: int = 0
+	for rune: RuneBase in _runes:
+		if rune == dragged_rune:
+			continue
+		if not _widgets.has(rune):
+			idx += 1
+			continue
+		var w: RuneNodeWidget = _widgets[rune] as RuneNodeWidget
+		if local_y < w.position.y + w.size.y * 0.5:
+			return idx
+		idx += 1
+	return idx
 
 
 func _on_widget_delete(node_id: String) -> void:
