@@ -9,21 +9,22 @@ class Fireball extends RuneBase:
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
 		]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
-	func execute(inputs: Dictionary, context: Node) -> Dictionary:
-		# context 現在就是你的 Main.gd
-		var energy: float = inputs.get("energy", 1.0) # 預設給 1.0 能量
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 10.0
-			
+		var form: Dictionary = inputs.get("form", {})
+
 		var proj: ProjectileBase = preload("res://scenes/projectiles/fireball.tscn").instantiate()
-		var player = Player.Instance
+		var player: Node2D = Player.Instance
 		proj.global_position = player.global_position
 		proj.setup(player, Main.Instance._get_aim_direction(), 400.0, damage, "burn", 5.0)
+		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
-		print(proj.effect)
-		
+
 		print("[火球術] 執行成功，消耗能量: %s" % energy)
 		return {"spell": {"type": "fireball", "damage": damage}}
 
@@ -36,17 +37,20 @@ class EnergyBall extends RuneBase:
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
 		]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
 	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 10.0
+		var form: Dictionary = inputs.get("form", {})
 
 		var proj: ProjectileBase = preload("res://scenes/projectiles/energy_ball.tscn").instantiate()
 		var player: Node2D = Player.Instance
 		proj.global_position = player.global_position
 		proj.setup(player, Main.Instance._get_aim_direction(), 500.0, damage, "None", 0.0)
+		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[能量彈] 執行成功，消耗能量: %s" % energy)
@@ -61,17 +65,20 @@ class IceBall extends RuneBase:
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
 		]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
 	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 5.0
+		var form: Dictionary = inputs.get("form", {})
 
 		var proj: ProjectileBase = preload("res://scenes/projectiles/ice_ball.tscn").instantiate()
 		var player: Node2D = Player.Instance
 		proj.global_position = player.global_position
 		proj.setup(player, Main.Instance._get_aim_direction(), 350.0, damage, "slow", 3.0)
+		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[冰霰] 執行成功，消耗能量: %s" % energy)
@@ -87,6 +94,7 @@ class PoisonBall extends RuneBase:
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
 		]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -95,11 +103,13 @@ class PoisonBall extends RuneBase:
 		var energy2: float = inputs.get("energy2", 1.0)
 		var total_energy: float = energy + energy2
 		var damage: float = total_energy * 2.5
+		var form: Dictionary = inputs.get("form", {})
 
 		var proj: PenetratingProjectile = preload("res://scenes/projectiles/poison_ball.tscn").instantiate()
 		var player: Node2D = Player.Instance
 		proj.global_position = player.global_position
 		proj.setup(player, Main.Instance._get_aim_direction(), 300.0, damage, "poison", total_energy)
+		proj.apply_form(form)
 		Main.Instance.world.add_child(proj)
 
 		print("[毒球] 執行成功，消耗能量: %s" % total_energy)

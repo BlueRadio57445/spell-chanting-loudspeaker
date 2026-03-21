@@ -48,6 +48,24 @@ func setup(p_owner: Node2D, p_direction: Vector2, p_speed: float, p_damage: floa
 	effect = p_effect         # 👈 同步更新
 	effect_time = p_effect_time # 👈 同步更新
 	
+# 套用 Form 字典（由符文系統傳入）
+# form = { "movement": "homing"/"orbit"/"ground"/..., "size_scale": 2.0, ... }
+func apply_form(form: Dictionary) -> void:
+	# 移動方式（互斥，後蓋前）
+	var movement_type: String = form.get("movement", "bullet")
+	match movement_type:
+		"homing":
+			set_movement_module(HomingMovement.new())
+		"orbit":
+			set_movement_module(OrbitMovement.new())
+		"ground":
+			set_movement_module(StationaryMovement.new())
+		# "bullet" 或未知值 → 不動，保留預設 LinearMovement
+
+	# 形體變化：巨化
+	if form.has("size_scale"):
+		size_scale *= form["size_scale"]
+
 # 替換移動模組（可在加入場景樹前或後呼叫）
 func set_movement_module(new_module: MovementModule) -> void:
 	if movement_module:

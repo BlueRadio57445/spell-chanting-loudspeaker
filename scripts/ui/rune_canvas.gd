@@ -170,7 +170,7 @@ func _start_reroute(edge: Dictionary, input_node_id: String, input_port_name: St
 
 	# 安全圓圈位置 = 原始 input port 的位置
 	var widget: RuneNodeWidget = node_widgets[input_node_id]
-	reroute_origin_pos = widget.get_port_global_position(input_port_name) - global_position
+	reroute_origin_pos = widget.get_port_global_position(input_port_name, true) - global_position
 
 	# 移除舊連線
 	graph.remove_edge(edge["from_node"], edge["from_port"], edge["to_node"], edge["to_port"])
@@ -368,8 +368,8 @@ func _draw() -> void:
 			continue
 		var from_widget: RuneNodeWidget = node_widgets[from_id]
 		var to_widget: RuneNodeWidget = node_widgets[to_id]
-		var from_pos: Vector2 = from_widget.get_port_global_position(edge["from_port"]) - global_position
-		var to_pos: Vector2 = to_widget.get_port_global_position(edge["to_port"]) - global_position
+		var from_pos: Vector2 = from_widget.get_port_global_position(edge["from_port"], false) - global_position
+		var to_pos: Vector2 = to_widget.get_port_global_position(edge["to_port"], true) - global_position
 
 		var node_data: Dictionary = graph.nodes[from_id]
 		var rune: RuneBase = node_data["rune"] as RuneBase
@@ -391,7 +391,7 @@ func _draw() -> void:
 	# 正在連線/重新路由時的橡皮筋線
 	if is_connecting and node_widgets.has(connect_from_node):
 		var widget: RuneNodeWidget = node_widgets[connect_from_node]
-		var start_pos: Vector2 = widget.get_port_global_position(connect_from_port) - global_position
+		var start_pos: Vector2 = widget.get_port_global_position(connect_from_port, connect_from_is_input) - global_position
 		var end_pos: Vector2 = get_local_mouse_position()
 		var rubber_color: Color = RuneEnums.PORT_COLORS.get(connect_source_port_type, Color.WHITE) as Color
 		rubber_color.a = 0.6

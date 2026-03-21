@@ -1,6 +1,6 @@
 class_name RuneEnums
 
-enum PortType { ENERGY, HP, DIRECTION_VECTOR, TARGET, SPELL, SPELL_LIST }
+enum PortType { ENERGY, HP, DIRECTION_VECTOR, TARGET, SPELL, SPELL_LIST, FORM }
 enum RuneCategory { STARTER, EFFECT, CONVERSION, MODIFIER, ENCHANTMENT, PASSIVE_TRIGGER }
 
 # Port 顏色對照（UI 用）
@@ -11,6 +11,7 @@ const PORT_COLORS: Dictionary = {
 	PortType.TARGET: Color.PURPLE,
 	PortType.SPELL: Color.DODGER_BLUE,
 	PortType.SPELL_LIST: Color.CYAN,
+	PortType.FORM: Color.ORANGE,
 }
 
 static func can_connect(from_type: PortType, to_type: PortType) -> bool:
@@ -24,4 +25,5 @@ static func port_type_name(type: PortType) -> String:
 		PortType.TARGET: return "Target"
 		PortType.SPELL: return "Spell"
 		PortType.SPELL_LIST: return "SpellList"
+		PortType.FORM: return "Form"
 	return "Unknown"

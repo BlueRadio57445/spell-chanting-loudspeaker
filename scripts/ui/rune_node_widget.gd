@@ -18,7 +18,13 @@ func setup(p_node_id: String, p_rune: RuneBase) -> void:
 	rune = p_rune
 	_build_ui()
 
-func get_port_global_position(port_name: String) -> Vector2:
+func get_port_global_position(port_name: String, is_input: bool = true) -> Vector2:
+	var key: String = ("in:" if is_input else "out:") + port_name
+	if _port_data.has(key):
+		var data: Dictionary = _port_data[key]
+		var btn: Button = data["button"]
+		return btn.global_position + btn.size / 2.0
+	# 向後相容：如果找不到帶前綴的 key，嘗試無前綴（不會有同名衝突的舊節點）
 	if _port_data.has(port_name):
 		var data: Dictionary = _port_data[port_name]
 		var btn: Button = data["button"]
@@ -63,10 +69,10 @@ func clear_highlights() -> void:
 
 ## 更新 port 的連線狀態色（已連線 = 實心亮色，未連線 = 半透明暗色）
 func update_connection_states(connected_ports: Array) -> void:
-	for port_name: String in _port_data:
-		var data: Dictionary = _port_data[port_name]
+	for key: String in _port_data:
+		var data: Dictionary = _port_data[key]
 		var btn: Button = data["button"]
-		var is_connected: bool = connected_ports.has(port_name)
+		var is_connected: bool = connected_ports.has(data["port_name"])
 		data["is_connected"] = is_connected
 		if is_connected:
 			_apply_style(btn, data["style_connected"])
@@ -142,11 +148,13 @@ func _create_port_row(port: RunePort, is_input: bool) -> HBoxContainer:
 
 	_apply_style(btn, style_normal)
 
-	# 儲存 port 資料
-	_port_data[port.port_name] = {
+	# 儲存 port 資料（用 "in:name" / "out:name" 作 key 避免同名衝突）
+	var port_key: String = ("in:" if is_input else "out:") + port.port_name
+	_port_data[port_key] = {
 		"button": btn,
 		"port_type": port.port_type,
 		"is_input": is_input,
+		"port_name": port.port_name,
 		"is_connected": false,
 		"base_color": port_color,
 		"style_normal": style_normal,
@@ -154,7 +162,7 @@ func _create_port_row(port: RunePort, is_input: bool) -> HBoxContainer:
 	}
 
 	btn.pressed.connect(func() -> void:
-		port_clicked.emit(node_id, port.port_name, is_input)
+		port_clicked.emit(node_id, port.port_name, is_input)  # 仍然 emit 原始 port_name
 	)
 
 	var label := Label.new()
