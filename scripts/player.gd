@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal health_changed(current: int, maximum: int)
+
 @export var SPEED = 200.0
 @export var max_hp = 100
 @export var hp = 100
@@ -79,6 +81,7 @@ func take_damage(amount):
 	if not can_take_damage or hp <= 0: return
 	
 	hp -= amount
+	health_changed.emit(hp, max_hp)
 	print("玩家受傷！剩餘血量：", hp)
 	
 	# 觸發無敵時間
