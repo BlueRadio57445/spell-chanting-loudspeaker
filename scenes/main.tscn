@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://i0a0gl8drno5" path="res://scripts/main.gd" id="1"]
 [ext_resource type="Script" uid="uid://bcm55cbxak32j" path="res://scripts/player.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://hfq260wxot8b" path="res://resources/UI/Background/grass.png" id="2_a8y0u"]
 [ext_resource type="Script" uid="uid://dy53fb7gmsdlf" path="res://scripts/ui/rune_canvas.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://c6eun8uedpeid" path="res://resources/Character/walk1.png" id="3_choun"]
 [ext_resource type="Texture2D" uid="uid://d3c8ljpsf4ww7" path="res://resources/Character/attack1.png" id="3_trceg"]
@@ -12,8 +13,18 @@
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://duyp2f2c5jvvy" path="res://resources/Character/walk3.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://hlepvsuochqs" path="res://resources/Character/attack3.png" id="5_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://bo1wjljt38evo" path="res://scenes/enemys/FastEnemy.tscn" id="10_trceg"]
+[ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
+size = Vector2(5760, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
+size = Vector2(5760, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
+size = Vector2(100, 3240)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
 animations = [{
@@ -84,22 +95,86 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameViewportContainer" type="SubViewportContainer" parent="VBoxContainer" unique_id=311248639]
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 size_flags_vertical = 3
 stretch = true
 
 [node name="GameViewport" type="SubViewport" parent="VBoxContainer/GameViewportContainer" unique_id=327964235]
 handle_input_locally = false
-size = Vector2i(1152, 322)
+size = Vector2i(1600, 600)
 render_target_update_mode = 4
 
 [node name="World" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport" unique_id=1056802089]
 
+[node name="BackGround" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1909010123]
+
+[node name="ALotOfGrass" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround" unique_id=1910941396]
+
+[node name="Grass" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=816649762]
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass2" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=787949568]
+position = Vector2(1920, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass3" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1924778494]
+position = Vector2(0, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass4" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1307453304]
+position = Vector2(1920, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass5" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=751031580]
+position = Vector2(0, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass6" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1585235523]
+position = Vector2(1920, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass7" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=913887229]
+position = Vector2(-1920, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass8" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=825281871]
+position = Vector2(-1920, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass9" type="Sprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1895024294]
+position = Vector2(-1920, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Area2D" type="StaticBody2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround" unique_id=1624655557]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Down" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1734705556]
+position = Vector2(0, 1520)
+shape = SubResource("RectangleShape2D_a8y0u")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Up" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=2032527308]
+position = Vector2(0, -1520)
+shape = SubResource("RectangleShape2D_jkv2x")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Left" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=804029591]
+position = Vector2(2780, 0)
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
+[node name="Right" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=315905995]
+position = Vector2(-2780, 0)
+shape = SubResource("RectangleShape2D_jbj1t")
+debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
+
 [node name="Player" type="CharacterBody2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=914802439 groups=["player"]]
 position = Vector2(576, 162)
+collision_mask = 9
 script = ExtResource("2")
-hp = 3
-STOP_DISTANCE = 25
+STOP_DISTANCE = 50
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1079541265]
 drag_horizontal_enabled = true
@@ -116,13 +191,161 @@ frame_progress = 0.8788089
 shape = SubResource("RectangleShape2D_ya4ey")
 
 [node name="PlayerHurtbox" type="Area2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1607777653]
+collision_mask = 3
 
 [node name="HurtCollision" type="CollisionShape2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" unique_id=743019441]
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="Spawner" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
 
-[node name="EnemyBase" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=1417908132 instance=ExtResource("10_trceg")]
+[node name="Obstacles" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=169677233]
+
+[node name="Trees" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles" unique_id=229274002]
+
+[node name="Tree" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=913974894 instance=ExtResource("11_jbj1t")]
+
+[node name="Tree2" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=39672842 instance=ExtResource("11_jbj1t")]
+position = Vector2(492, -447)
+
+[node name="Tree3" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=847551921 instance=ExtResource("11_jbj1t")]
+position = Vector2(1142, -456)
+
+[node name="Tree4" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=817451889 instance=ExtResource("11_jbj1t")]
+position = Vector2(1269, 334)
+
+[node name="Tree5" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1506507868 instance=ExtResource("11_jbj1t")]
+position = Vector2(1851, -168)
+
+[node name="Tree6" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=2041713144 instance=ExtResource("11_jbj1t")]
+position = Vector2(747, 888)
+
+[node name="Tree7" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=402362895 instance=ExtResource("11_jbj1t")]
+position = Vector2(1709, -788)
+
+[node name="Tree8" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=231502713 instance=ExtResource("11_jbj1t")]
+position = Vector2(0, 616)
+
+[node name="Tree9" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1167833897 instance=ExtResource("11_jbj1t")]
+position = Vector2(858, -1101)
+
+[node name="Tree10" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=392376298 instance=ExtResource("11_jbj1t")]
+position = Vector2(148, -918)
+
+[node name="Tree11" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=613006385 instance=ExtResource("11_jbj1t")]
+position = Vector2(-420, -474)
+
+[node name="Tree12" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1307018765 instance=ExtResource("11_jbj1t")]
+position = Vector2(-728, -1154)
+
+[node name="Tree13" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1465114646 instance=ExtResource("11_jbj1t")]
+position = Vector2(2244, -1113)
+
+[node name="Tree14" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1065056822 instance=ExtResource("11_jbj1t")]
+position = Vector2(-1741, -787)
+
+[node name="Tree15" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=510733203 instance=ExtResource("11_jbj1t")]
+position = Vector2(-1232, 59)
+
+[node name="Tree16" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1708938219 instance=ExtResource("11_jbj1t")]
+position = Vector2(-366, 1173)
+
+[node name="Tree17" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=80340416 instance=ExtResource("11_jbj1t")]
+position = Vector2(-1076, 802)
+
+[node name="Tree18" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=884718748 instance=ExtResource("11_jbj1t")]
+position = Vector2(-1873, 522)
+
+[node name="Tree19" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1747243105 instance=ExtResource("11_jbj1t")]
+position = Vector2(-2276, -242)
+
+[node name="Tree20" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1513904657 instance=ExtResource("11_jbj1t")]
+position = Vector2(1786, 901)
+
+[node name="Stones" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles" unique_id=446352500]
+
+[node name="Stone" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=990550171 instance=ExtResource("12_muem4")]
+position = Vector2(2331, 992)
+
+[node name="Stone2" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1755413590 instance=ExtResource("12_muem4")]
+position = Vector2(-2373, 839)
+
+[node name="Stone3" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=146682964 instance=ExtResource("12_muem4")]
+position = Vector2(-1286, 1314)
+
+[node name="Stone4" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=268641553 instance=ExtResource("12_muem4")]
+position = Vector2(-2277, 1015)
+
+[node name="Stone5" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=939687476 instance=ExtResource("12_muem4")]
+position = Vector2(-2406, 625)
+
+[node name="Stone6" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1318314219 instance=ExtResource("12_muem4")]
+position = Vector2(-1522, 640)
+
+[node name="Stone7" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1979295488 instance=ExtResource("12_muem4")]
+position = Vector2(-918, 1335)
+
+[node name="Stone8" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1171936198 instance=ExtResource("12_muem4")]
+position = Vector2(-1134, 1356)
+
+[node name="Stone9" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=902965017 instance=ExtResource("12_muem4")]
+position = Vector2(-1512, 1212)
+
+[node name="Stone10" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1181362409 instance=ExtResource("12_muem4")]
+position = Vector2(-564, 363)
+
+[node name="Stone11" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=214310931 instance=ExtResource("12_muem4")]
+position = Vector2(-837, 213)
+
+[node name="Stone12" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1365666232 instance=ExtResource("12_muem4")]
+position = Vector2(-309, 151)
+
+[node name="Stone13" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=463987322 instance=ExtResource("12_muem4")]
+position = Vector2(1122, 598)
+
+[node name="Stone14" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1855818712 instance=ExtResource("12_muem4")]
+position = Vector2(191, 1020)
+
+[node name="Stone15" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=31395530 instance=ExtResource("12_muem4")]
+position = Vector2(913, 1258)
+
+[node name="Stone16" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1409747545 instance=ExtResource("12_muem4")]
+position = Vector2(1618, 25)
+
+[node name="Stone17" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=676415954 instance=ExtResource("12_muem4")]
+position = Vector2(1999, 1210)
+
+[node name="Stone18" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1428474697 instance=ExtResource("12_muem4")]
+position = Vector2(2204, 1142)
+
+[node name="Stone19" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1044988459 instance=ExtResource("12_muem4")]
+position = Vector2(-1425, -275)
+
+[node name="Stone20" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2133951868 instance=ExtResource("12_muem4")]
+position = Vector2(-1586, -539)
+
+[node name="Stone21" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2117946599 instance=ExtResource("12_muem4")]
+position = Vector2(961, -910)
+
+[node name="Stone22" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1695676217 instance=ExtResource("12_muem4")]
+position = Vector2(606, -1067)
+
+[node name="Stone23" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1235021261 instance=ExtResource("12_muem4")]
+position = Vector2(1814, -527)
+
+[node name="Stone24" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=220205697 instance=ExtResource("12_muem4")]
+position = Vector2(-370, -1212)
+
+[node name="Stone25" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=215894034 instance=ExtResource("12_muem4")]
+position = Vector2(-125, -1303)
+
+[node name="Stone26" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1086361249 instance=ExtResource("12_muem4")]
+position = Vector2(-2164, -1273)
+
+[node name="Stone27" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2069320522 instance=ExtResource("12_muem4")]
+position = Vector2(-2396, -1217)
+
+[node name="Stone28" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1475472565 instance=ExtResource("12_muem4")]
+position = Vector2(-2538, -1091)
 
 [node name="RuneUI" type="Panel" parent="VBoxContainer" unique_id=2004242461]
 layout_mode = 2
@@ -153,3 +376,5 @@ script = ExtResource("5")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RuneExecutor" unique_id=73730906]
 
 [node name="EndMenu" parent="." unique_id=776264141 instance=ExtResource("13_a8y0u")]
+
+[connection signal="area_entered" from="VBoxContainer/GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" to="VBoxContainer/GameViewportContainer/GameViewport/World/Player" method="_on_player_hurtbox_area_entered"]

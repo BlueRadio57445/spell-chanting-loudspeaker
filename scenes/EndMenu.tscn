@@ -13,34 +13,41 @@ visible = false
 script = ExtResource("1_7h87m")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1439057720]
+anchors_preset = -1
+anchor_right = 0.2775
+anchor_bottom = 0.27666667
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.27058825, 0.59607846, 0.49411765, 0.5254902)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=786461561]
-offset_left = 141.0
-offset_top = 113.0
-offset_right = 1010.0
-offset_bottom = 342.0
+offset_left = 376.0
+offset_top = 122.0
+offset_right = 1245.0
+offset_bottom = 351.0
 text = "你人沒了"
 label_settings = SubResource("LabelSettings_ckmov")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RetryButton" type="Button" parent="." unique_id=65232265]
-offset_left = 431.0
-offset_top = 337.0
-offset_right = 710.0
-offset_bottom = 434.0
+anchors_preset = -1
+anchor_left = -0.0025
+anchor_top = -0.032222223
+anchor_right = 0.0525
+offset_left = 638.0
+offset_top = 544.0
+offset_right = 917.0
+offset_bottom = 641.0
 text = "重來"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=505054249]
-offset_left = 898.0
-offset_top = 396.0
-offset_right = 1127.0
-offset_bottom = 625.0
+offset_left = 1347.0
+offset_top = 653.0
+offset_right = 1576.0
+offset_bottom = 882.0
 text = "企劃 : 幻夜
 程式 : 收音機
 美術 : 零夜
@@ -49,9 +56,12 @@ label_settings = SubResource("LabelSettings_wfns0")
 metadata/_edit_use_anchors_ = true
 
 [node name="HomeButton" type="Button" parent="." unique_id=1086051261]
-offset_left = 428.0
-offset_top = 458.0
-offset_right = 707.0
-offset_bottom = 555.0
+anchors_preset = -1
+anchor_right = 0.055728074
+anchor_bottom = 0.034444444
+offset_left = 634.0
+offset_top = 659.0
+offset_right = 913.0
+offset_bottom = 756.0
 text = "爛遊戲不玩了 :("
 metadata/_edit_use_anchors_ = true
