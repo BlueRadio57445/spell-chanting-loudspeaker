@@ -25,7 +25,7 @@ func _on_visibility_cycle():
 	tween.tween_property(sprite, "modulate:a", 1.0, 0.1)
 	
 	# 2. 停留一小段時間 (可選，這裡設定為顯示 0.1 秒讓玩家看清楚)
-	tween.tween_interval(0.1)
+	tween.tween_interval(0.3)
 	
 	# 3. 漸隱 0.1 秒 (Alpha 從 1 回到 0)
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.1)

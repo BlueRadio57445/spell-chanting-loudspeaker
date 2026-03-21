@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://dpcmgv4rejxg1"]
 
 [ext_resource type="Script" uid="uid://08bl64vbm2et" path="res://scripts/MainMenu.gd" id="1_yqorp"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0ykhv"]
-font_size = 60
+[ext_resource type="Texture2D" uid="uid://cbtc06cdruvn1" path="res://resources/UI/Background/Header.png" id="2_0ykhv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wh52"]
 font_size = 32
@@ -12,31 +10,22 @@ font_size = 32
 script = ExtResource("1_yqorp")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2132256741]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.27131855, 0.59590644, 0.49394405, 1)
-
-[node name="Label" type="Label" parent="." unique_id=2106666261]
-offset_left = 121.0
-offset_top = 113.0
-offset_right = 990.0
-offset_bottom = 342.0
-text = "Amplispell Survivor ( ?"
-label_settings = SubResource("LabelSettings_0ykhv")
-horizontal_alignment = 1
+offset_right = 1608.0
+offset_bottom = 897.0
+color = Color(0.3470683, 0.3470683, 0.3470683, 1)
 
 [node name="StartButton" type="Button" parent="." unique_id=92219954]
-offset_left = 431.0
-offset_top = 337.0
-offset_right = 710.0
-offset_bottom = 434.0
+offset_left = 418.0
+offset_top = 674.0
+offset_right = 697.0
+offset_bottom = 771.0
 text = "好玩一直玩"
 
 [node name="Label2" type="Label" parent="." unique_id=1661187724]
-offset_left = 898.0
-offset_top = 396.0
-offset_right = 1127.0
-offset_bottom = 625.0
+offset_left = 1365.0
+offset_top = 647.0
+offset_right = 1594.0
+offset_bottom = 876.0
 text = "企劃 : 幻夜
 程式 : 收音機
 美術 : 零夜
@@ -44,8 +33,13 @@ text = "企劃 : 幻夜
 label_settings = SubResource("LabelSettings_2wh52")
 
 [node name="QuitButton" type="Button" parent="." unique_id=734756281]
-offset_left = 428.0
-offset_top = 458.0
-offset_right = 707.0
-offset_bottom = 555.0
+offset_left = 905.0
+offset_top = 676.0
+offset_right = 1184.0
+offset_bottom = 773.0
 text = "爛遊戲不玩了 :("
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2105117600]
+position = Vector2(797.99994, 374)
+scale = Vector2(1.4640001, 1.464)
+texture = ExtResource("2_0ykhv")

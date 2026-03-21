@@ -108,3 +108,11 @@ func attack_nearest_enemy():
 			
 			# 額外視覺回饋：在玩家與目標之間畫一條簡單的線 (測試用)
 			# draw_debug_line(nearest_enemy.global_position)
+
+func _on_player_hurtbox_area_entered(area: Area2D) -> void:
+	print(area.name)
+	if area.is_in_group("Obstacle"):
+		velocity = direction * -200 
+		move_and_slide() # 執行一次彈開
+		
+		is_moving = false
