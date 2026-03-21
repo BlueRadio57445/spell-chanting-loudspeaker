@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cu0vtgb5kifts"]
+
+[ext_resource type="PackedScene" uid="uid://cxpvvm3jimsot" path="res://scenes/enemys/EnemyBase.tscn" id="1_kykiv"]
+[ext_resource type="Script" uid="uid://hmslppp56mx2" path="res://scripts/enemys/ExplodeEnemy.gd" id="2_s06hd"]
+
+[node name="ExplodeEnemy" unique_id=1417908132 instance=ExtResource("1_kykiv")]
+script = ExtResource("2_s06hd")
+explode_range = 80.0

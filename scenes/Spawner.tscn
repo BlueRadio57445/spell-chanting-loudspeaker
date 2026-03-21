@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ca5sebxocvhlg"]
+
+[ext_resource type="Script" uid="uid://c22da6ed543bk" path="res://scripts/Spawner.gd" id="1_qcsvw"]
+[ext_resource type="PackedScene" uid="uid://drr6ocjkg0s38" path="res://scenes/enemys/SlowEnemy.tscn" id="2_nal4d"]
+[ext_resource type="PackedScene" uid="uid://c3g5w87bu7vyu" path="res://scenes/enemys/NormalEnemy.tscn" id="3_d4l02"]
+[ext_resource type="PackedScene" uid="uid://bo1wjljt38evo" path="res://scenes/enemys/FastEnemy.tscn" id="4_ct5sn"]
+[ext_resource type="PackedScene" uid="uid://ch6hdxiafx51o" path="res://scenes/enemys/DashEnemy.tscn" id="5_gtjaa"]
+[ext_resource type="PackedScene" uid="uid://cu0vtgb5kifts" path="res://scenes/enemys/ExplodeEnemy.tscn" id="6_t60t6"]
+
+[node name="Spawner" type="Node2D" unique_id=82593178]
+script = ExtResource("1_qcsvw")
+enemy_scenes = Array[PackedScene]([ExtResource("2_nal4d"), ExtResource("3_d4l02"), ExtResource("4_ct5sn"), ExtResource("5_gtjaa"), ExtResource("6_t60t6")])
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=946541430]
+wait_time = 2.0
+autostart = true
