@@ -25,4 +25,4 @@ func _on_spawn_timer_timeout():
 	
 	# 3. 把怪物加進戰鬥場景
 	# 建議加到 get_parent()，這樣怪物才不會跟著 Spawner 移動
-	get_parent().add_child(enemy)
+	get_tree().root.find_child("EnemyNode", true, false).add_child(enemy)

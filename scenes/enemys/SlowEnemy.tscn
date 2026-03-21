@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://drr6ocjkg0s38"]
 
-[ext_resource type="Script" uid="uid://bbjgel3jle0ab" path="res://scripts/enemys/BaseEnemy.gd" id="1_80u3f"]
+[ext_resource type="Script" uid="uid://lewce1eo752s" path="res://scripts/enemys/NormalEnemy.gd" id="1_ir53m"]
 [ext_resource type="Texture2D" uid="uid://c7tf6yt7w0tmp" path="res://resources/Enemy/SlowEnemy.png" id="2_80u3f"]
 [ext_resource type="PackedScene" uid="uid://boqnqj2ku44l2" path="res://scenes/RuneDrops.tscn" id="2_ir53m"]
 
@@ -10,9 +10,9 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3s64"]
 size = Vector2(69, 69)
 
-[node name="EnemyBase2" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
+[node name="SlowEnemy" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
 collision_layer = 4
-script = ExtResource("1_80u3f")
+script = ExtResource("1_ir53m")
 loot_item_scene = ExtResource("2_ir53m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=270864752]

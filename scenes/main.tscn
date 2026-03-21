@@ -8,14 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://d3c8ljpsf4ww7" path="res://resources/Character/attack1.png" id="3_trceg"]
 [ext_resource type="Script" uid="uid://d2778v36qu8fj" path="res://scripts/ui/rune_inventory.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://w2wnm6ywidqo" path="res://resources/Character/attack2.png" id="4_a8y0u"]
-[ext_resource type="PackedScene" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://dy712xbve8wb3" path="res://scripts/ui/sakeCarmea2D.gd" id="4_muem4"]
+[ext_resource type="PackedScene" uid="uid://ca5sebxocvhlg" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://btd50mn2qp7c0" path="res://resources/Character/walk2.png" id="4_ya4ey"]
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://duyp2f2c5jvvy" path="res://resources/Character/walk3.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://hlepvsuochqs" path="res://resources/Character/attack3.png" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
-[ext_resource type="PackedScene" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(5760, 100)
@@ -179,6 +180,7 @@ STOP_DISTANCE = 50
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1079541265]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("4_muem4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World/Player" unique_id=1391518190]
 position = Vector2(-8.000009, -2.499999)
@@ -197,6 +199,8 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="Spawner" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
+
+[node name="EnemyNode" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=202301041]
 
 [node name="Obstacles" type="Node2D" parent="VBoxContainer/GameViewportContainer/GameViewport/World" unique_id=169677233]
 

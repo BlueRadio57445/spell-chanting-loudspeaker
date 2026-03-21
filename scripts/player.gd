@@ -63,6 +63,11 @@ func take_damage(amount):
 	# 觸發無敵時間
 	can_take_damage = false
 	
+	# 受傷抖動鏡頭
+	var camera = $Camera2D 
+	if camera and camera.has_method("apply_shake"):
+		camera.apply_shake(10.0) # 10.0 是震動力度，可以根據受傷程度調整
+	
 	# 受傷回饋：閃爍並在 0.5 秒後恢復
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D, "modulate", Color.RED, 0.1)
