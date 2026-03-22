@@ -6,6 +6,7 @@ class Giant extends RuneBase:
 		description = "投射物體積增大"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.6, 0.0)
+		audio = preload("res://resources/Audio/符文音檔4.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("form", RuneEnums.PortType.FORM, false),
@@ -27,6 +28,7 @@ class MultiShot extends RuneBase:
 		description = "每隔 100ms 連射同方向法術，共三發"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.8, 0.2)
+		audio = preload("res://resources/Audio/符文音檔7.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -37,9 +39,10 @@ class MultiShot extends RuneBase:
 		for spell: Dictionary in spell_list:
 			expanded.append(spell)
 			var scene: PackedScene = spell.get("scene")
-			var original: ProjectileBase = spell.get("node")
-			if scene == null or not is_instance_valid(original):
+			var node_obj: Variant = spell.get("node")
+			if scene == null or not is_instance_valid(node_obj):
 				continue
+			var original: ProjectileBase = node_obj as ProjectileBase
 
 			# 建立第 2、3 發的節點（尚未加入場景，供下游後修飾先掛上去）
 			for i: int in 2:
@@ -78,6 +81,7 @@ class QuadShot extends RuneBase:
 		description = "命中時朝四個隨機方向發射小投射物"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.9, 0.9, 0.2)
+		audio = preload("res://resources/Audio/符文音檔5.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -85,10 +89,11 @@ class QuadShot extends RuneBase:
 		var spell_list: Array = inputs.get("spell", [])
 
 		for spell: Dictionary in spell_list:
-			var proj: ProjectileBase = spell.get("node")
+			var node_obj: Variant = spell.get("node")
 			var scene: PackedScene = spell.get("scene")
-			if not is_instance_valid(proj) or scene == null:
+			if not is_instance_valid(node_obj) or scene == null:
 				continue
+			var proj: ProjectileBase = node_obj as ProjectileBase
 			var modifier: QuadShotPostModifier = QuadShotPostModifier.new()
 			modifier.spawn_scene = scene
 			proj.add_child(modifier)
@@ -101,6 +106,7 @@ class Boomerang extends RuneBase:
 		description = "投射物穿透敵人，抵達最大射程後回追玩家"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.4, 0.9, 0.5)
+		audio = preload("res://resources/Audio/符文音檔4.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("form", RuneEnums.PortType.FORM, false),
@@ -123,6 +129,7 @@ class Orbit extends RuneBase:
 		description = "投射物環繞玩家旋轉"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.2, 0.8, 0.9)
+		audio = preload("res://resources/Audio/符文音檔2.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("form", RuneEnums.PortType.FORM, false),
@@ -145,6 +152,7 @@ class Shotgun extends RuneBase:
 		description = "在原方向兩側各增加 15 度角的方向，共三發"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.7, 0.2)
+		audio = preload("res://resources/Audio/符文音檔4.wav")
 		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
 		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
 
@@ -164,6 +172,7 @@ class Deflect extends RuneBase:
 		description = "將每個方向反轉 180 度"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.3, 0.7, 1.0)
+		audio = preload("res://resources/Audio/符文音檔5.wav")
 		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
 		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
 

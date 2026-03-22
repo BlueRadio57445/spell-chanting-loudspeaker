@@ -23,6 +23,7 @@ class KineticEnergy extends PassiveRuneBase:
 		description = "每移動 200 單位儲存一格能量，最多三格"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.9, 0.7, 0.2)
+		audio = preload("res://resources/Audio/Paon.wav")
 		max_charges = 3
 		ports_out = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
@@ -52,6 +53,7 @@ class Meditation extends PassiveRuneBase:
 		description = "停止施法每 3 秒儲存一格能量，最多兩格"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.6, 0.4, 1.0)
+		audio = preload("res://resources/Audio/Leopard.wav")
 		max_charges = 2
 		ports_out = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
@@ -83,6 +85,7 @@ class BloodTribute extends PassiveRuneBase:
 		description = "每累積失血 30 點儲存一格能量，最多三格"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(1.0, 0.2, 0.2)
+		audio = preload("res://resources/Audio/Coccinelle.wav")
 		max_charges = 3
 		ports_out = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
@@ -118,6 +121,7 @@ class Steadfast extends PassiveRuneBase:
 		description = "完全靜止每 3 秒儲存一格能量，最多三格"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.4, 0.8, 1.0)
+		audio = preload("res://resources/Audio/Paon.wav")
 		max_charges = 3
 		ports_out = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
