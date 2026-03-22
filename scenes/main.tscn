@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://dx1bqefval0a3" path="res://scenes/ui/RuneTooltip.tscn" id="17_yc10j"]
+[ext_resource type="PackedScene" uid="uid://6npm1oemat4a" path="res://scenes/ui/obstacles/tree2.tscn" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c4acrhpod6eko" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
 [ext_resource type="Script" uid="uid://c8ckhoglbi3em" path="res://scripts/rune_system/passive_rune_tracker.gd" id="passive_tracker"]
 
@@ -144,7 +146,72 @@ texture = ExtResource("2_a8y0u")
 position = Vector2(-1920, 1080)
 texture = ExtResource("2_a8y0u")
 
-[node name="Area2D" type="StaticBody2D" parent="GameViewportContainer/GameViewport/World/BackGround" unique_id=1624655557]
+[node name="Grass10" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=972474428]
+position = Vector2(3841, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass11" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=415040922]
+position = Vector2(3841, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass12" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=2143611897]
+position = Vector2(3841, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass13" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1137047335]
+position = Vector2(-3841, 0)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass14" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1636594254]
+position = Vector2(-3841, 1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass15" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=431394847]
+position = Vector2(-3841, -1080)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass16" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=593994485]
+position = Vector2(1, -2161)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass17" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=595790090]
+position = Vector2(1921, -2161)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass18" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=622607549]
+position = Vector2(-1919, -2161)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass19" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=2104481902]
+position = Vector2(3842, -2161)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass20" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1239309107]
+position = Vector2(-3840, -2161)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass21" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1415985139]
+position = Vector2(1, 2160)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass22" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1699045105]
+position = Vector2(1921, 2160)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass23" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1103493974]
+position = Vector2(-1919, 2160)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass24" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1652711954]
+modulate = Color(0.92941177, 1, 1, 1)
+position = Vector2(3842, 2160)
+texture = ExtResource("2_a8y0u")
+
+[node name="Grass25" type="Sprite2D" parent="GameViewportContainer/GameViewport/World/BackGround/ALotOfGrass" unique_id=1715589817]
+position = Vector2(-3840, 2160)
+texture = ExtResource("2_a8y0u")
+
+[node name="Area2D" type="StaticBody2D" parent="GameViewportContainer/GameViewport/World/BackGround" unique_id=1624655557 groups=["Obstacle"]]
 collision_layer = 8
 collision_mask = 0
 
@@ -199,154 +266,2807 @@ shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="EnemyNode" type="Node2D" parent="GameViewportContainer/GameViewport/World" unique_id=202301041]
 
-[node name="Obstacles" type="Node2D" parent="GameViewportContainer/GameViewport" unique_id=169677233]
+[node name="Obstacles" type="Node2D" parent="GameViewportContainer/GameViewport/World" unique_id=169677233]
 
-[node name="Trees" type="Node2D" parent="GameViewportContainer/GameViewport/Obstacles" unique_id=229274002]
+[node name="Trees" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles" unique_id=229274002]
 
-[node name="Tree" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=913974894 instance=ExtResource("11_jbj1t")]
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=913974894 instance=ExtResource("11_jbj1t")]
 
-[node name="Tree2" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=39672842 instance=ExtResource("11_jbj1t")]
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=39672842 instance=ExtResource("11_jbj1t")]
 position = Vector2(492, -447)
 
-[node name="Tree3" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=847551921 instance=ExtResource("11_jbj1t")]
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=847551921 instance=ExtResource("11_jbj1t")]
 position = Vector2(1142, -456)
 
-[node name="Tree4" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=817451889 instance=ExtResource("11_jbj1t")]
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=817451889 instance=ExtResource("11_jbj1t")]
 position = Vector2(1269, 334)
 
-[node name="Tree5" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1506507868 instance=ExtResource("11_jbj1t")]
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1506507868 instance=ExtResource("11_jbj1t")]
 position = Vector2(1851, -168)
 
-[node name="Tree6" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=2041713144 instance=ExtResource("11_jbj1t")]
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=2041713144 instance=ExtResource("11_jbj1t")]
 position = Vector2(747, 888)
 
-[node name="Tree7" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=402362895 instance=ExtResource("11_jbj1t")]
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=402362895 instance=ExtResource("11_jbj1t")]
 position = Vector2(1709, -788)
 
-[node name="Tree8" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=231502713 instance=ExtResource("11_jbj1t")]
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=231502713 instance=ExtResource("11_jbj1t")]
 position = Vector2(0, 616)
 
-[node name="Tree9" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1167833897 instance=ExtResource("11_jbj1t")]
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1167833897 instance=ExtResource("11_jbj1t")]
 position = Vector2(858, -1101)
 
-[node name="Tree10" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=392376298 instance=ExtResource("11_jbj1t")]
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=392376298 instance=ExtResource("11_jbj1t")]
 position = Vector2(148, -918)
 
-[node name="Tree11" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=613006385 instance=ExtResource("11_jbj1t")]
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=613006385 instance=ExtResource("11_jbj1t")]
 position = Vector2(-420, -474)
 
-[node name="Tree12" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1307018765 instance=ExtResource("11_jbj1t")]
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1307018765 instance=ExtResource("11_jbj1t")]
 position = Vector2(-728, -1154)
 
-[node name="Tree13" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1465114646 instance=ExtResource("11_jbj1t")]
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1465114646 instance=ExtResource("11_jbj1t")]
 position = Vector2(2244, -1113)
 
-[node name="Tree14" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1065056822 instance=ExtResource("11_jbj1t")]
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1065056822 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1741, -787)
 
-[node name="Tree15" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=510733203 instance=ExtResource("11_jbj1t")]
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=510733203 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1232, 59)
 
-[node name="Tree16" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1708938219 instance=ExtResource("11_jbj1t")]
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1708938219 instance=ExtResource("11_jbj1t")]
 position = Vector2(-366, 1173)
 
-[node name="Tree17" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=80340416 instance=ExtResource("11_jbj1t")]
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=80340416 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1076, 802)
 
-[node name="Tree18" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=884718748 instance=ExtResource("11_jbj1t")]
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=884718748 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1873, 522)
 
-[node name="Tree19" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1747243105 instance=ExtResource("11_jbj1t")]
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1747243105 instance=ExtResource("11_jbj1t")]
 position = Vector2(-2276, -242)
 
-[node name="Tree20" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1513904657 instance=ExtResource("11_jbj1t")]
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1513904657 instance=ExtResource("11_jbj1t")]
 position = Vector2(1786, 901)
 
-[node name="Stones" type="Node2D" parent="GameViewportContainer/GameViewport/Obstacles" unique_id=446352500]
+[node name="Stones" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles" unique_id=446352500]
 
-[node name="Stone" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=990550171 instance=ExtResource("12_muem4")]
+[node name="Stone" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=990550171 instance=ExtResource("12_muem4")]
 position = Vector2(2331, 992)
 
-[node name="Stone2" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1755413590 instance=ExtResource("12_muem4")]
+[node name="Stone2" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1755413590 instance=ExtResource("12_muem4")]
 position = Vector2(-2373, 839)
 
-[node name="Stone3" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=146682964 instance=ExtResource("12_muem4")]
+[node name="Stone3" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=146682964 instance=ExtResource("12_muem4")]
 position = Vector2(-1286, 1314)
 
-[node name="Stone4" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=268641553 instance=ExtResource("12_muem4")]
+[node name="Stone4" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=268641553 instance=ExtResource("12_muem4")]
 position = Vector2(-2277, 1015)
 
-[node name="Stone5" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=939687476 instance=ExtResource("12_muem4")]
+[node name="Stone5" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=939687476 instance=ExtResource("12_muem4")]
 position = Vector2(-2406, 625)
 
-[node name="Stone6" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1318314219 instance=ExtResource("12_muem4")]
+[node name="Stone6" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1318314219 instance=ExtResource("12_muem4")]
 position = Vector2(-1522, 640)
 
-[node name="Stone7" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1979295488 instance=ExtResource("12_muem4")]
+[node name="Stone7" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1979295488 instance=ExtResource("12_muem4")]
 position = Vector2(-918, 1335)
 
-[node name="Stone8" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1171936198 instance=ExtResource("12_muem4")]
+[node name="Stone8" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1171936198 instance=ExtResource("12_muem4")]
 position = Vector2(-1134, 1356)
 
-[node name="Stone9" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=902965017 instance=ExtResource("12_muem4")]
+[node name="Stone9" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=902965017 instance=ExtResource("12_muem4")]
 position = Vector2(-1512, 1212)
 
-[node name="Stone10" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1181362409 instance=ExtResource("12_muem4")]
+[node name="Stone10" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1181362409 instance=ExtResource("12_muem4")]
 position = Vector2(-564, 363)
 
-[node name="Stone11" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=214310931 instance=ExtResource("12_muem4")]
+[node name="Stone11" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=214310931 instance=ExtResource("12_muem4")]
 position = Vector2(-837, 213)
 
-[node name="Stone12" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1365666232 instance=ExtResource("12_muem4")]
+[node name="Stone12" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1365666232 instance=ExtResource("12_muem4")]
 position = Vector2(-309, 151)
 
-[node name="Stone13" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=463987322 instance=ExtResource("12_muem4")]
+[node name="Stone13" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=463987322 instance=ExtResource("12_muem4")]
 position = Vector2(1122, 598)
 
-[node name="Stone14" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1855818712 instance=ExtResource("12_muem4")]
+[node name="Stone14" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1855818712 instance=ExtResource("12_muem4")]
 position = Vector2(191, 1020)
 
-[node name="Stone15" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=31395530 instance=ExtResource("12_muem4")]
+[node name="Stone15" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=31395530 instance=ExtResource("12_muem4")]
 position = Vector2(913, 1258)
 
-[node name="Stone16" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1409747545 instance=ExtResource("12_muem4")]
+[node name="Stone16" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1409747545 instance=ExtResource("12_muem4")]
 position = Vector2(1618, 25)
 
-[node name="Stone17" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=676415954 instance=ExtResource("12_muem4")]
+[node name="Stone17" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=676415954 instance=ExtResource("12_muem4")]
 position = Vector2(1999, 1210)
 
-[node name="Stone18" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1428474697 instance=ExtResource("12_muem4")]
+[node name="Stone18" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1428474697 instance=ExtResource("12_muem4")]
 position = Vector2(2204, 1142)
 
-[node name="Stone19" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1044988459 instance=ExtResource("12_muem4")]
+[node name="Stone19" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1044988459 instance=ExtResource("12_muem4")]
 position = Vector2(-1425, -275)
 
-[node name="Stone20" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2133951868 instance=ExtResource("12_muem4")]
+[node name="Stone20" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2133951868 instance=ExtResource("12_muem4")]
 position = Vector2(-1586, -539)
 
-[node name="Stone21" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2117946599 instance=ExtResource("12_muem4")]
+[node name="Stone21" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2117946599 instance=ExtResource("12_muem4")]
 position = Vector2(961, -910)
 
-[node name="Stone22" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1695676217 instance=ExtResource("12_muem4")]
+[node name="Stone22" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1695676217 instance=ExtResource("12_muem4")]
 position = Vector2(606, -1067)
 
-[node name="Stone23" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1235021261 instance=ExtResource("12_muem4")]
+[node name="Stone23" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1235021261 instance=ExtResource("12_muem4")]
 position = Vector2(1814, -527)
 
-[node name="Stone24" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=220205697 instance=ExtResource("12_muem4")]
+[node name="Stone24" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=220205697 instance=ExtResource("12_muem4")]
 position = Vector2(-370, -1212)
 
-[node name="Stone25" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=215894034 instance=ExtResource("12_muem4")]
+[node name="Stone25" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=215894034 instance=ExtResource("12_muem4")]
 position = Vector2(-125, -1303)
 
-[node name="Stone26" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1086361249 instance=ExtResource("12_muem4")]
+[node name="Stone26" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1086361249 instance=ExtResource("12_muem4")]
 position = Vector2(-2164, -1273)
 
-[node name="Stone27" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2069320522 instance=ExtResource("12_muem4")]
+[node name="Stone27" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2069320522 instance=ExtResource("12_muem4")]
 position = Vector2(-2396, -1217)
 
-[node name="Stone28" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1475472565 instance=ExtResource("12_muem4")]
+[node name="Stone28" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1475472565 instance=ExtResource("12_muem4")]
 position = Vector2(-2538, -1091)
+
+[node name="Tree2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles" unique_id=865572959]
+
+[node name="Up4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=42981856]
+position = Vector2(0, -604)
+
+[node name="Vertical3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4" unique_id=1863924448]
+position = Vector2(-111, -3138)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=2019094514 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=140906198 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=109818425 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=638319373 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=591120463 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=438923116 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=969763132 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1877675999 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=112162243 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1619935648 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=422283305 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=96386071 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=199955514 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=7985922 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1104332120 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=952848762 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=852538492 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=703226481 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1467669967 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1875230633 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1400586320 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1674689862 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1133311936 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=940086691 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=373975700 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1544318597 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=503714865 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1690616472 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1295026601 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical3" unique_id=1276205035 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Vertical4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4" unique_id=804652491]
+position = Vector2(-2, -3033)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1206440858 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1152935957 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=376581711 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=187240472 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1879642449 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=4386948 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=39088777 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=853127870 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=262458506 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=730735564 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=282079161 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1550146907 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1729890451 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=2045091952 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=2071358851 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1299467199 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1143782058 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1941106448 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=519862871 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1130039650 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=651485124 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=375180266 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1466553155 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=776463844 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=389796880 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1703551676 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=977432129 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=1089529120 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up4/Vertical4" unique_id=806586322 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Up3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=427672275]
+position = Vector2(0, -407)
+
+[node name="Vertical3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3" unique_id=280853435]
+position = Vector2(-111, -3138)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=116895130 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=481908899 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=199585451 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=945717799 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1415805048 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1799046661 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=276529223 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=776172537 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1648449057 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1657515713 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1813103012 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=273565148 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1664719361 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1218994184 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1671668826 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1325778642 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1983802271 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=321270671 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=2012085000 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=853270588 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=245992377 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1355916752 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1873889461 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=242257000 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=356620739 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=523391467 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=132110671 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=1828352324 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=432170467 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical3" unique_id=2100269670 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Vertical4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3" unique_id=936082859]
+position = Vector2(-2, -3033)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=338411167 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1090918254 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1748032410 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1522134832 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=640661571 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=805749108 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1342739339 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=762882785 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1800106183 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1765745330 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=923986130 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1756316545 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=649692605 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1405746246 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=2112123870 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1504400547 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=835743948 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1856867702 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1633104704 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1587035379 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=945636147 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=473589928 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=800656671 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1534590830 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=234637328 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=195611860 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1890298954 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1052613261 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up3/Vertical4" unique_id=1332787251 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Up2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1304939064]
+position = Vector2(0, -197)
+
+[node name="Vertical3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2" unique_id=497714069]
+position = Vector2(-111, -3138)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1537542272 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1035834976 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=573586364 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=559161980 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=442361935 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1339598358 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1998961060 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1359793960 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1604651225 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=768934696 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1104704455 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=855983169 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=663319506 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1471480818 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1328417314 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=329448045 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=709231134 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=327657265 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=829190374 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1576591290 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=2110103257 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1419415183 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=409855182 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=615344151 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=340386023 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=216085174 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=490904464 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=501422231 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1320910566 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical3" unique_id=1841212605 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Vertical4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2" unique_id=2079115692]
+position = Vector2(-2, -3033)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1441374540 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1957693684 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1841489052 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=730095320 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=568397878 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=714886097 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1587351029 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=999866236 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=514789953 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=98276443 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=661066109 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=863478142 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=888956599 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1126014401 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1485543671 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1544863714 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=172389727 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1045998099 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1237981883 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=412762697 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1601172539 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1729239372 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=143218546 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1468034966 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1465609684 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=128386635 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=890720788 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=1287663505 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up2/Vertical4" unique_id=791010483 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Up" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=772279979]
+
+[node name="Vertical3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up" unique_id=1442157034]
+position = Vector2(-111, -3138)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=820469812 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1177210897 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=111703663 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1744692343 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=901382992 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=728322683 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1890635034 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1947874622 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1101214712 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=520509648 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=581960602 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1649942377 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1475206047 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=268985111 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1547052805 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1324278654 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=84584090 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1654528983 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1791959357 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1195592576 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=532205841 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1594038754 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=895391404 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=432640466 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1634468897 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=476147148 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=583471489 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=480366743 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1090391556 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical3" unique_id=1441815762 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Vertical4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up" unique_id=1906052956]
+position = Vector2(-2, -3033)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=2110211722 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=996957713 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=908687079 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1310015973 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=946243924 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=2109004647 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1521996645 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1307649364 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=216148880 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1046723600 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1421302518 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1445983571 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=298206483 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=290642755 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1741767542 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=846115371 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=234590582 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1505481048 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=296424600 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=799258124 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1728092712 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=339783051 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=481480369 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=2113465907 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1013211004 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=161230379 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=849443795 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=1220866598 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Up/Vertical4" unique_id=180827675 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Left" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=908360480]
+
+[node name="Horizonal" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left" unique_id=354078122]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=500663628 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=223217451 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=502378885 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1325322332 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=545851482 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1770739741 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1931002250 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1794854095 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1081230843 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=804080688 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=407685614 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1321107635 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=109996870 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=2075397678 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1499006645 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1009576415 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal" unique_id=1889168083 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left" unique_id=2086376743]
+position = Vector2(-151, 57)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=969247640 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1071778962 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=377291139 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=199387446 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=48838084 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=175522157 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=720803391 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1624807289 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1064408330 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1488342742 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=2100426697 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1507830858 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1541889328 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1805893458 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=1038510513 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left/Horizonal2" unique_id=369767626 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Left2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=665346548]
+position = Vector2(-302, 0)
+
+[node name="Horizonal" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2" unique_id=136753687]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1825897881 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=88700936 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1078420284 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1125208872 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1698557781 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=462017214 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1999807149 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1082306118 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1827999057 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=65696047 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1614216031 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=556187496 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=691983125 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=1289647676 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=195910249 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=2110872709 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal" unique_id=72397726 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2" unique_id=171475274]
+position = Vector2(-151, 57)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=59609621 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=283357712 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=308889318 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1498735688 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1924559635 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=586254539 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1017611254 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1752923487 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1513238007 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=311795220 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=2110302397 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=50331244 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=165571904 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=1869739186 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=562646504 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left2/Horizonal2" unique_id=801586586 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Left3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=123842055]
+position = Vector2(-599, 53)
+
+[node name="Horizonal" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3" unique_id=793516125]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1823809153 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=2016376881 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1729681279 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=952897328 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1080320570 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=95932458 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=283840387 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1276253427 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=677026016 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=798198518 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1424862127 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1998251069 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=336042222 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1823345688 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=2018338579 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1476590519 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal" unique_id=1693019264 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3" unique_id=282745718]
+position = Vector2(-151, 57)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1205614221 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=802803653 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1400678359 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=2005805549 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=604278987 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=182311060 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=186463835 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1013881734 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1211778566 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1379002999 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=713686237 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=719800193 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1161929222 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1127358406 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=2096181965 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left3/Horizonal2" unique_id=1419791495 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Left4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1691573597]
+position = Vector2(-901, 53)
+
+[node name="Horizonal" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4" unique_id=1852280180]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=297035812 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=106009692 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=753146313 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=1279947133 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=768328015 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=1795198572 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=2105338025 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=344072575 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=962185386 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=2016674413 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=890373104 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=2131470694 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=372439018 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=84734330 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=1093050625 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=1540485997 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal" unique_id=1386929293 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4" unique_id=1314174554]
+position = Vector2(-151, 57)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=191850411 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=140043250 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=2081412485 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1606167073 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=448663888 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1244268687 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=514368192 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1446882230 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=848534611 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=589102817 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1754376233 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=193629017 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=17806961 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1553302884 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=1864835443 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Left4/Horizonal2" unique_id=10811327 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Right" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1948489030]
+
+[node name="Horizonal3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right" unique_id=615792788]
+position = Vector2(5455, 6)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1382260998 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1101104132 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1446135464 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1550621530 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=43092393 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=282062239 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1504728219 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1032579441 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=649315431 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1647298807 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1439063260 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1953538077 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=567619635 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=2082606910 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=464914036 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=669069913 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal3" unique_id=1987714042 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right" unique_id=1041178330]
+position = Vector2(5610, 81)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=359047452 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=2136002407 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1719642903 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=980247198 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1848061500 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1009280645 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=17293196 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=959527222 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=802333494 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=680498653 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1794264506 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1102456461 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=574665388 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1644456398 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=1827267125 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right/Horizonal4" unique_id=399706099 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Right2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1499680151]
+position = Vector2(305, 1)
+
+[node name="Horizonal3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2" unique_id=1195982791]
+position = Vector2(5455, 6)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=983222709 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=913208324 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1065193784 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=502860916 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=916543423 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=400629068 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=434393611 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1415755580 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1513121381 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1443271562 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=544979607 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1940001750 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=2128797399 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=524047683 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=43134429 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=392224217 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal3" unique_id=1870987816 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2" unique_id=1011288920]
+position = Vector2(5610, 81)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=2054899996 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1608227788 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1406421504 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=510051123 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1491888338 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1742020853 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=140324117 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1684695935 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=13044501 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1074485925 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=420791125 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1511114356 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1181721427 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=1699516100 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=126817937 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right2/Horizonal4" unique_id=120176080 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Right3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=137563034]
+position = Vector2(615, 0)
+
+[node name="Horizonal3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3" unique_id=11114559]
+position = Vector2(5455, 6)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1438065458 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=782636781 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1520156371 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=140526025 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1812606345 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1111626131 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=758664018 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1848799043 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=215045384 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1491394501 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=959549311 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1871883389 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=500212777 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1148437832 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=719399721 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=683671153 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal3" unique_id=1806664306 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3" unique_id=952120861]
+position = Vector2(5610, 81)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=239917530 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1349600908 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1741942188 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=2049030866 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1584773494 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=290049582 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=714015543 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=2105421591 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=98663553 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=915912858 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1036504682 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1009301566 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=179793575 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=10452744 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=816883229 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right3/Horizonal4" unique_id=1280781847 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Right4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=183953819]
+position = Vector2(920, 1)
+
+[node name="Horizonal3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4" unique_id=268041911]
+position = Vector2(5455, 6)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1987949329 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=2035339826 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1149076508 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1026735002 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=269292661 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1963112267 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1562342802 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1607495152 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1977635413 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=426089453 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=50476319 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=786368617 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1000753533 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=335622365 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=619406569 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=255667369 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal3" unique_id=1831202421 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2730, 1432)
+
+[node name="Horizonal4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4" unique_id=2013926104]
+position = Vector2(5610, 81)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=218680553 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2741, -1327)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=871742008 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2750, -1143)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1070939683 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2736, -993)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1687958596 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, -811)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1746440093 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, -624)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1943223829 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2757, -440)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=860542466 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2725, -290)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=804876897 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2731, -108)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=987973245 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2742, 69)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1982920485 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2751, 253)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1191445971 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2737, 403)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1395104846 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2743, 585)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=871507136 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2733, 772)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1948204751 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2758, 956)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=102244155 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2726, 1106)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Right4/Horizonal4" unique_id=1637960799 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2732, 1288)
+
+[node name="Down" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1430535136]
+
+[node name="Vertical" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down" unique_id=1194815728]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=788570840 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=873187934 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=420923532 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=831671349 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=80190126 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=559624020 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=2145332573 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=429283098 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=479661451 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=605226069 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1819025745 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=732893327 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1101921877 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1617782568 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=812503825 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=2094148844 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=851706395 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=472547541 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=390990893 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1160348902 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1211087624 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1092144699 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1080320007 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1253760957 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1779009589 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1914157941 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1111370233 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=158991940 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical" unique_id=1899788247 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Vertical2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down" unique_id=1794231522]
+position = Vector2(-98, 100)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=784750099 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1373428151 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1274927507 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=333113975 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1968143416 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=2118335733 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1167968155 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1514553848 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=189959688 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1048551280 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=623597746 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=269764254 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1614074120 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1580094275 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1716975776 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=636391765 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1815783726 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=753152653 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1078791610 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=85677714 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1395627202 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=854577495 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1423850942 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1739467390 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1266409434 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1396175131 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1567324870 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=137231772 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=507661805 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down/Vertical2" unique_id=1703181961 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Down2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1981507794]
+position = Vector2(0, 224)
+
+[node name="Vertical" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2" unique_id=119496625]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1950340345 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1252329341 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=18062335 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=482420674 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1910062427 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=98433295 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=930535404 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1676418054 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=899032033 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=2004338690 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=781917116 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=76593833 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1727550518 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1063977326 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=2115111554 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1049829835 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=2143850213 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=302978422 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=311319590 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1431798762 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1678825373 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=547620494 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1556641353 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=10873426 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=807496499 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1954091187 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1026679781 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=1450025161 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical" unique_id=154861530 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Vertical2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2" unique_id=1947641220]
+position = Vector2(-98, 100)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1874463535 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=262220345 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1699723845 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=2145936831 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1862209008 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=375585456 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=591785917 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1531711431 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=142282029 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=165588974 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=231251227 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1424948174 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=2125751285 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1620419922 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=375131541 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1242186842 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=756099545 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=219695186 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=570811848 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1085563991 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=481564635 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=185767508 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1499325094 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=812457584 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=142680484 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1068723055 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=410910120 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1759824499 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=298461168 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down2/Vertical2" unique_id=1020169064 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Down3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=983724921]
+position = Vector2(20, 445)
+
+[node name="Vertical" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3" unique_id=1225250955]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1544632049 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1972955562 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1753935614 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=411181945 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1680629459 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=610139977 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=966602948 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=606997083 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=545028233 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=624879213 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1656383539 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1038197293 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1767058162 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1416579739 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1121169040 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1442212983 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1938300654 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=843232756 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=512452317 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1734342476 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=133959550 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=94593640 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1962407177 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=430413804 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=190810479 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1007615247 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1369998293 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=13366985 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical" unique_id=1120674310 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Vertical2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3" unique_id=621757745]
+position = Vector2(-98, 100)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1919205362 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=498230691 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1200548129 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1893006913 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1893297835 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1753195139 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1733151617 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=99704383 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=2061727613 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=128387414 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=707436167 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=988383789 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=662266002 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=262518908 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=694077838 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=494002658 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1750718134 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=771286964 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1529142713 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=823404379 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=852497593 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=485866667 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=114363502 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1552165317 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1020238093 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1044345727 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=471548712 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=897320707 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=84590929 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down3/Vertical2" unique_id=1881982010 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Down4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=911332108]
+position = Vector2(20, 663)
+
+[node name="Vertical" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4" unique_id=2050980426]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1069693830 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1718597204 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=170006388 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=531722168 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=160301909 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1351956540 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1311997931 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1354945113 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=927355156 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=37334668 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=281026933 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=873461539 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=754313383 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1035348642 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1645835237 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1587838741 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=2029483414 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=154828746 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1949547571 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=848096109 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=161133262 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1459893594 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1839009530 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=595617108 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1154211503 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=789008547 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=545150501 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1015538668 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical" unique_id=1426533049 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Vertical2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4" unique_id=1257591685]
+position = Vector2(-98, 100)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1422251987 instance=ExtResource("20_gqmmt")]
+position = Vector2(-9, 1556)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=455661388 instance=ExtResource("20_gqmmt")]
+position = Vector2(198, 1548)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1901556433 instance=ExtResource("20_gqmmt")]
+position = Vector2(395, 1549)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=360123682 instance=ExtResource("20_gqmmt")]
+position = Vector2(602, 1541)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1269456473 instance=ExtResource("20_gqmmt")]
+position = Vector2(799, 1544)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=564642399 instance=ExtResource("20_gqmmt")]
+position = Vector2(1006, 1564)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=719610300 instance=ExtResource("20_gqmmt")]
+position = Vector2(1217, 1559)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1910103137 instance=ExtResource("20_gqmmt")]
+position = Vector2(1416, 1564)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1734933827 instance=ExtResource("20_gqmmt")]
+position = Vector2(1608, 1569)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1506851255 instance=ExtResource("20_gqmmt")]
+position = Vector2(1815, 1577)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1460300546 instance=ExtResource("20_gqmmt")]
+position = Vector2(2012, 1570)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=881623272 instance=ExtResource("20_gqmmt")]
+position = Vector2(2211, 1566)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=2038303341 instance=ExtResource("20_gqmmt")]
+position = Vector2(2414, 1569)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1046416064 instance=ExtResource("20_gqmmt")]
+position = Vector2(2613, 1569)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1698489619 instance=ExtResource("20_gqmmt")]
+position = Vector2(2814, 1568)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=832152114 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2820, 1550)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=732706306 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2623, 1552)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1962865839 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2416, 1548)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=2099890949 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2219, 1547)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1238426674 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2012, 1549)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1644214541 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1801, 1544)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1585917516 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1602, 1549)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=365131466 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1410, 1554)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=114792220 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1203, 1562)
+
+[node name="Tree26" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1971383447 instance=ExtResource("20_gqmmt")]
+position = Vector2(-1006, 1555)
+
+[node name="Tree27" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1320304724 instance=ExtResource("20_gqmmt")]
+position = Vector2(-807, 1551)
+
+[node name="Tree28" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1540199693 instance=ExtResource("20_gqmmt")]
+position = Vector2(-604, 1554)
+
+[node name="Tree29" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1502547810 instance=ExtResource("20_gqmmt")]
+position = Vector2(-405, 1554)
+
+[node name="Tree30" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=920527509 instance=ExtResource("20_gqmmt")]
+position = Vector2(-204, 1553)
+
+[node name="Tree31" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Down4/Vertical2" unique_id=1940265891 instance=ExtResource("20_gqmmt")]
+position = Vector2(2987, 1561)
+
+[node name="Node" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=1611360949]
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1731159624 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3777, 1594)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=648003585 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3570, 1586)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1767914192 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3373, 1587)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=210893014 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3166, 1579)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=209318715 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2969, 1582)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1796813793 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3847, 1715)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1408677519 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3640, 1707)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1270870561 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3443, 1708)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=690322708 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3236, 1700)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=870092690 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3039, 1703)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1248992196 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3799, 1879)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=2020635612 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3592, 1871)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=481959051 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3395, 1872)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1992646 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3188, 1864)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=258318637 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2991, 1867)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1654126028 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3883, 2035)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=654359647 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3676, 2027)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1175586983 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3479, 2028)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=370500598 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3272, 2020)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=2131652032 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3075, 2023)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=159942028 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3815, 2203)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=466718578 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3608, 2195)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1391710577 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3411, 2196)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=650259299 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3204, 2188)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node" unique_id=1406652923 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3007, 2191)
+
+[node name="Node2" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=294624269]
+position = Vector2(6725, -26)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=210763677 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3777, 1594)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1831509702 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3570, 1586)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=220126622 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3373, 1587)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=317559546 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3166, 1579)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=38847392 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2969, 1582)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1304906041 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3847, 1715)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=338511578 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3640, 1707)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=2130068140 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3443, 1708)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1347452231 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3236, 1700)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1640737076 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3039, 1703)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=2034487619 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3799, 1879)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1153725839 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3592, 1871)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1031255545 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3395, 1872)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=791622069 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3188, 1864)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1656976540 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2991, 1867)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=162597571 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3883, 2035)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1250797637 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3676, 2027)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1394878804 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3479, 2028)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1461182764 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3272, 2020)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1066389680 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3075, 2023)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=439878038 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3815, 2203)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=2079735294 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3608, 2195)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=1147625254 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3411, 2196)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=543553286 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3204, 2188)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node2" unique_id=2029782138 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3007, 2191)
+
+[node name="Node3" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=917638152]
+position = Vector2(63, -3642)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=996166533 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3777, 1594)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1447811785 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3570, 1586)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1006300491 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3373, 1587)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1252961053 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3166, 1579)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1354975131 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2969, 1582)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1189632268 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3847, 1715)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=818417276 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3640, 1707)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=271034549 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3443, 1708)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1753078567 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3236, 1700)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=952199397 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3039, 1703)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1382467962 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3799, 1879)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1887306863 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3592, 1871)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1213217864 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3395, 1872)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=224548839 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3188, 1864)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=461398453 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2991, 1867)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1787462777 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3883, 2035)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1138670507 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3676, 2027)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=650308748 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3479, 2028)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=997256627 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3272, 2020)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1727708234 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3075, 2023)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=618713425 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3815, 2203)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=76751295 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3608, 2195)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=598846876 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3411, 2196)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=1215679098 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3204, 2188)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node3" unique_id=340230719 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3007, 2191)
+
+[node name="Node4" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2" unique_id=2015722334]
+position = Vector2(6788, -3668)
+
+[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1559907983 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3777, 1594)
+
+[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=807034406 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3570, 1586)
+
+[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=669691737 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3373, 1587)
+
+[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=724334399 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3166, 1579)
+
+[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1988204333 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2969, 1582)
+
+[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1414368113 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3847, 1715)
+
+[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=109114210 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3640, 1707)
+
+[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=756170982 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3443, 1708)
+
+[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=300971993 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3236, 1700)
+
+[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=2054366406 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3039, 1703)
+
+[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=878972017 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3799, 1879)
+
+[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1380180913 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3592, 1871)
+
+[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1240216433 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3395, 1872)
+
+[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1209085935 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3188, 1864)
+
+[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1832906440 instance=ExtResource("20_gqmmt")]
+position = Vector2(-2991, 1867)
+
+[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=2034013696 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3883, 2035)
+
+[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=2027579468 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3676, 2027)
+
+[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=413361139 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3479, 2028)
+
+[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1976860883 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3272, 2020)
+
+[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1568109814 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3075, 2023)
+
+[node name="Tree21" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=607838168 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3815, 2203)
+
+[node name="Tree22" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=471563182 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3608, 2195)
+
+[node name="Tree23" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1478305156 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3411, 2196)
+
+[node name="Tree24" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=1627584234 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3204, 2188)
+
+[node name="Tree25" parent="GameViewportContainer/GameViewport/World/Obstacles/Tree2/Node4" unique_id=402657694 instance=ExtResource("20_gqmmt")]
+position = Vector2(-3007, 2191)
 
 [node name="RuneUI" type="Panel" parent="." unique_id=2004242461]
 layout_mode = 1
@@ -376,6 +3096,13 @@ script = ExtResource("3")
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4")
+
+[node name="RuneTooltip" parent="RuneUI" unique_id=1926931745 instance=ExtResource("17_yc10j")]
+layout_mode = 0
+offset_left = -301.0
+offset_top = -167.0
+offset_right = -101.0
+offset_bottom = -54.0
 
 [node name="HpBar" parent="." unique_id=1815550483 instance=ExtResource("hp_bar")]
 layout_mode = 0

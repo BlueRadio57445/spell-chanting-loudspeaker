@@ -13,7 +13,7 @@ size = Vector2(69, 69)
 [node name="NormalEnemy" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_vu24j")
-speed = 100.0
+speed = 75.0
 loot_weights = Dictionary[String, int]({
 "None": 50,
 "fireball": 999
