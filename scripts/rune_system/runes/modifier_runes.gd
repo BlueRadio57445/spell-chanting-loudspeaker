@@ -40,40 +40,22 @@ class MultiShot extends RuneBase:
 
 		for spell: Dictionary in spell_list:
 			expanded.append(spell)
-			var scene: PackedScene = spell.get("scene")
-			if scene == null:
+			if not spell.has("spawn"):
 				continue
 
-			# 從 spell dict 讀取已記錄的後修飾，不依賴 original 節點是否存活
 			var recorded_modifiers: Array = spell.get("post_modifiers", [])
 
 			for i: int in 2:
-				var copy: ProjectileBase = scene.instantiate()
-				copy.global_position = Player.Instance.global_position
-				copy.setup(Player.Instance, spell["direction"],
-					spell["speed"], spell["damage"],
-					spell["effect"], spell["effect_time"])
-				copy.apply_form(spell.get("form", {}))
-
-				for modifier_id: String in recorded_modifiers:
-					match modifier_id:
-						"quad_shot":   copy.add_child(QuadShotPostModifier.new())
-						"fire_trail":  copy.add_child(TrailPostModifier.new())
-						"poison_pool": copy.add_child(PoisonPoolPostModifier.new())
-
-				var copy_spell: Dictionary = {
-					"node": copy, "scene": scene,
-					"form": spell.get("form", {}),
-					"direction": spell["direction"],
-					"damage": spell["damage"], "speed": spell["speed"],
-					"effect": spell["effect"], "effect_time": spell["effect_time"],
-					"post_modifiers": recorded_modifiers.duplicate(),
-				}
-				expanded.append(copy_spell)
-
 				var delay: float = 0.1 * (i + 1)
 				Main.Instance.get_tree().create_timer(delay).timeout.connect(func() -> void:
-					Main.Instance.world.add_child(copy)
+					var new_node: SpellNodeBase = spell["spawn"].call()
+					if not is_instance_valid(new_node):
+						return
+					for modifier_id: String in recorded_modifiers:
+						match modifier_id:
+							"quad_shot":   new_node.add_child(QuadShotPostModifier.new())
+							"fire_trail":  new_node.add_child(TrailPostModifier.new())
+							"poison_pool": new_node.add_child(PoisonPoolPostModifier.new())
 				)
 
 		return {"spell": expanded}

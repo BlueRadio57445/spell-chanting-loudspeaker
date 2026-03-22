@@ -30,9 +30,17 @@ class Fireball extends RuneBase:
 			proj.setup(player, dir, 400.0, damage, "burn", 5.0)
 			proj.apply_form(form)
 			Main.Instance.world.add_child(proj)
+			var _dir := dir
 			spell_list.append({"node": proj, "scene": scene, "form": form,
 				"direction": dir, "damage": damage,
-				"speed": 400.0, "effect": "burn", "effect_time": 5.0})
+				"speed": 400.0, "effect": "burn", "effect_time": 5.0,
+				"spawn": func() -> SpellNodeBase:
+					var p: ProjectileBase = scene.instantiate()
+					p.global_position = Player.Instance.global_position
+					p.setup(Player.Instance, _dir, 400.0, damage, "burn", 5.0)
+					p.apply_form(form)
+					Main.Instance.world.add_child(p)
+					return p})
 
 		print("[火球術] 執行成功，消耗能量: %s" % energy)
 		return {"spell": spell_list}
@@ -67,9 +75,17 @@ class EnergyBall extends RuneBase:
 			proj.setup(player, dir, 500.0, damage, "None", 0.0)
 			proj.apply_form(form)
 			Main.Instance.world.add_child(proj)
+			var _dir := dir
 			spell_list.append({"node": proj, "scene": scene, "form": form,
 				"direction": dir, "damage": damage,
-				"speed": 500.0, "effect": "None", "effect_time": 0.0})
+				"speed": 500.0, "effect": "None", "effect_time": 0.0,
+				"spawn": func() -> SpellNodeBase:
+					var p: ProjectileBase = scene.instantiate()
+					p.global_position = Player.Instance.global_position
+					p.setup(Player.Instance, _dir, 500.0, damage, "None", 0.0)
+					p.apply_form(form)
+					Main.Instance.world.add_child(p)
+					return p})
 
 		print("[能量彈] 執行成功，消耗能量: %s" % energy)
 		return {"spell": spell_list}
@@ -104,9 +120,17 @@ class IceBall extends RuneBase:
 			proj.setup(player, dir, 350.0, damage, "slow", 3.0)
 			proj.apply_form(form)
 			Main.Instance.world.add_child(proj)
+			var _dir := dir
 			spell_list.append({"node": proj, "scene": scene, "form": form,
 				"direction": dir, "damage": damage,
-				"speed": 350.0, "effect": "slow", "effect_time": 3.0})
+				"speed": 350.0, "effect": "slow", "effect_time": 3.0,
+				"spawn": func() -> SpellNodeBase:
+					var p: ProjectileBase = scene.instantiate()
+					p.global_position = Player.Instance.global_position
+					p.setup(Player.Instance, _dir, 350.0, damage, "slow", 3.0)
+					p.apply_form(form)
+					Main.Instance.world.add_child(p)
+					return p})
 
 		print("[冰霰] 執行成功，消耗能量: %s" % energy)
 		return {"spell": spell_list}
@@ -143,9 +167,17 @@ class PoisonBall extends RuneBase:
 			proj.setup(player, dir, 300.0, damage, "poison", total_energy)
 			proj.apply_form(form)
 			Main.Instance.world.add_child(proj)
+			var _dir := dir
 			spell_list.append({"node": proj, "scene": scene, "form": form,
 				"direction": dir, "damage": damage,
-				"speed": 300.0, "effect": "poison", "effect_time": total_energy})
+				"speed": 300.0, "effect": "poison", "effect_time": total_energy,
+				"spawn": func() -> SpellNodeBase:
+					var p: PenetratingProjectile = scene.instantiate() as PenetratingProjectile
+					p.global_position = Player.Instance.global_position
+					p.setup(Player.Instance, _dir, 300.0, damage, "poison", total_energy)
+					p.apply_form(form)
+					Main.Instance.world.add_child(p)
+					return p})
 
 		print("[毒球] 執行成功，消耗能量: %s" % total_energy)
 		return {"spell": spell_list}
@@ -196,16 +228,25 @@ class Arson extends RuneBase:
 		for target: Variant in targets:
 			if not is_instance_valid(target) or not target is Node2D:
 				continue
+			var _target: Node2D = target as Node2D
 			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
-			area.global_position = (target as Node2D).global_position
+			area.global_position = _target.global_position
 			area.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
 			area.apply_form(form)
 			Main.Instance.world.add_child(area)
 			spell_list.append({
 				"node": area, "scene": scene, "form": form,
 				"direction": Vector2.ZERO, "damage": damage,
-				"speed": 0.0, "effect": "burn", "effect_time": 3.0
-			})
+				"speed": 0.0, "effect": "burn", "effect_time": 3.0,
+				"spawn": func() -> SpellNodeBase:
+					if not is_instance_valid(_target):
+						return null
+					var a: DamageAreaBase = scene.instantiate() as DamageAreaBase
+					a.global_position = _target.global_position
+					a.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
+					a.apply_form(form)
+					Main.Instance.world.add_child(a)
+					return a})
 
 		print("[縱火] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
 		return {"spell": spell_list}
@@ -235,16 +276,25 @@ class IceDomain extends RuneBase:
 		for target: Variant in targets:
 			if not is_instance_valid(target) or not target is Node2D:
 				continue
+			var _target: Node2D = target as Node2D
 			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
-			area.global_position = (target as Node2D).global_position
+			area.global_position = _target.global_position
 			area.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
 			area.apply_form(form)
 			Main.Instance.world.add_child(area)
 			spell_list.append({
 				"node": area, "scene": scene, "form": form,
 				"direction": Vector2.ZERO, "damage": damage,
-				"speed": 0.0, "effect": "slow", "effect_time": 3.0
-			})
+				"speed": 0.0, "effect": "slow", "effect_time": 3.0,
+				"spawn": func() -> SpellNodeBase:
+					if not is_instance_valid(_target):
+						return null
+					var a: DamageAreaBase = scene.instantiate() as DamageAreaBase
+					a.global_position = _target.global_position
+					a.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
+					a.apply_form(form)
+					Main.Instance.world.add_child(a)
+					return a})
 
 		print("[冰凍領域] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
 		return {"spell": spell_list}
