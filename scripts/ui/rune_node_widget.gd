@@ -108,9 +108,24 @@ func _build_ui() -> void:
 	in_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	hbox.add_child(in_col)
 
+	var required_in: Array[RunePort] = []
+	var optional_in: Array[RunePort] = []
 	for port: RunePort in rune.ports_in:
-		var row: HBoxContainer = _create_port_row(port, true)
-		in_col.add_child(row)
+		if port.is_required:
+			required_in.append(port)
+		else:
+			optional_in.append(port)
+
+	var has_both: bool = required_in.size() > 0 and optional_in.size() > 0
+	if has_both:
+		_add_section_label(in_col, "必要")
+	for port: RunePort in required_in:
+		in_col.add_child(_create_port_row(port, true))
+	if optional_in.size() > 0:
+		if has_both:
+			_add_section_label(in_col, "可選")
+		for port: RunePort in optional_in:
+			in_col.add_child(_create_port_row(port, true))
 
 	var out_col := VBoxContainer.new()
 	out_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -138,17 +153,21 @@ func _update_charge_label() -> void:
 	var empty: String = "○".repeat(pr.max_charges - pr.stored_charges)
 	_charge_label.text = filled + empty
 
+func _add_section_label(parent: VBoxContainer, text: String) -> void:
+	var lbl := Label.new()
+	lbl.text = text
+	lbl.add_theme_font_size_override("font_size", 9)
+	lbl.add_theme_color_override("font_color", Color(0.6, 0.6, 0.6))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	parent.add_child(lbl)
+
 func _create_port_row(port: RunePort, is_input: bool) -> HBoxContainer:
 	var row := HBoxContainer.new()
 
 	var btn := Button.new()
 	btn.custom_minimum_size = Vector2(16, 16)
 	btn.text = ""
-	btn.tooltip_text = "%s (%s)%s" % [
-		port.port_name,
-		RuneEnums.port_type_name(port.port_type),
-		"" if port.is_required else " [可選]"
-	]
+	btn.tooltip_text = "%s (%s)" % [port.port_name, RuneEnums.port_type_name(port.port_type)]
 
 	var port_color: Color = RuneEnums.PORT_COLORS.get(port.port_type, Color.WHITE) as Color
 
