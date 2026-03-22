@@ -131,9 +131,9 @@ func attack_nearest_enemy():
 	if nearest_enemy != null:
 		print("對最近的敵人造成中毒！距離：", min_dist)
 		
-		# 這裡呼叫我們在 EnemyBase 寫好的 take_damage
+		nearest_enemy.take_damage(300)
 	
-	apply_speed_modifier(-0.8, 5)
+	apply_speed_modifier(1.5, 5)
 
 func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 	print(area.name)

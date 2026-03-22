@@ -8,12 +8,8 @@ class_name EnemyBase # 定義類別名稱，讓子類別可以 extends 它
 
 @export_group("Loot Settings")
 # 設定每個符文對應的權重 (數字越大機率越高)
-@export var loot_weights = {
-	RuneDrops.RuneType.NONE: 50,  # 50% 什麼都不掉
-	RuneDrops.RuneType.FIRE: 10,  # 10 權重
-	RuneDrops.RuneType.WATER: 10,
-	RuneDrops.RuneType.WIND: 10,
-	RuneDrops.RuneType.EARTH: 10
+@export var loot_weights : Dictionary[String, int] = {
+	"None" : 50
 }
 @export var loot_item_scene: PackedScene # 放剛才建立的 RuneItem.tscn
 
@@ -102,7 +98,7 @@ func calculate_loot():
 	for rune in loot_weights:
 		current_sum += loot_weights[rune]
 		if roll < current_sum:
-			if rune != RuneDrops.RuneType.NONE:
+			if rune != "None":
 				spawn_loot(rune)
 			return # 抽中了就結束
 

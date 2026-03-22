@@ -4,8 +4,7 @@ class_name RuneDrops
 @export var ATTRACT_DISTANCE = 150.0
 @export var PULL_SPEED = 400.0
 var player = null
-enum RuneType { NONE, FIRE, WATER, WIND, EARTH }
-var rune_type = RuneType.NONE
+var rune_type
 var is_being_pulled = false
 
 func _ready():
@@ -45,17 +44,34 @@ func _collect():
 	# 這裡可以播放一個小音效或特效
 	queue_free()
 
-func onSummon(type):
+func onSummon(type: String):
 	rune_type = type
-	# 根據類型換顏色
-	match type:
-		RuneType.FIRE: modulate = Color.RED
-		RuneType.WATER: modulate = Color.BLUE
-		RuneType.WIND: modulate = Color.GREEN
-		RuneType.EARTH: modulate = Color.BROWN
-
+	
+	# 1. 組合圖片路徑
+	var image_path = "res://resources/Runes/%s.png" % type
+	
+	# 2. 檢查檔案是否存在 (防止因為 type 拼錯導致遊戲閃退)
+	if FileAccess.file_exists(image_path):
+		# 載入圖片並設定給 Sprite2D
+		var tex = load(image_path)
+		$Sprite2D.texture = tex
+	else:
+		push_warning("警告：找不到符文圖片路徑: " + image_path)
+		# 這裡可以選擇設定一個預設的錯誤圖片，或者維持原樣
+	
 func _on_area_entered(area):
 	if area.name == "PlayerHurtbox":
-		# 撿取邏輯 (現在先留空)
-		print("玩家撿到了符文！")
-		queue_free() # 消失
+		print("玩家撿到了符文！ ID 為: ", rune_type)
+		
+		# 1. 找到背包
+		var inv = get_tree().root.find_child("RuneInventory", true, false)
+		
+		if inv:
+			# 2. 關鍵修正：使用 RuneRegistry 產生一個真正的實例 (Instance)
+			# 假設你的 rune_type 儲存的是像 "fireball" 這樣的字串 ID
+			var new_rune_instance = RuneRegistry.create_instance(rune_type)
+			
+			# 3. 把實例交給背包
+			inv.add_rune(new_rune_instance)
+			
+		queue_free()

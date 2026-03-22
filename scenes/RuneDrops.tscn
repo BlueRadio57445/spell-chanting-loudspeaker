@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://boqnqj2ku44l2"]
 
-[ext_resource type="Texture2D" uid="uid://d44cye8df5fw" path="res://resources/tmpEnemy.png" id="1_66oq8"]
 [ext_resource type="Script" uid="uid://bid3ic2rbb6lv" path="res://scripts/rune_system/RuneDrops.gd" id="1_m0xgc"]
+[ext_resource type="Texture2D" uid="uid://76gosr8q8ui0" path="res://resources/Runes/boomerang.png" id="2_m0xgc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0xgc"]
 size = Vector2(64, 64)
@@ -11,7 +11,9 @@ collision_layer = 4
 script = ExtResource("1_m0xgc")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2043024449]
-texture = ExtResource("1_66oq8")
+position = Vector2(-0.49999905, -1.4999989)
+scale = Vector2(0.182, 0.182)
+texture = ExtResource("2_m0xgc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1983151018]
 
