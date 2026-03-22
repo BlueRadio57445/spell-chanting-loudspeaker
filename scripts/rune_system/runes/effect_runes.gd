@@ -6,6 +6,7 @@ class Fireball extends RuneBase:
 		description = "消耗能量，發射火球"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(1.0, 0.3, 0.1)
+		audio = preload("res://resources/Audio/符文音檔1.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -41,6 +42,7 @@ class EnergyBall extends RuneBase:
 		description = "消耗能量，發射基礎能量彈"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(1.0, 1.0, 0.4)
+		audio = preload("res://resources/Audio/符文音檔3.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -76,6 +78,7 @@ class IceBall extends RuneBase:
 		description = "消耗能量，發射冰球，命中敵人時緩速"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.5, 0.8, 1.0)
+		audio = preload("res://resources/Audio/符文音檔2.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -111,6 +114,7 @@ class PoisonBall extends RuneBase:
 		description = "消耗兩點能量，發射穿透毒球，中毒持續扣血"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.4, 1.0, 0.2)
+		audio = preload("res://resources/Audio/符文音檔6.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -150,6 +154,7 @@ class Heal extends RuneBase:
 		description = "消耗能量，直接回復 %d 點生命值" % HEAL_AMOUNT
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.2, 1.0, 0.4)
+		audio = preload("res://resources/Audio/符文音檔4.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
@@ -167,6 +172,7 @@ class Debuff extends RuneBase:
 		description = "消耗能量，施加減益"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.6, 0.1, 0.8)
+		audio = preload("res://resources/Audio/Paon.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("target", RuneEnums.PortType.TARGET, false),
