@@ -68,6 +68,11 @@ func _execute_chain(starter_id: String) -> void:
 			audio_player.play()
 			await audio_player.finished
 
+		# 被動符文：只消耗與輸出連線數相同的格數
+		if rune is PassiveRunes.PassiveRuneBase:
+			var connected_out: int = graph.get_edges_from_node(node_id).size()
+			(rune as PassiveRunes.PassiveRuneBase).prepare_drain(connected_out)
+
 		# 執行符文
 		var outputs: Dictionary = rune.execute(inputs, get_parent())
 		port_data[node_id] = outputs

@@ -3,13 +3,19 @@ class_name PassiveRunes
 class PassiveRuneBase extends RuneBase:
 	var stored_charges: int = 0
 	var max_charges: int = 3
+	var _charges_to_drain: int = -1  # -1 表示全部消耗（預設行為）
+
+	func prepare_drain(count: int) -> void:
+		_charges_to_drain = count
 
 	func _drain_charges() -> Dictionary:
 		var result: Dictionary = {}
-		if stored_charges >= 1: result["energy"] = 1.0
-		if stored_charges >= 2: result["energy2"] = 1.0
-		if stored_charges >= 3: result["energy3"] = 1.0
-		stored_charges = 0
+		var to_drain: int = stored_charges if _charges_to_drain < 0 else min(stored_charges, _charges_to_drain)
+		_charges_to_drain = -1
+		if to_drain >= 1: result["energy"] = 1.0
+		if to_drain >= 2: result["energy2"] = 1.0
+		if to_drain >= 3: result["energy3"] = 1.0
+		stored_charges -= to_drain
 		return result
 
 
