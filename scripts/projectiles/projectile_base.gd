@@ -14,6 +14,7 @@ class_name ProjectileBase
 var direction: Vector2 = Vector2.RIGHT
 var owner_node: Node2D = null
 var movement_module: MovementModule = null
+var penetrating: bool = false
 
 func _ready() -> void:
 	# 找到第一個 MovementModule 子節點
@@ -60,7 +61,13 @@ func apply_form(form: Dictionary) -> void:
 			set_movement_module(OrbitMovement.new())
 		"ground":
 			set_movement_module(StationaryMovement.new())
+		"boomerang":
+			set_movement_module(BoomerangMovement.new())
 		# "bullet" 或未知值 → 不動，保留預設 LinearMovement
+
+	# 穿透（命中不消失）
+	if form.get("penetrating", false):
+		penetrating = true
 
 	# 形體變化：巨化
 	if form.has("size_scale"):
@@ -85,8 +92,16 @@ func _apply_hit(body: Node2D) -> void:
 		body.apply_effect(effect, effect_time)
 
 # 碰撞處理，子類可覆寫
+var _penetrating_hit_targets: Array[Node2D] = []
+
 func _on_body_entered(body: Node2D) -> void:
 	if body == owner_node:
 		return
-	_apply_hit(body)
-	queue_free()
+	if penetrating:
+		if body in _penetrating_hit_targets:
+			return
+		_penetrating_hit_targets.append(body)
+		_apply_hit(body)
+	else:
+		_apply_hit(body)
+		queue_free()

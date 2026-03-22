@@ -41,6 +41,7 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("energy_ball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("ice_ball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("poison_ball"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("boomerang"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("giant"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("orbit"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))

@@ -14,6 +14,7 @@ func _register_all() -> void:
 	_register("energy_ball", EffectRunes.EnergyBall.new())
 	_register("ice_ball", EffectRunes.IceBall.new())
 	_register("poison_ball", EffectRunes.PoisonBall.new())
+	_register("boomerang", ModifierRunes.Boomerang.new())
 	_register("giant", ModifierRunes.Giant.new())
 	_register("orbit", ModifierRunes.Orbit.new())
 	_register("multi_shot", ModifierRunes.MultiShot.new())

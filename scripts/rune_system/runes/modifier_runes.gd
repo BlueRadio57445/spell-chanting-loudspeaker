@@ -95,6 +95,28 @@ class QuadShot extends RuneBase:
 
 		return {"spell": spell_list}
 
+class Boomerang extends RuneBase:
+	func _init() -> void:
+		rune_name = "迴力"
+		description = "投射物穿透敵人，抵達最大射程後回追玩家"
+		category = RuneEnums.RuneCategory.MODIFIER
+		icon_color = Color(0.4, 0.9, 0.5)
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
+		]
+		ports_out = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM),
+		]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		var form: Dictionary = inputs.get("form", {})
+		form["movement"] = "boomerang"
+		form["penetrating"] = true
+		return {"energy": energy, "form": form}
+
 class Orbit extends RuneBase:
 	func _init() -> void:
 		rune_name = "環繞"
