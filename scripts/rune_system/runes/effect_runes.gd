@@ -4,6 +4,7 @@ class Fireball extends RuneBase:
 	func _init() -> void:
 		rune_name = "火球術"
 		description = "消耗能量，發射火球\n\"別燒到我的雙馬尾！\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(1.0, 0.3, 0.1)
 		audio = preload("res://resources/Audio/符文音檔1.wav")
@@ -40,6 +41,7 @@ class EnergyBall extends RuneBase:
 	func _init() -> void:
 		rune_name = "能量彈"
 		description = "消耗能量，發射基礎能量彈\n\"能量!...塑膠球?\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(1.0, 1.0, 0.4)
 		audio = preload("res://resources/Audio/符文音檔3.wav")
@@ -76,6 +78,7 @@ class IceBall extends RuneBase:
 	func _init() -> void:
 		rune_name = "冰霰"
 		description = "消耗能量，發射冰球，命中敵人時緩速\n\"讓你們全都透心涼!\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.5, 0.8, 1.0)
 		audio = preload("res://resources/Audio/符文音檔2.wav")
@@ -112,6 +115,7 @@ class PoisonBall extends RuneBase:
 	func _init() -> void:
 		rune_name = "毒球"
 		description = "消耗兩點能量，發射穿透毒球，中毒持續扣血\n\"嘔!這跟放了三天的隔夜便當一個味\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.4, 1.0, 0.2)
 		audio = preload("res://resources/Audio/符文音檔6.wav")
@@ -152,6 +156,7 @@ class Heal extends RuneBase:
 	func _init() -> void:
 		rune_name = "治療"
 		description = "消耗能量，直接回復 %d 點生命值" % HEAL_AMOUNT + "\n\"呼呼!痛痛飛走了~\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.2, 1.0, 0.4)
 		audio = preload("res://resources/Audio/符文音檔4.wav")

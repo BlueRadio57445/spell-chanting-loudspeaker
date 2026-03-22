@@ -2,6 +2,7 @@ class_name RuneBase extends Resource
 
 @export var rune_name: String = ""
 @export var description: String = ""
+@export var type_description: String = ""
 @export var category: RuneEnums.RuneCategory = RuneEnums.RuneCategory.EFFECT
 @export var icon_color: Color = Color.WHITE
 @export var audio: AudioStream = null
