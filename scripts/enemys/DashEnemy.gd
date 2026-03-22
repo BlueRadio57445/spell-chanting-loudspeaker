@@ -6,6 +6,8 @@ extends EnemyBase
 @export var dash_duration = 0.3  # 衝刺持續時間
 
 @onready var sprite = $Sprite2D
+var _time_passed: float = 0.0 # 用來記錄經過的時間，供 sin 函式使用
+
 
 var is_dashing = false
 var can_dash = true
@@ -27,6 +29,8 @@ func handle_movement(_delta):
 		if can_dash and dist < 200:
 			start_dash()
 		else:
+			_time_passed += _delta
+			sprite.rotation = 0.1 * ( sin(_time_passed * 15.0) + 1 )
 			super.handle_movement(_delta)
 
 func start_dash():
