@@ -38,7 +38,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	movement_module.move(self, delta)
 	$Sprite2D.rotation = direction.angle() - PI
-	print(effect)
 
 # 設定投射物參數，由 SpellSpawner 呼叫
 func setup(p_owner: Node2D, p_direction: Vector2, p_speed: float, p_damage: float, p_effect: String, p_effect_time: float) -> void:

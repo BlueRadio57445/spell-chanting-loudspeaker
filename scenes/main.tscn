@@ -8,17 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://d3c8ljpsf4ww7" path="res://resources/Character/attack1.png" id="3_trceg"]
 [ext_resource type="Script" uid="uid://d2778v36qu8fj" path="res://scripts/ui/rune_inventory.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://w2wnm6ywidqo" path="res://resources/Character/attack2.png" id="4_a8y0u"]
-[ext_resource type="Script" path="res://scripts/ui/sakeCarmea2D.gd" id="4_muem4"]
-[ext_resource type="PackedScene" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://dy712xbve8wb3" path="res://scripts/ui/sakeCarmea2D.gd" id="4_muem4"]
+[ext_resource type="PackedScene" uid="uid://ca5sebxocvhlg" path="res://scenes/Spawner.tscn" id="4_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://btd50mn2qp7c0" path="res://resources/Character/walk2.png" id="4_ya4ey"]
 [ext_resource type="Script" uid="uid://bfeo6jrad2vaf" path="res://scripts/rune_system/rune_executor.gd" id="5"]
-[ext_resource type="Script" path="res://scripts/rune_system/passive_rune_tracker.gd" id="passive_tracker"]
 [ext_resource type="Texture2D" uid="uid://duyp2f2c5jvvy" path="res://resources/Character/walk3.png" id="5_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://hlepvsuochqs" path="res://resources/Character/attack3.png" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
-[ext_resource type="PackedScene" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://c4acrhpod6eko" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
+[ext_resource type="Script" uid="uid://c8ckhoglbi3em" path="res://scripts/rune_system/passive_rune_tracker.gd" id="passive_tracker"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
 size = Vector2(5760, 100)
@@ -379,13 +379,17 @@ script = ExtResource("4")
 
 [node name="HpBar" parent="." unique_id=1815550483 instance=ExtResource("hp_bar")]
 layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 220.0
+offset_bottom = 42.0
 
 [node name="RuneExecutor" type="Node" parent="." unique_id=25453600]
 script = ExtResource("5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RuneExecutor" unique_id=73730906]
 
-[node name="PassiveRuneTracker" type="Node" parent="RuneExecutor"]
+[node name="PassiveRuneTracker" type="Node" parent="RuneExecutor" unique_id=510140823]
 script = ExtResource("passive_tracker")
 
 [node name="EndMenu" parent="." unique_id=776264141 instance=ExtResource("13_a8y0u")]

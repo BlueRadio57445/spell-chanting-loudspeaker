@@ -91,8 +91,13 @@ class BloodTribute extends PassiveRuneBase:
 		]
 
 	func accumulate_damage(amount: float) -> void:
+		# 如果遊戲目前是暫停狀態，直接返回，不執行後面的計時邏輯
+		if Engine.get_main_loop().root.get_tree().paused:
+			return
+			
 		if stored_charges >= max_charges:
 			return
+			
 		_hp_accumulated += amount
 		while _hp_accumulated >= HP_PER_CHARGE and stored_charges < max_charges:
 			_hp_accumulated -= HP_PER_CHARGE
@@ -121,8 +126,13 @@ class Steadfast extends PassiveRuneBase:
 		]
 
 	func accumulate_stillness(delta: float) -> void:
+		# 如果遊戲目前是暫停狀態，直接返回，不執行後面的計時邏輯
+		if Engine.get_main_loop().root.get_tree().paused:
+			return
+			
 		if stored_charges >= max_charges:
 			return
+			
 		_timer += delta
 		while _timer >= SECONDS_PER_CHARGE and stored_charges < max_charges:
 			_timer -= SECONDS_PER_CHARGE

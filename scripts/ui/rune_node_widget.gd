@@ -254,15 +254,47 @@ func _gui_input(event: InputEvent) -> void:
 		if mb.button_index == MOUSE_BUTTON_LEFT:
 			if mb.pressed:
 				is_dragging = true
-				drag_offset = mb.position
+				# 記錄點擊位置在 Widget 內部的偏移
+				drag_offset = mb.position 
+				_on_drag_started() 
 			else:
 				if is_dragging:
 					node_drag_released.emit(node_id, get_global_mouse_position())
+					_on_drag_ended()
 				is_dragging = false
-		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
-			if not node_id.begins_with("starter_"):
-				node_delete_requested.emit(node_id)
+				
 	elif event is InputEventMouseMotion and is_dragging:
-		var motion: InputEventMouseMotion = event as InputEventMouseMotion
-		position += motion.relative
+		# 關鍵：使用 global_position 配合滑鼠的全域位置
+		# 這樣就不管 top_level 是不是 true，位置都會永遠跟著鼠標
+		global_position = get_global_mouse_position() - drag_offset
 		node_moved.emit(node_id, position)
+
+func _on_drag_started():
+	# 1. 先記錄下目前在螢幕上的絕對位置
+	var current_global_pos = global_position
+	
+	# 2. 開啟 top_level (這會讓 position 亂掉)
+	top_level = true
+	z_index = 100
+	
+	# 3. 強制把位置接回去，確保視覺上沒有跳動
+	global_position = current_global_pos
+	
+	# 視覺特效
+	modulate.a = 0.7
+	scale = Vector2(1.05, 1.05)
+
+func _on_drag_ended():
+	# 1. 同樣先記住現在在哪裡
+	var current_global_pos = global_position
+	
+	# 2. 關閉 top_level (它會回到父節點的座標系)
+	top_level = false
+	z_index = 0
+	
+	# 3. 恢復父節點座標系下的正確位置
+	global_position = current_global_pos
+	
+	# 恢復視覺
+	modulate.a = 1.0
+	scale = Vector2(1.0, 1.0)
