@@ -9,6 +9,7 @@ var node_id: String
 var rune: RuneBase
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
+var _charge_label: Label = null
 
 # port_name -> { "button": Button, "port_type": PortType, "is_input": bool, "style_normal": StyleBoxFlat, "style_connected": StyleBoxFlat }
 var _port_data: Dictionary = {}
@@ -118,6 +119,24 @@ func _build_ui() -> void:
 	for port: RunePort in rune.ports_out:
 		var row: HBoxContainer = _create_port_row(port, false)
 		out_col.add_child(row)
+
+	if rune is PassiveRunes.PassiveRuneBase:
+		_charge_label = Label.new()
+		_charge_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_charge_label.add_theme_font_size_override("font_size", 14)
+		_charge_label.add_theme_color_override("font_color", rune.icon_color)
+		vbox.add_child(_charge_label)
+		_update_charge_label()
+
+func _process(_delta: float) -> void:
+	if _charge_label != null:
+		_update_charge_label()
+
+func _update_charge_label() -> void:
+	var pr: PassiveRunes.PassiveRuneBase = rune as PassiveRunes.PassiveRuneBase
+	var filled: String = "●".repeat(pr.stored_charges)
+	var empty: String = "○".repeat(pr.max_charges - pr.stored_charges)
+	_charge_label.text = filled + empty
 
 func _create_port_row(port: RunePort, is_input: bool) -> HBoxContainer:
 	var row := HBoxContainer.new()

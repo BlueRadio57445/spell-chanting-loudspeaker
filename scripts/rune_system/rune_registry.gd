@@ -20,6 +20,10 @@ func _register_all() -> void:
 	_register("quad_shot", ModifierRunes.QuadShot.new())
 	_register("heal", EffectRunes.Heal.new())
 	_register("debuff", EffectRunes.Debuff.new())
+	_register("kinetic_energy", PassiveRunes.KineticEnergy.new())
+	_register("meditation", PassiveRunes.Meditation.new())
+	_register("blood_tribute", PassiveRunes.BloodTribute.new())
+	_register("steadfast", PassiveRunes.Steadfast.new())
 
 func _register(id: String, rune: RuneBase) -> void:
 	_templates[id] = rune

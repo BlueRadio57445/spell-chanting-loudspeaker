@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	# 測試：給玩家幾個初始符文
 	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
-	#rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
 	#rune_inventory.add_rune(RuneRegistry.create_instance("debuff"))
 	#rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("energy_ball"))
@@ -45,6 +45,10 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("orbit"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("kinetic_energy"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("meditation"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("blood_tribute"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("steadfast"))
 
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:

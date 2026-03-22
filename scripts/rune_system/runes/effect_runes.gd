@@ -104,7 +104,6 @@ class PoisonBall extends RuneBase:
 		icon_color = Color(0.4, 1.0, 0.2)
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
-			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
 			RunePort.create("form", RuneEnums.PortType.FORM, false),
 		]
@@ -132,24 +131,23 @@ class PoisonBall extends RuneBase:
 			"speed": 300.0, "effect": "poison", "effect_time": total_energy}]}
 
 class Heal extends RuneBase:
+	const HEAL_AMOUNT: int = 20
+
 	func _init() -> void:
-		rune_name = "治癒術"
-		description = "消耗能量，恢復生命"
+		rune_name = "治療"
+		description = "消耗能量，直接回復 %d 點生命值" % HEAL_AMOUNT
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.2, 1.0, 0.4)
-		ports_in = [RunePort.create("energy", RuneEnums.PortType.ENERGY)]
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
+		]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
-	func execute(inputs: Dictionary, context: Node) -> Dictionary:
-		var energy: float = inputs.get("energy", 1.0)
-		var heal_amount: float = energy * 8.0
-		
-		# 假設 Player.gd 有 take_damage，我們寫一個負的傷害就是回血
-		if context.player and context.player.has_method("take_damage"):
-			context.player.take_damage(-heal_amount)
-			
-		print("[治癒術] 恢復生命: %s" % heal_amount)
-		return {"spell": {"type": "heal", "amount": heal_amount}}
+	func execute(_inputs: Dictionary, _context: Node) -> Dictionary:
+		Player.Instance.take_heal(HEAL_AMOUNT)
+		print("[治療] 回復 %d 點生命值" % HEAL_AMOUNT)
+		return {"spell": []}
 
 class Debuff extends RuneBase:
 	func _init() -> void:

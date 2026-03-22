@@ -143,6 +143,14 @@ func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 		
 		is_moving = false
 		
+func take_heal(amount: int) -> void:
+	hp = min(hp + amount, max_hp)
+	health_changed.emit(hp, max_hp)
+	print("玩家回血！剩餘血量：", hp)
+	var tween := create_tween()
+	tween.tween_property($AnimatedSprite2D, "modulate", Color.GREEN, 0.1)
+	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.2)
+
 func apply_speed_modifier(percent: float, duration: float):
 	# 覆蓋原本效果
 	speed_modifier = percent

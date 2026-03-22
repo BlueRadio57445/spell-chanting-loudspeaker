@@ -75,6 +75,15 @@ func get_topological_order(start_node_id: String) -> Array[String]:
 	var reachable: Dictionary = {}
 	_collect_reachable(start_node_id, reachable)
 
+	# 擴展：把輸出接到可達節點的上游節點（例如被動符文）也納入，反覆直到穩定
+	var changed: bool = true
+	while changed:
+		changed = false
+		for e: Dictionary in edges:
+			if reachable.has(e["to_node"]) and not reachable.has(e["from_node"]):
+				reachable[e["from_node"]] = true
+				changed = true
+
 	# Kahn's algorithm（入度法）只在可達子圖上
 	var in_degree: Dictionary = {}
 	for id in reachable:
