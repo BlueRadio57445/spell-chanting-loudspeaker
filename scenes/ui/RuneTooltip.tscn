@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dx1bqefval0a3"]
+
+[ext_resource type="Script" uid="uid://d3ronkgh2kmqn" path="res://scripts/ui/RuneTooltip.gd" id="1_mx6vu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tncv1"]
+font_size = 40
+outline_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_mx6vu"]
+font_size = 30
+
+[node name="RuneTooltip" type="PanelContainer" unique_id=1926931745]
+mouse_filter = 2
+script = ExtResource("1_mx6vu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1182295651]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=374315816]
+layout_mode = 2
+text = "請輸入文本"
+label_settings = SubResource("LabelSettings_tncv1")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1272358911]
+layout_mode = 2
+
+[node name="DescLabel" type="Label" parent="VBoxContainer" unique_id=1367251737]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "請輸入文本"
+label_settings = SubResource("LabelSettings_mx6vu")

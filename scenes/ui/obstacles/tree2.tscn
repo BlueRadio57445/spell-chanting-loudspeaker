@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6npm1oemat4a"]
+
+[ext_resource type="Texture2D" uid="uid://b4xi24scc2pt8" path="res://resources/UI/Obstacle/Tree2.png" id="1_0rasr"]
+
+[node name="Tree2" type="Node2D" unique_id=2019094514 groups=["Obstacle"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1869461585]
+position = Vector2(4.999977, -98.00003)
+scale = Vector2(0.522, 0.522)
+texture = ExtResource("1_0rasr")

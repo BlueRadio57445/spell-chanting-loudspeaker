@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bitn87u1km2s6" path="res://resources/UI/Obstacle/Stone.png" id="1_06iki"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_000gm"]
-size = Vector2(83, 77)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06iki"]
+size = Vector2(77, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh385"]
+size = Vector2(50, 34)
 
 [node name="Stone" type="Node2D" unique_id=1240750007 groups=["Obstacle"]]
 
@@ -15,5 +18,9 @@ texture = ExtResource("1_06iki")
 [node name="Area2D" type="Area2D" parent="." unique_id=406232198 groups=["Obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=618278993]
-position = Vector2(-0.5, -6.5)
-shape = SubResource("RectangleShape2D_000gm")
+position = Vector2(-1.5, 11)
+shape = SubResource("RectangleShape2D_06iki")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=66902316]
+position = Vector2(7, -26)
+shape = SubResource("RectangleShape2D_oh385")
