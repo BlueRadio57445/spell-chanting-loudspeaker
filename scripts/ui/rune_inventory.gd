@@ -56,7 +56,13 @@ func _ready() -> void:
 func _gui_input(event: InputEvent) -> void:
 	# 使用滑鼠中鍵或右鍵來拖動背包視角
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_RIGHT:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_scroll_container.scroll_vertical -= 10
+			accept_event()
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_scroll_container.scroll_vertical += 10
+			accept_event()
+		elif event.button_index == MOUSE_BUTTON_MIDDLE or event.button_index == MOUSE_BUTTON_RIGHT:
 			_is_dragging_view = event.pressed
 			_last_mouse_pos = event.position
 			accept_event()
