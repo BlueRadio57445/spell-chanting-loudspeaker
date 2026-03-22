@@ -118,7 +118,7 @@ class PoisonBall extends RuneBase:
 		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.4, 1.0, 0.2)
-		audio = preload("res://resources/Audio/符文音檔6.wav")
+		audio = preload("res://resources/Audio/符文音檔9.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -159,7 +159,7 @@ class Heal extends RuneBase:
 		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.2, 1.0, 0.4)
-		audio = preload("res://resources/Audio/符文音檔4.wav")
+		audio = preload("res://resources/Audio/符文音檔10.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
@@ -271,7 +271,8 @@ class Debuff extends RuneBase:
 class Invisible extends RuneBase:
 	func _init() -> void:
 		rune_name = "隱形"
-		description = "消耗能量，施加隱形 3 秒"
+		description = "消耗能量，施加隱形 3 秒\n\"我思故我在，只要不想到自己就沒有人能看到我!\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.046, 0.2, 0.257, 1.0)
 		audio = preload("res://resources/Audio/nut.WAV")
