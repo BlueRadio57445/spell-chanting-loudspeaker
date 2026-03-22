@@ -34,6 +34,9 @@ func _physics_process(_delta):
 	if !player or health <= 0 or is_stunned: return
 	handle_movement(_delta) # 讓子類別決定怎麼動
 	handle_effect_timers(_delta)
+	var direction = (player.global_position - global_position).normalized()
+	if direction.x != 0:
+		$Sprite2D.flip_h = direction.x > 0
 
 func handle_movement(_delta):
 	# 預設追蹤邏輯

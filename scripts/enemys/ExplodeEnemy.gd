@@ -1,16 +1,43 @@
 extends EnemyBase
 
 @export var explode_range = 80.0
+# 新增：控制擺動的參數（企劃如果覺得不夠快或不夠抖，改這裡）
+@export var swing_speed: float = 15.0 # 擺動速度（頻率），數字越大擺越快
+@export var swing_amplitude: float = 0.3 # 擺動幅度（弧度），數字越大轉越開 (約 17 度)
+
 var is_exploding = false
+var _time_passed: float = 0.0 # 用來記錄經過的時間，供 sin 函式使用
+
+@onready var sprite = $Sprite2D
 
 func _on_hitbox_area_entered(area):
-	prepare_explosion()
-	
-func handle_movement(_delta):
+	# 這裡維持原本的判斷邏輯，通常是檢查 body 或者是特定的 Area
+	if area.name == "PlayerHurtbox":
+		prepare_explosion()
+
+func handle_movement(delta):
+	# 1. 處理移動邏輯
 	if is_exploding:
-		velocity = Vector2.ZERO # 確保閃爍時停在原地
-		return
-	super.handle_movement(_delta) # 平時正常追蹤
+		velocity = Vector2.ZERO # 閃爍預警時停在原地
+	else:
+		super.handle_movement(delta) # 這行在EnemyBase應該是處理追蹤玩家的 velocity
+		
+	# 2. 處理視覺擺動動畫 (資工系解法：三角函數)
+	_time_passed += delta
+	
+	# 如果正在準備爆炸，我們可以讓它擺動得更劇烈（選配）
+	var current_swing_speed = swing_speed
+	var current_swing_amplitude = swing_amplitude
+	if is_exploding:
+		current_swing_speed *= 2.0 # 爆炸前抖動快一倍
+		current_swing_amplitude *= 1.2 # 幅度稍微變大
+		
+	# 計算新的旋轉角度： amplitude * sin(time * speed)
+	# 這會讓 sprite.rotation 在 (-amplitude, +amplitude) 之間平滑變動
+	sprite.rotation = current_swing_amplitude * sin(_time_passed * current_swing_speed)
+
+	# 3. 執行物理移動
+	move_and_slide() # 確保最後有呼叫這個，或者 super 裡面有呼叫
 	
 func prepare_explosion():
 	is_exploding = true
