@@ -13,6 +13,7 @@ scale = Vector2(0.522, 0.522)
 texture = ExtResource("1_ecuxw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1128138524 groups=["Obstacle"]]
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=618278993]
 position = Vector2(-1, -25.25)

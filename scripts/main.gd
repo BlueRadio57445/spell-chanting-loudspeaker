@@ -84,12 +84,6 @@ func _input(event: InputEvent) -> void:
 					KEY_W: rune_executor.trigger_starter(1)
 					KEY_E: rune_executor.trigger_starter(2)
 					KEY_R: rune_executor.trigger_starter(3)
-					KEY_A: _test_spawn_projectile_linear()
-					KEY_S: _test_spawn_projectile_stationary()
-					KEY_D: _test_spawn_projectile_orbit()
-					KEY_F: _test_spawn_projectile_homing()
-
-# ===== 測試投射物（按 A/S/D/F）=====
 
 func _get_mouse_world_pos() -> Vector2:
 	return game_viewport.get_canvas_transform().affine_inverse() * game_viewport.get_mouse_position()
@@ -137,4 +131,4 @@ func _toggle_rune_ui_fullscreen() -> void:
 	if fullscreen_rune_ui:
 		rune_ui.anchor_top = 0.0  # 全螢幕覆蓋
 	else:
-		rune_ui.anchor_top = 0.7  # 只覆蓋下半部
+		rune_ui.anchor_top = 1  # 只覆蓋下半部

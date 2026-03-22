@@ -83,7 +83,7 @@ func explode_now():
 	var dist = global_position.distance_to(player.global_position)
 	if dist < explode_range * 1.5:
 		if player.has_method("take_damage"):
-			player.take_damage(attack * 3)
+			player.take_damage(attack)
 
 	# 5. 特效放完後消失
 	tween.tween_callback(queue_free)

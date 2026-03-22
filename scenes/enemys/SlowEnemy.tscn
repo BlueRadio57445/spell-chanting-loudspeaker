@@ -13,7 +13,7 @@ size = Vector2(69, 69)
 [node name="SlowEnemy" type="CharacterBody2D" unique_id=1417908132 groups=["Enemy"]]
 collision_layer = 4
 script = ExtResource("1_ir53m")
-speed = 20.0
+speed = 100.0
 health = 125
 attack = 12
 loot_item_scene = ExtResource("2_ir53m")
