@@ -9,6 +9,13 @@ script = ExtResource("2_tm65q")
 speed = 200.0
 health = 30
 attack = 5
+loot_weights = Dictionary[String, int]({
+"None": 66,
+"blood_tribute": 9,
+"kinetic_energy": 9,
+"meditation": 9,
+"steadfast": 9
+})
 
 [node name="Sprite2D" parent="." index="0" unique_id=270864752]
 position = Vector2(4.4999995, 4.500003)

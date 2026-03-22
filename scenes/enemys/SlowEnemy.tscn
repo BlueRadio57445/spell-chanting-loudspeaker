@@ -16,6 +16,13 @@ script = ExtResource("1_ir53m")
 speed = 100.0
 health = 125
 attack = 12
+loot_weights = Dictionary[String, int]({
+"None": 66,
+"energy_ball": 9,
+"fireball": 9,
+"ice_ball": 9,
+"poison_ball": 9
+})
 loot_item_scene = ExtResource("2_ir53m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=270864752]
@@ -26,7 +33,7 @@ texture = ExtResource("2_80u3f")
 [node name="CharCollision" type="CollisionShape2D" parent="." unique_id=1190225617]
 shape = SubResource("RectangleShape2D_vgmxi")
 
-[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=893333626]
+[node name="EnemyHurtBox" type="Area2D" parent="." unique_id=893333626 groups=["Enemy"]]
 collision_layer = 4
 
 [node name="HurtCollision" type="CollisionShape2D" parent="EnemyHurtBox" unique_id=739336120]

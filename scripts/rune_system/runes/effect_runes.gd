@@ -189,3 +189,23 @@ class Debuff extends RuneBase:
 		# 這裡可以呼叫你之前寫的 apply_effect
 		print("[詛咒] 施放成功")
 		return {"spell": {"type": "debuff", "power": energy * 5.0}}
+
+class Invisible extends RuneBase:
+	func _init() -> void:
+		rune_name = "隱形"
+		description = "消耗能量，施加隱形 3 秒"
+		category = RuneEnums.RuneCategory.EFFECT
+		icon_color = Color(0.046, 0.2, 0.257, 1.0)
+		audio = preload("res://resources/Audio/nut.WAV")
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("energy2", RuneEnums.PortType.ENERGY)
+		]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		# 這裡可以呼叫你之前寫的 apply_effect
+		Player.Instance.apply_invisibility(3)
+		print("[隱形] 施放成功")
+		return {"spell": {"type": "debuff", "power": energy * 5.0}}

@@ -17,19 +17,20 @@
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
-[ext_resource type="PackedScene" path="res://scenes/ui/RuneTooltip.tscn" id="17_yc10j"]
-[ext_resource type="PackedScene" path="res://scenes/ui/obstacles/tree2.tscn" id="20_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://dx1bqefval0a3" path="res://scenes/ui/RuneTooltip.tscn" id="17_yc10j"]
+[ext_resource type="PackedScene" uid="uid://6npm1oemat4a" path="res://scenes/ui/obstacles/tree2.tscn" id="20_gqmmt"]
+[ext_resource type="AudioStream" uid="uid://gisqg8vycb54" path="res://resources/Audio/FunkyTown.wav" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://c4acrhpod6eko" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
 [ext_resource type="Script" uid="uid://c8ckhoglbi3em" path="res://scripts/rune_system/passive_rune_tracker.gd" id="passive_tracker"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
-size = Vector2(5760, 100)
+size = Vector2(8356, 1427)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkv2x"]
-size = Vector2(5760, 100)
+size = Vector2(7767, 846)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj1t"]
-size = Vector2(100, 3240)
+size = Vector2(1211, 3240)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_trceg"]
 animations = [{
@@ -47,7 +48,7 @@ animations = [{
 "texture": ExtResource("4_a8y0u")
 }],
 "loop": true,
-"name": &"attack",
+"name": &"cast",
 "speed": 5.0
 }, {
 "frames": [{
@@ -215,23 +216,23 @@ texture = ExtResource("2_a8y0u")
 collision_layer = 8
 collision_mask = 8
 
-[node name="Down" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1734705556]
-position = Vector2(0, 1520)
+[node name="Down" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1734705556 groups=["Obstacle"]]
+position = Vector2(-177, 2183.5)
 shape = SubResource("RectangleShape2D_a8y0u")
 debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
 
-[node name="Up" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=2032527308]
-position = Vector2(0, -1520)
+[node name="Up" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=2032527308 groups=["Obstacle"]]
+position = Vector2(-36.5, -1893)
 shape = SubResource("RectangleShape2D_jkv2x")
 debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
 
-[node name="Left" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=804029591]
-position = Vector2(2780, 0)
+[node name="Left" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=804029591 groups=["Obstacle"]]
+position = Vector2(3329.5, 0)
 shape = SubResource("RectangleShape2D_jbj1t")
 debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
 
-[node name="Right" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=315905995]
-position = Vector2(-2780, 0)
+[node name="Right" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=315905995 groups=["Obstacle"]]
+position = Vector2(-3620.5, 0)
 shape = SubResource("RectangleShape2D_jbj1t")
 debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
 
@@ -252,8 +253,7 @@ script = ExtResource("4_muem4")
 position = Vector2(-8.000009, -2.499999)
 scale = Vector2(0.21199995, 0.21000002)
 sprite_frames = SubResource("SpriteFrames_trceg")
-animation = &"attack"
-frame_progress = 0.8788089
+animation = &"cast"
 
 [node name="PlayerHurtbox" type="Area2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=1607777653]
 collision_layer = 9
@@ -3130,5 +3130,10 @@ script = ExtResource("5")
 script = ExtResource("passive_tracker")
 
 [node name="EndMenu" parent="." unique_id=776264141 instance=ExtResource("13_a8y0u")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=213645527]
+stream = ExtResource("22_jscy8")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="area_entered" from="GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" to="GameViewportContainer/GameViewport/World/Player" method="_on_player_hurtbox_area_entered"]

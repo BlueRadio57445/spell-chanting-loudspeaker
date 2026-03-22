@@ -12,6 +12,13 @@ swing_speed = 15.0
 swing_amplitude = 0.3
 speed = 75.0
 attack = 20
+loot_weights = Dictionary[String, int]({
+"None": 66,
+"boomerang": 9,
+"giant": 9,
+"invisible": 9,
+"orbit": 9
+})
 
 [node name="Sprite2D" parent="." index="0" unique_id=270864752]
 position = Vector2(3.000006, -6.499997)
