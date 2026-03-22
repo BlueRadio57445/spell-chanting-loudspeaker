@@ -97,7 +97,7 @@ func take_damage(amount):
 	tween.tween_property($AnimatedSprite2D, "modulate", Color.RED, 0.1)
 	tween.tween_property($AnimatedSprite2D, "modulate", Color.WHITE, 0.1)
 	# 這裡修正一個潛在錯誤：set_parallel(false) 是預設值，且應在 tween 啟動前設定
-	tween.chain().tween_callback(func(): can_take_damage = true).set_delay(0.5)
+	tween.chain().tween_callback(func(): can_take_damage = true).set_delay(0.1)
 
 	if hp <= 0:
 		die()

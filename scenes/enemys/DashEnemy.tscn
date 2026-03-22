@@ -6,10 +6,10 @@
 
 [node name="DashEnemy" unique_id=1417908132 instance=ExtResource("1_0hxxw")]
 script = ExtResource("2_apx1p")
-dash_speed = 600.0
+dash_speed = 700.0
 prep_time = 0.3
 dash_duration = 0.3
-speed = 40.0
+speed = 150.0
 health = 25
 attack = 5
 

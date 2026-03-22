@@ -76,11 +76,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4ey"]
-size = Vector2(64, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
-size = Vector2(72, 72)
+size = Vector2(33, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc10j"]
+size = Vector2(56, 72)
 
 [node name="root" type="Control" unique_id=619365517]
 layout_mode = 3
@@ -213,7 +213,7 @@ texture = ExtResource("2_a8y0u")
 
 [node name="Area2D" type="StaticBody2D" parent="GameViewportContainer/GameViewport/World/BackGround" unique_id=1624655557 groups=["Obstacle"]]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 8
 
 [node name="Down" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/BackGround/Area2D" unique_id=1734705556]
 position = Vector2(0, 1520)
@@ -237,8 +237,10 @@ debug_color = Color(0.9098039, 0.24313726, 0.4509804, 0.42352942)
 
 [node name="Player" type="CharacterBody2D" parent="GameViewportContainer/GameViewport/World" unique_id=914802439 groups=["player"]]
 position = Vector2(576, 162)
-collision_mask = 9
+collision_layer = 8
+collision_mask = 12
 script = ExtResource("2")
+SPEED = 300.0
 STOP_DISTANCE = 50
 
 [node name="Camera2D" type="Camera2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=1079541265]
@@ -253,14 +255,17 @@ sprite_frames = SubResource("SpriteFrames_trceg")
 animation = &"attack"
 frame_progress = 0.8788089
 
-[node name="CharCollison" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=695486371]
-shape = SubResource("RectangleShape2D_ya4ey")
-
 [node name="PlayerHurtbox" type="Area2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=1607777653]
-collision_mask = 3
+collision_layer = 9
+collision_mask = 9
 
 [node name="HurtCollision" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" unique_id=743019441]
+position = Vector2(3.5, 0.5)
 shape = SubResource("RectangleShape2D_eb6dy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=660872986]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_yc10j")
 
 [node name="Spawner" parent="GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
 
@@ -3071,12 +3076,24 @@ position = Vector2(-3007, 2191)
 [node name="RuneUI" type="Panel" parent="." unique_id=2004242461]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.69900006
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -0.10003662
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="HpBar" parent="RuneUI" unique_id=1815550483 instance=ExtResource("hp_bar")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 2.0
+offset_top = -891.89996
+offset_right = 1642.0
+offset_bottom = -391.89996
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="RuneUI" unique_id=235767389]
 layout_mode = 1
@@ -3103,13 +3120,6 @@ offset_left = -301.0
 offset_top = -167.0
 offset_right = -101.0
 offset_bottom = -54.0
-
-[node name="HpBar" parent="." unique_id=1815550483 instance=ExtResource("hp_bar")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 220.0
-offset_bottom = 42.0
 
 [node name="RuneExecutor" type="Node" parent="." unique_id=25453600]
 script = ExtResource("5")

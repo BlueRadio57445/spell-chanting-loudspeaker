@@ -5,6 +5,11 @@ var restart_normal = preload("res://resources/UI/Background/restartButton.png")
 var restart_hover = preload("res://resources/UI/Background/restartButtonPressed.png")
 var close_normal = preload("res://resources/UI/Background/closeButton.png")
 var close_hover = preload("res://resources/UI/Background/closeButtonPressed.png")
+var time = 0
+
+func _physics_process(delta: float) -> void:
+	if not Engine.get_main_loop().root.get_tree().paused:
+		time += delta
 
 func _ready():
 	$RetryButton.pressed.connect(_on_retry_pressed)
@@ -44,6 +49,5 @@ func _on_home_pressed():
 
 func show_screen():
 	self.visible = true
-	# ⚠️ 重要：要確保此 CanvasLayer 的 Process Mode 設為 "Always"
-	# 否則遊戲暫停時，這裡的按鈕也會沒反應
+	$Label.text = str(roundi(time)) + " 秒"
 	get_tree().paused = true
