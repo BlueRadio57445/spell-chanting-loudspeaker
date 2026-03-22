@@ -21,6 +21,7 @@ func _register_all() -> void:
 	_register("quad_shot", ModifierRunes.QuadShot.new())
 	_register("fire_trail", ModifierRunes.Trail.new())
 	_register("poison_pool", ModifierRunes.PoisonPool.new())
+	_register("targeting", ModifierRunes.Targeting.new())
 	_register("shotgun", ModifierRunes.Shotgun.new())
 	_register("deflect", ModifierRunes.Deflect.new())
 	_register("heal", EffectRunes.Heal.new())

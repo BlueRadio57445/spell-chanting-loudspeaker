@@ -13,7 +13,7 @@ monitorable = false
 script = ExtResource("1_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=364229846]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_texture")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174052192]

@@ -189,26 +189,25 @@ class Arson extends RuneBase:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 8.0
 		var form: Dictionary = inputs.get("form", {})
-		var target: Variant = inputs.get("target", null)
-		var pos: Vector2
-		if is_instance_valid(target) and target is Node2D:
-			pos = (target as Node2D).global_position
-		else:
-			pos = Player.Instance.global_position
+		var targets: Array = inputs.get("target", [Player.Instance])
 		var scene: PackedScene = preload("res://scenes/damage_areas/fire_damage_area.tscn")
+		var spell_list: Array = []
 
-		var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
-		area.global_position = pos
-		area.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
-		area.apply_form(form)
-		Main.Instance.world.add_child(area)
+		for target: Variant in targets:
+			if not is_instance_valid(target) or not target is Node2D:
+				continue
+			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+			area.global_position = (target as Node2D).global_position
+			area.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
+			area.apply_form(form)
+			Main.Instance.world.add_child(area)
+			spell_list.append({
+				"node": area, "scene": scene, "form": form,
+				"direction": Vector2.ZERO, "damage": damage,
+				"speed": 0.0, "effect": "burn", "effect_time": 3.0
+			})
 
-		var spell_list: Array = [{
-			"node": area, "scene": scene, "form": form,
-			"direction": Vector2.ZERO, "damage": damage,
-			"speed": 0.0, "effect": "burn", "effect_time": 3.0
-		}]
-		print("[縱火] 執行成功，消耗能量: %s" % energy)
+		print("[縱火] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
 		return {"spell": spell_list}
 
 class IceDomain extends RuneBase:
@@ -229,26 +228,25 @@ class IceDomain extends RuneBase:
 		var energy: float = inputs.get("energy", 1.0)
 		var damage: float = energy * 5.0
 		var form: Dictionary = inputs.get("form", {})
-		var target: Variant = inputs.get("target", null)
-		var pos: Vector2
-		if is_instance_valid(target) and target is Node2D:
-			pos = (target as Node2D).global_position
-		else:
-			pos = Player.Instance.global_position
+		var targets: Array = inputs.get("target", [Player.Instance])
 		var scene: PackedScene = preload("res://scenes/damage_areas/ice_damage_area.tscn")
+		var spell_list: Array = []
 
-		var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
-		area.global_position = pos
-		area.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
-		area.apply_form(form)
-		Main.Instance.world.add_child(area)
+		for target: Variant in targets:
+			if not is_instance_valid(target) or not target is Node2D:
+				continue
+			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+			area.global_position = (target as Node2D).global_position
+			area.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
+			area.apply_form(form)
+			Main.Instance.world.add_child(area)
+			spell_list.append({
+				"node": area, "scene": scene, "form": form,
+				"direction": Vector2.ZERO, "damage": damage,
+				"speed": 0.0, "effect": "slow", "effect_time": 3.0
+			})
 
-		var spell_list: Array = [{
-			"node": area, "scene": scene, "form": form,
-			"direction": Vector2.ZERO, "damage": damage,
-			"speed": 0.0, "effect": "slow", "effect_time": 3.0
-		}]
-		print("[冰凍領域] 執行成功，消耗能量: %s" % energy)
+		print("[冰凍領域] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
 		return {"spell": spell_list}
 
 class Debuff extends RuneBase:
