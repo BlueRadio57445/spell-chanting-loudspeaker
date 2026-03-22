@@ -23,9 +23,45 @@ var status_effects = {
 var player = null
 var is_stunned = false
 
+var _effect_icons: Dictionary = {}
+
 func _ready():
 	player = get_tree().root.find_child("Player", true, false)
+	_setup_effect_icons()
 	setup_enemy() # 留給子類別初始化的「鉤子」
+
+func _setup_effect_icons() -> void:
+	var effect_textures: Dictionary = {
+		"burn":   preload("res://resources/EffectIcon/burn.png"),
+		"slow":   preload("res://resources/EffectIcon/slow.png"),
+		"freeze": preload("res://resources/EffectIcon/freeze.png"),
+		"poison": preload("res://resources/EffectIcon/poison.png"),
+	}
+	var order: Array = ["burn", "slow", "freeze", "poison"]
+	var icon_size: float = 5.0
+	var spacing: float = 20.0
+	var total_width: float = (order.size() - 1) * spacing
+	var container := Node2D.new()
+	container.position = Vector2(0.0, -52.0)
+	add_child(container)
+	for i: int in order.size():
+		var effect: String = order[i]
+		var sprite := Sprite2D.new()
+		sprite.texture = effect_textures[effect]
+		var scale_factor: float = icon_size / 64.0
+		sprite.scale = Vector2(scale_factor, scale_factor)
+		sprite.position = Vector2(-total_width / 2.0 + i * spacing, 0.0)
+		sprite.visible = false
+		container.add_child(sprite)
+		_effect_icons[effect] = sprite
+
+func _update_effect_icons() -> void:
+	if _effect_icons.is_empty():
+		return
+	_effect_icons["burn"].visible   = status_effects["burn"]["stacks"] > 0
+	_effect_icons["slow"].visible   = status_effects["slow"]["time_left"] > 0
+	_effect_icons["freeze"].visible = status_effects["freeze"]["time_left"] > 0
+	_effect_icons["poison"].visible = status_effects["poison"]["stacks"] > 0
 
 func setup_enemy():
 	pass # 子類別可以覆寫這裡
@@ -142,7 +178,7 @@ func apply_effect(effect_name: String, value: float = 0.0):
 		"poison":
 			# 無衝突，無限持續
 			status_effects["poison"]["stacks"] += value
-	
+	_update_effect_icons()
 
 func handle_effect_timers(delta):
 	# 處理緩速與冰凍的倒數
@@ -155,6 +191,7 @@ func handle_effect_timers(delta):
 	# 每 1 秒觸發一次 Dot (燃燒 & 中毒)
 	tick_dot_damage(delta, "burn")
 	tick_dot_damage(delta, "poison")
+	_update_effect_icons()
 
 func tick_dot_damage(delta, type):
 	status_effects[type]["timer"] += delta
