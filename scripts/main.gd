@@ -89,7 +89,7 @@ func _input(event: InputEvent) -> void:
 # ===== 測試投射物（按 A/S/D/F）=====
 
 func _get_mouse_world_pos() -> Vector2:
-	return game_viewport.get_mouse_position() + player.global_position - Vector2(game_viewport.size) / 2
+	return game_viewport.get_canvas_transform().affine_inverse() * game_viewport.get_mouse_position()
 
 func _get_aim_direction() -> Vector2:
 	var mouse_pos: Vector2 = _get_mouse_world_pos()
