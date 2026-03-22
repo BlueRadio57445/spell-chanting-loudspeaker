@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://kkphttuvvis7"]
+
+[ext_resource type="VideoStream" uid="uid://lg0ya8sgxldk" path="res://resources/Audio/mv.ogv" id="1_jhxqt"]
+[ext_resource type="Script" uid="uid://d6t33lrg5h3c" path="res://scripts/mv.gd" id="2_hlxvv"]
+
+[node name="Mv" type="Node2D" unique_id=1514208468]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=373420039]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.833, 0.833)
+stream = ExtResource("1_jhxqt")
+script = ExtResource("2_hlxvv")

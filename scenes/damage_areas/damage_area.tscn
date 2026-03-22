@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://s4byc6muptbb"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/damage_area_base.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://c1gb18wuxgkru" path="res://scripts/projectiles/damage_area_base.gd" id="1_script"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0"]
 radius = 32.0
@@ -8,7 +8,6 @@ radius = 32.0
 [node name="DamageArea" type="Area2D" unique_id=125877291]
 collision_layer = 0
 collision_mask = 4
-monitoring = true
 monitorable = false
 script = ExtResource("1_script")
 

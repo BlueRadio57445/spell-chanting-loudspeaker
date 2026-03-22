@@ -16,6 +16,7 @@ const STARTER_IDS: Array[String] = ["starter_0", "starter_1", "starter_2", "star
 func trigger_starter(slot: int) -> void:
 	if is_casting:
 		casting_failed.emit("正在施法中")
+		Player.Instance.anim.play("cast")
 		return
 	if slot < 0 or slot >= STARTER_IDS.size():
 		return

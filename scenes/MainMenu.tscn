@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxukdj6fcm01n" path="res://resources/UI/Background/startButtonPressed.png" id="4_ucygd"]
 [ext_resource type="Texture2D" uid="uid://c8tefy6cjo0nl" path="res://resources/UI/Background/exitButton.png" id="5_mipys"]
 [ext_resource type="Texture2D" uid="uid://bkt13wagqkino" path="res://resources/UI/Background/exitButtonPressed.png" id="6_8a8k8"]
+[ext_resource type="AudioStream" uid="uid://pq588gduvglx" path="res://resources/Audio/mainpage.WAV" id="7_ucygd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2wh52"]
 font_size = 32
@@ -50,3 +51,16 @@ scale = Vector2(0.55, 0.55)
 texture_normal = ExtResource("5_mipys")
 texture_pressed = ExtResource("6_8a8k8")
 texture_hover = ExtResource("6_8a8k8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=116527122]
+stream = ExtResource("7_ucygd")
+volume_db = -15.0
+autoplay = true
+
+[node name="PlayMvCheckBox" type="CheckBox" parent="." unique_id=243500453]
+offset_left = 295.0
+offset_top = 566.0
+offset_right = 385.0
+offset_bottom = 642.0
+scale = Vector2(2, 2)
+text = "不要撥放 MV"

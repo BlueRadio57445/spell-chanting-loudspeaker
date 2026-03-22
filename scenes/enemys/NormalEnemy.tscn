@@ -15,8 +15,11 @@ collision_layer = 4
 script = ExtResource("1_vu24j")
 speed = 150.0
 loot_weights = Dictionary[String, int]({
-"None": 50,
-"fireball": 999
+"None": 66,
+"energy_ball": 9,
+"fireball": 9,
+"ice_ball": 9,
+"poison_ball": 9
 })
 loot_item_scene = ExtResource("2_vu24j")
 

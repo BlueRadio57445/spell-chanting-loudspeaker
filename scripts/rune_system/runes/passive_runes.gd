@@ -27,6 +27,7 @@ class KineticEnergy extends PassiveRuneBase:
 	func _init() -> void:
 		rune_name = "動能"
 		description = "每移動 200 單位儲存一格能量，最多三格\n\"噠噠噠...走路發電，我是人形永動機！\""
+		type_description="被動符文，為法術提供額外的能量"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.9, 0.7, 0.2)
 		audio = preload("res://resources/Audio/Paon.wav")
@@ -57,6 +58,7 @@ class Meditation extends PassiveRuneBase:
 	func _init() -> void:
 		rune_name = "冥想"
 		description = "停止施法每 3 秒儲存一格能量，最多兩格\n\"呼嚕嚕...偷懶?我才沒有呢!\""
+		type_description="被動符文，為法術提供額外的能量"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.6, 0.4, 1.0)
 		audio = preload("res://resources/Audio/Leopard.wav")
@@ -93,6 +95,7 @@ class BloodTribute extends PassiveRuneBase:
 	func _init() -> void:
 		rune_name = "鮮血償還"
 		description = "每累積失血 30 點儲存一格能量，最多三格\n\"大千錄!\""
+		type_description="被動符文，為法術提供額外的能量"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(1.0, 0.2, 0.2)
 		audio = preload("res://resources/Audio/Coccinelle.wav")
@@ -130,6 +133,7 @@ class Steadfast extends PassiveRuneBase:
 	func _init() -> void:
 		rune_name = "堅守"
 		description = "完全靜止每 3 秒儲存一格能量，最多三格\n\"...敵不動我不動，我一動...我就沒電了。\""
+		type_description="被動符文，為法術提供額外的能量"
 		category = RuneEnums.RuneCategory.PASSIVE_TRIGGER
 		icon_color = Color(0.4, 0.8, 1.0)
 		audio = preload("res://resources/Audio/Paon.wav")

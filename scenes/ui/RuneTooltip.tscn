@@ -9,6 +9,9 @@ outline_size = 4
 [sub_resource type="LabelSettings" id="LabelSettings_mx6vu"]
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_hwe14"]
+font_size = 30
+
 [node name="RuneTooltip" type="PanelContainer" unique_id=1926931745]
 mouse_filter = 2
 script = ExtResource("1_mx6vu")
@@ -29,3 +32,7 @@ custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 text = "請輸入文本"
 label_settings = SubResource("LabelSettings_mx6vu")
+
+[node name="TypeDescLabel" type="Label" parent="VBoxContainer" unique_id=2068828671]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_hwe14")
