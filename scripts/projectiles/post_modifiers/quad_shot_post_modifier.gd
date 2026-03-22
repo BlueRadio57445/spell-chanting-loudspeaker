@@ -10,11 +10,11 @@ func clone() -> PostModifier:
 	return QuadShotPostModifier.new()
 
 func _ready() -> void:
-	(get_parent() as ProjectileBase).body_entered.connect(_on_hit)
+	(get_parent() as SpellNodeBase).hit_body.connect(_on_hit)
 	_spawn_attach_particles()
 
 func _spawn_attach_particles() -> void:
-	var pos: Vector2 = (get_parent() as ProjectileBase).global_position
+	var pos: Vector2 = (get_parent() as SpellNodeBase).global_position
 	var tex: ImageTexture = _create_diamond_texture()
 
 	var gradient := Gradient.new()
@@ -52,7 +52,6 @@ func _create_diamond_texture() -> ImageTexture:
 		for y: int in range(H):
 			var dx: float = abs(x - cx + 0.5)
 			var dy: float = abs(y - cy + 0.5)
-			# 稜形條件：dx/cx + dy/cy <= 1
 			if dx / cx + dy / cy <= 1.0:
 				img.set_pixel(x, y, Color(1.0, 0.92, 0.05, 1.0))
 			elif dx / cx + dy / cy <= 1.25:
@@ -60,7 +59,7 @@ func _create_diamond_texture() -> ImageTexture:
 	return ImageTexture.create_from_image(img)
 
 func _on_hit(body: Node2D) -> void:
-	var proj: ProjectileBase = get_parent() as ProjectileBase
+	var proj: SpellNodeBase = get_parent() as SpellNodeBase
 	if body == proj.owner_node:
 		return
 	var pos: Vector2 = proj.global_position

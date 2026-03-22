@@ -11,4 +11,5 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	_hit_targets.append(body)
 	_apply_hit(body)
+	hit_body.emit(body)
 	# 不 queue_free — 繼續飛行

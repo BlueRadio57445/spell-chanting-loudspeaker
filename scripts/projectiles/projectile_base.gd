@@ -1,6 +1,6 @@
 # 投射物基類
 # 所有投射物繼承此類，移動模式透過子節點 MovementModule 插拔
-extends Area2D
+extends SpellNodeBase
 class_name ProjectileBase
 
 @export var speed: float = 300.0
@@ -12,7 +12,6 @@ class_name ProjectileBase
 @export var effect_time: float = 0.0
 
 var direction: Vector2 = Vector2.RIGHT
-var owner_node: Node2D = null
 var movement_module: MovementModule = null
 var penetrating: bool = false
 
@@ -102,6 +101,8 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 		_penetrating_hit_targets.append(body)
 		_apply_hit(body)
+		hit_body.emit(body)
 	else:
 		_apply_hit(body)
+		hit_body.emit(body)
 		queue_free()
