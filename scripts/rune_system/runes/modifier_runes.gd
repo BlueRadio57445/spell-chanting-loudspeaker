@@ -39,24 +39,22 @@ class MultiShot extends RuneBase:
 		for spell: Dictionary in spell_list:
 			expanded.append(spell)
 			var scene: PackedScene = spell.get("scene")
-			var node_obj: Variant = spell.get("node")
-			if scene == null or not is_instance_valid(node_obj):
+			if scene == null:
 				continue
-			var original: ProjectileBase = node_obj as ProjectileBase
 
-			# 建立第 2、3 發的節點（尚未加入場景，供下游後修飾先掛上去）
+			# 從 spell dict 讀取已記錄的後修飾，不依賴 original 節點是否存活
+			var recorded_modifiers: Array = spell.get("post_modifiers", [])
+
 			for i: int in 2:
 				var copy: ProjectileBase = scene.instantiate()
 				copy.global_position = Player.Instance.global_position
-				copy.setup(original.owner_node, spell["direction"],
+				copy.setup(Player.Instance, spell["direction"],
 					spell["speed"], spell["damage"],
 					spell["effect"], spell["effect_time"])
 				copy.apply_form(spell.get("form", {}))
 
-				# 把 original 上已掛的 PostModifier 複製到 copy
-				for child: Node in original.get_children():
-					if child is PostModifier:
-						copy.add_child((child as PostModifier).clone())
+				for modifier: PostModifier in recorded_modifiers:
+					copy.add_child(modifier.clone())
 
 				var copy_spell: Dictionary = {
 					"node": copy, "scene": scene,
@@ -67,9 +65,8 @@ class MultiShot extends RuneBase:
 				}
 				expanded.append(copy_spell)
 
-				# 延遲加入場景（下游後修飾已在節點上，_ready 時會初始化）
 				var delay: float = 0.1 * (i + 1)
-				original.get_tree().create_timer(delay).timeout.connect(func() -> void:
+				Main.Instance.get_tree().create_timer(delay).timeout.connect(func() -> void:
 					Main.Instance.world.add_child(copy)
 				)
 
@@ -95,8 +92,11 @@ class QuadShot extends RuneBase:
 				continue
 			var proj: ProjectileBase = node_obj as ProjectileBase
 			var modifier: QuadShotPostModifier = QuadShotPostModifier.new()
-			modifier.spawn_scene = scene
 			proj.add_child(modifier)
+			# 記錄進 spell dict，供 MultiShot 等後續符文 clone 使用
+			if not spell.has("post_modifiers"):
+				spell["post_modifiers"] = []
+			(spell["post_modifiers"] as Array).append(modifier)
 
 		return {"spell": spell_list}
 
