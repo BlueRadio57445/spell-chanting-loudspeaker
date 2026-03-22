@@ -122,8 +122,7 @@ func _build_ui() -> void:
 	for port: RunePort in required_in:
 		in_col.add_child(_create_port_row(port, true))
 	if optional_in.size() > 0:
-		if has_both:
-			_add_section_label(in_col, "可選")
+		_add_section_label(in_col, "可選")
 		for port: RunePort in optional_in:
 			in_col.add_child(_create_port_row(port, true))
 
