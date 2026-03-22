@@ -33,7 +33,8 @@ func _ready() -> void:
 	scale = Vector2(size_scale, size_scale)
 
 	# 生命週期計時
-	get_tree().create_timer(lifetime).timeout.connect(queue_free)
+	if movement_module != OrbitMovement:
+		get_tree().create_timer(lifetime, false).timeout.connect(queue_free)
 
 func _physics_process(delta: float) -> void:
 	movement_module.move(self, delta)

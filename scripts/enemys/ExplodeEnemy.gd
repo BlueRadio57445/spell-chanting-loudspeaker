@@ -4,7 +4,8 @@ extends EnemyBase
 var is_exploding = false
 
 func _on_hitbox_area_entered(area):
-	prepare_explosion()
+	if(area.name == "Player"):
+		prepare_explosion()
 	
 func handle_movement(_delta):
 	if is_exploding:
