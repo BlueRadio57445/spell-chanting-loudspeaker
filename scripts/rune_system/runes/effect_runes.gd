@@ -118,7 +118,7 @@ class PoisonBall extends RuneBase:
 		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.4, 1.0, 0.2)
-		audio = preload("res://resources/Audio/符文音檔6.wav")
+		audio = preload("res://resources/Audio/符文音檔9.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false),
@@ -159,7 +159,7 @@ class Heal extends RuneBase:
 		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.2, 1.0, 0.4)
-		audio = preload("res://resources/Audio/符文音檔4.wav")
+		audio = preload("res://resources/Audio/符文音檔10.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("energy2", RuneEnums.PortType.ENERGY),
@@ -170,6 +170,84 @@ class Heal extends RuneBase:
 		Player.Instance.take_heal(HEAL_AMOUNT)
 		print("[治療] 回復 %d 點生命值" % HEAL_AMOUNT)
 		return {"spell": []}
+
+class Arson extends RuneBase:
+	func _init() -> void:
+		rune_name = "縱火"
+		description = "消耗能量，在指定位置留下燃燒火焰\n\"燒吧，燒吧！\""
+		category = RuneEnums.RuneCategory.EFFECT
+		icon_color = Color(1.0, 0.45, 0.0)
+		audio = preload("res://resources/Audio/符文音檔1.wav")
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
+			RunePort.create("target", RuneEnums.PortType.TARGET, false),
+		]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		var damage: float = energy * 8.0
+		var form: Dictionary = inputs.get("form", {})
+		var targets: Array = inputs.get("target", [Player.Instance])
+		var scene: PackedScene = preload("res://scenes/damage_areas/fire_damage_area.tscn")
+		var spell_list: Array = []
+
+		for target: Variant in targets:
+			if not is_instance_valid(target) or not target is Node2D:
+				continue
+			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+			area.global_position = (target as Node2D).global_position
+			area.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
+			area.apply_form(form)
+			Main.Instance.world.add_child(area)
+			spell_list.append({
+				"node": area, "scene": scene, "form": form,
+				"direction": Vector2.ZERO, "damage": damage,
+				"speed": 0.0, "effect": "burn", "effect_time": 3.0
+			})
+
+		print("[縱火] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
+		return {"spell": spell_list}
+
+class IceDomain extends RuneBase:
+	func _init() -> void:
+		rune_name = "冰凍領域"
+		description = "消耗能量，在指定位置留下冰凍地帶，緩速範圍內敵人\n\"別想逃！\""
+		category = RuneEnums.RuneCategory.EFFECT
+		icon_color = Color(0.5, 0.8, 1.0)
+		audio = preload("res://resources/Audio/符文音檔2.wav")
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
+			RunePort.create("target", RuneEnums.PortType.TARGET, false),
+		]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		var damage: float = energy * 5.0
+		var form: Dictionary = inputs.get("form", {})
+		var targets: Array = inputs.get("target", [Player.Instance])
+		var scene: PackedScene = preload("res://scenes/damage_areas/ice_damage_area.tscn")
+		var spell_list: Array = []
+
+		for target: Variant in targets:
+			if not is_instance_valid(target) or not target is Node2D:
+				continue
+			var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+			area.global_position = (target as Node2D).global_position
+			area.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
+			area.apply_form(form)
+			Main.Instance.world.add_child(area)
+			spell_list.append({
+				"node": area, "scene": scene, "form": form,
+				"direction": Vector2.ZERO, "damage": damage,
+				"speed": 0.0, "effect": "slow", "effect_time": 3.0
+			})
+
+		print("[冰凍領域] 執行成功，消耗能量: %s，目標數: %d" % [energy, spell_list.size()])
+		return {"spell": spell_list}
 
 class Debuff extends RuneBase:
 	func _init() -> void:
@@ -193,7 +271,8 @@ class Debuff extends RuneBase:
 class Invisible extends RuneBase:
 	func _init() -> void:
 		rune_name = "隱形"
-		description = "消耗能量，施加隱形 3 秒"
+		description = "消耗能量，施加隱形 3 秒\n\"我思故我在，只要不想到自己就沒有人能看到我!\""
+		type_description = "效果符文，描述法術的主體效果"
 		category = RuneEnums.RuneCategory.EFFECT
 		icon_color = Color(0.046, 0.2, 0.257, 1.0)
 		audio = preload("res://resources/Audio/nut.WAV")

@@ -57,6 +57,9 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("meditation"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("blood_tribute"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("steadfast"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("arson"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("ice_domain"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("targeting"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("invisible"))
 	
 	# 圖變更時同步給 executor

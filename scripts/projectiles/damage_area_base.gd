@@ -39,6 +39,7 @@ func _ready() -> void:
 	match visual:
 		"fire":   add_child(_create_fire_particles())
 		"poison": add_child(_create_poison_particles())
+		"ice":    add_child(_create_ice_particles())
 
 func _create_poison_particles() -> CPUParticles2D:
 	var gradient := Gradient.new()
@@ -51,7 +52,7 @@ func _create_poison_particles() -> CPUParticles2D:
 	particles.lifetime = 1.2
 	particles.explosiveness = 0.0
 	particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
-	particles.emission_sphere_radius = 30.0
+	particles.emission_sphere_radius = 100.0
 	particles.spread = 60.0
 	particles.direction = Vector2(0.0, -1.0)
 	particles.initial_velocity_min = 8.0
@@ -74,7 +75,7 @@ func _create_fire_particles() -> CPUParticles2D:
 	particles.lifetime = 0.8
 	particles.explosiveness = 0.0
 	particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
-	particles.emission_sphere_radius = 30.0
+	particles.emission_sphere_radius = 100.0
 	particles.spread = 20.0
 	particles.direction = Vector2(0.0, -1.0)
 	particles.initial_velocity_min = 30.0
@@ -82,6 +83,29 @@ func _create_fire_particles() -> CPUParticles2D:
 	particles.scale_amount_min = 5.0
 	particles.scale_amount_max = 9.0
 	particles.gravity = Vector2(0.0, 20.0)
+	particles.color_ramp = gradient
+	particles.z_index = 1
+	return particles
+
+func _create_ice_particles() -> CPUParticles2D:
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(0.6, 0.9, 1.0, 1.0))
+	gradient.set_color(1, Color(0.1, 0.4, 0.8, 0.0))
+
+	var particles := CPUParticles2D.new()
+	particles.emitting = true
+	particles.amount = 20
+	particles.lifetime = 1.0
+	particles.explosiveness = 0.0
+	particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
+	particles.emission_sphere_radius = 100.0
+	particles.spread = 45.0
+	particles.direction = Vector2(0.0, -1.0)
+	particles.initial_velocity_min = 10.0
+	particles.initial_velocity_max = 30.0
+	particles.scale_amount_min = 4.0
+	particles.scale_amount_max = 7.0
+	particles.gravity = Vector2(0.0, 10.0)
 	particles.color_ramp = gradient
 	particles.z_index = 1
 	return particles

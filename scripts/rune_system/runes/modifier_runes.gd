@@ -30,7 +30,7 @@ class MultiShot extends RuneBase:
 		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.8, 0.2)
-		audio = preload("res://resources/Audio/符文音檔7.wav")
+		audio = preload("res://resources/Audio/符文音檔16.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -85,7 +85,7 @@ class QuadShot extends RuneBase:
 		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.9, 0.9, 0.2)
-		audio = preload("res://resources/Audio/符文音檔5.wav")
+		audio = preload("res://resources/Audio/符文音檔13.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -113,7 +113,7 @@ class Boomerang extends RuneBase:
 		type_description="前修飾符文，描述法術的釋放型態，必須放在效果符文前面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.4, 0.9, 0.5)
-		audio = preload("res://resources/Audio/符文音檔4.wav")
+		audio = preload("res://resources/Audio/符文音檔1.wav")
 		ports_in = [
 			RunePort.create("energy", RuneEnums.PortType.ENERGY),
 			RunePort.create("form", RuneEnums.PortType.FORM, false),
@@ -161,7 +161,7 @@ class Shotgun extends RuneBase:
 		type_description="前修飾符文，描述法術的釋放型態，必須放在效果符文前面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.7, 0.2)
-		audio = preload("res://resources/Audio/符文音檔4.wav")
+		audio = preload("res://resources/Audio/符文音檔12.wav")
 		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
 		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
 
@@ -182,7 +182,7 @@ class Deflect extends RuneBase:
 		type_description="前修飾符文，描述法術的釋放型態，必須放在效果符文前面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.3, 0.7, 1.0)
-		audio = preload("res://resources/Audio/符文音檔5.wav")
+		audio = preload("res://resources/Audio/符文音檔18.wav")
 		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
 		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
 
@@ -202,7 +202,7 @@ class Trail extends RuneBase:
 		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.35, 0.05)
-		audio = preload("res://resources/Audio/符文音檔5.wav")
+		audio = preload("res://resources/Audio/符文音檔10.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -230,7 +230,7 @@ class PoisonPool extends RuneBase:
 		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.6, 0.0, 0.85)
-		audio = preload("res://resources/Audio/符文音檔5.wav")
+		audio = preload("res://resources/Audio/符文音檔1.wav")
 		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
 
@@ -249,3 +249,25 @@ class PoisonPool extends RuneBase:
 				spell["post_modifiers"] = []
 			(spell["post_modifiers"] as Array).append("poison_pool")
 		return {"spell": spell_list}
+
+class Targeting extends RuneBase:
+	func _init() -> void:
+		rune_name = "瞄準"
+		description = "鎖定最近的五隻敵人\n\"目標確認，開火！\""
+		type_description = "輔助符文，為法術提供目標資訊"
+		category = RuneEnums.RuneCategory.MODIFIER
+		icon_color = Color(1.0, 0.2, 0.2)
+		audio = preload("res://resources/Audio/符文音檔5.wav")
+		ports_out = [RunePort.create("target", RuneEnums.PortType.TARGET)]
+
+	func execute(_inputs: Dictionary, _context: Node) -> Dictionary:
+		var player: Node2D = Player.Instance
+		var all_enemies: Array = Main.Instance.get_tree().get_nodes_in_group("Enemy")
+		var valid: Array = all_enemies.filter(func(e: Variant) -> bool:
+			return is_instance_valid(e)
+		)
+		valid.sort_custom(func(a: Node2D, b: Node2D) -> bool:
+			return a.global_position.distance_to(player.global_position) \
+				< b.global_position.distance_to(player.global_position)
+		)
+		return {"target": valid.slice(0, 5)}

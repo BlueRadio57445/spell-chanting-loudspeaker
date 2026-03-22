@@ -15,6 +15,49 @@
 
 ---
 
+## 0. Port 輸入輸出規範（必讀）
+
+### 可選輸入一定要有預設值
+
+`ports_in` 裡 `is_required = false` 的 port，**在 `execute()` 裡必須用 `.get(key, 預設值)` 讀取，不可直接索引**。
+
+各型別的標準預設值：
+
+| PortType | key 範例 | 標準預設值 | 說明 |
+|----------|---------|-----------|------|
+| `ENERGY` | `"energy"` | `1.0` | 能量最小單位 |
+| `DIRECTION_VECTOR` | `"direction"` | `[Main.Instance._get_aim_direction()]` | **滑鼠瞄準方向**，注意是 Array |
+| `FORM` | `"form"` | `{}` | 空字典，代表無修飾 |
+| `TARGET` | `"target"` | `null` | 無目標 |
+
+### Direction 是 Array，永遠用迴圈處理
+
+`direction` 的值型別是 `Array`（可能含多個 `Vector2`，例如霰彈符文會展開成 3 個方向）。**永遠用 `for dir: Vector2 in directions` 迴圈**，不要直接取第一個元素。
+
+```gdscript
+# 正確
+var directions: Array = inputs.get("direction", [Main.Instance._get_aim_direction()])
+for dir: Vector2 in directions:
+    # 對每個方向生成一發
+    ...
+
+# 錯誤 ❌
+var dir: Vector2 = inputs.get("direction", Main.Instance._get_aim_direction())
+```
+
+### Required vs Optional 的 port 宣告
+
+```gdscript
+# required（必須接線才能執行）
+RunePort.create("energy", RuneEnums.PortType.ENERGY)           # is_required 預設 true
+
+# optional（未接線時用預設值）
+RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)
+RunePort.create("form",      RuneEnums.PortType.FORM,             false)
+```
+
+---
+
 ## 1. 新增符文
 
 ### 1.1 判斷符文類型
@@ -210,6 +253,9 @@ id 規則：`snake_case`，全小寫，和腳本 class 名稱語義對應。
 
 ### 2.1 何時需要新場景
 
+> **此規則通用於所有場景類型（投射物、DamageArea 等），不專屬於投射物。**
+
+需要新場景：
 - 需要不同的外觀（Sprite 材質不同）
 - 需要不同的碰撞形狀大小
 
@@ -373,11 +419,34 @@ func _spawn_area(pos: Vector2, area_owner: Node2D) -> void:
 
 ## 5. 新增傷害區域變體
 
-目前只有一個共用場景 `damage_area.tscn` + `damage_area_base.gd`，**不需要**建新場景。
+### 5.1 何時需要新場景
 
-透過 `setup()` 的參數控制所有行為，`visual` 參數目前支援 `"fire"` 和 `"poison"`。
+同 Section 2.1 的通用規則：
 
-若需要新的 visual 效果，在 `damage_area_base.gd` 的 `_ready()` 的 `match visual` 裡加分支，並新增對應的 `_create_xxx_particles()` 方法（參考 `_create_fire_particles()` 的寫法）。
+- **需要新場景**：有不同外觀（Sprite 材質不同）→ 用 MCP 建新 .tscn，流程同 Section 2.2，存放於 `scenes/damage_areas/`，使用腳本 `damage_area_base.gd`，`collision_mask = 4`
+- **不需要新場景**：只改傷害、tick 間隔、duration、效果等參數 → 直接在符文的 `setup()` 參數調整
+
+### 5.2 新增純粒子 visual 效果（不需要新場景時）
+
+在 `damage_area_base.gd` 的 `_ready()` 的 `match visual` 裡加分支，並新增對應的 `_create_xxx_particles()` 方法（參考 `_create_fire_particles()` 的寫法）。
+
+`visual` 參數目前支援 `"fire"` 和 `"poison"`。
+
+### 5.3 DamageArea 場景結構範本
+
+```
+FireDamageArea (Area2D)
+  script = damage_area_base.gd
+  collision_layer = 0
+  collision_mask = 4
+  monitoring = true
+  monitorable = false
+  ├── Sprite2D
+  │     texture = <你的圖>
+  │     scale = <依圖片解析度調整，應比粒子範圍小>
+  └── CollisionShape2D
+        shape = CircleShape2D(radius=32.0)  ← 慣例碰撞半徑
+```
 
 ---
 
