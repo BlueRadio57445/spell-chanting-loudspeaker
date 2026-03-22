@@ -12,6 +12,7 @@ static var Instance : Player
 var can_take_damage = true
 var is_moving = false
 var direction
+var dash_cooldown = 0.0
 
 var speed_modifier = 0.0 # 百分比，例如 0.2 代表 +20%
 var speed_mod_timer = 0.0
@@ -40,6 +41,8 @@ func _input(event: InputEvent) -> void:
 		attack_nearest_enemy()
 
 func _physics_process(_delta: float) -> void:
+	if not Engine.get_main_loop().root.get_tree().paused:
+		dash_cooldown -= _delta
 	var current_speed = SPEED * (1.0 + speed_modifier)
 	if is_moving:
 		# 如果距離大於停止距離，就移動
@@ -110,30 +113,13 @@ func die():
 	
 
 func attack_nearest_enemy():
-	# 1. 取得所有在 "mobs" 群組裡的怪物 (記得你的怪物要加入這個群組)
-	var enemies = get_tree().get_nodes_in_group("Enemy")
-	
-	if enemies.size() == 0:
-		print("場面上沒有敵人可以測試")
-		return
-		
-	var nearest_enemy = null
-	var min_dist = INF # 初始值設為無限大
-	
-	# 2. 遍歷所有怪物找出最近的
-	for enemy in enemies:
-		var dist = global_position.distance_to(enemy.global_position)
-		if dist < min_dist:
-			min_dist = dist
-			nearest_enemy = enemy
-			
-	# 3. 執行傷害
-	if nearest_enemy != null:
-		print("對最近的敵人造成中毒！距離：", min_dist)
-		
-		nearest_enemy.take_damage(300)
-	
-	apply_speed_modifier(1.5, 5)
+	# 3. 獲取滑鼠點擊的位置
+	var target_position = get_global_mouse_position()
+	direction = (target_position - global_position).normalized()
+	is_moving = true
+	if(dash_cooldown <= 0):
+		apply_speed_modifier(3, 0.1)
+		dash_cooldown = 1;
 
 func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 	print(area.name)
