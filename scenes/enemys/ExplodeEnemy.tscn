@@ -7,9 +7,11 @@
 
 [node name="ExplodeEnemy" unique_id=1417908132 instance=ExtResource("1_kykiv")]
 script = ExtResource("2_s06hd")
-explode_range = 80.0
+explode_range = 75.0
 swing_speed = 15.0
 swing_amplitude = 0.3
+speed = 75.0
+attack = 20
 
 [node name="Sprite2D" parent="." index="0" unique_id=270864752]
 position = Vector2(3.000006, -6.499997)

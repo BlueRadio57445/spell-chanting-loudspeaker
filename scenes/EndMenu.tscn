@@ -1,53 +1,60 @@
 [gd_scene format=3 uid="uid://bagidqd5jp0vo"]
 
 [ext_resource type="Script" uid="uid://dktll4rwufi0u" path="res://scripts/EndMenu.gd" id="1_7h87m"]
+[ext_resource type="Texture2D" uid="uid://x37lll8atdsq" path="res://resources/UI/Background/EndMenu.png" id="2_28kdt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ckmov"]
 font_size = 60
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wfns0"]
 font_size = 32
 
 [node name="EndMenu" type="CanvasLayer" unique_id=776264141]
+process_mode = 3
 visible = false
 script = ExtResource("1_7h87m")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1439057720]
-anchors_preset = -1
-anchor_right = 0.2775
-anchor_bottom = 0.27666667
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.27058825, 0.59607846, 0.49411765, 0.5254902)
-metadata/_edit_use_anchors_ = true
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1615335832]
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1600.0
+offset_bottom = 899.0
+texture = ExtResource("2_28kdt")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="." unique_id=786461561]
-offset_left = 376.0
-offset_top = 122.0
-offset_right = 1245.0
-offset_bottom = 351.0
-text = "你人沒了"
+anchors_preset = -1
+anchor_left = -0.440625
+anchor_top = -0.16222222
+anchor_right = -0.440625
+anchor_bottom = -0.16222222
+offset_left = 674.0
+offset_top = 549.0
+offset_right = 1543.0
+offset_bottom = 778.0
+text = "0 秒"
 label_settings = SubResource("LabelSettings_ckmov")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="RetryButton" type="Button" parent="." unique_id=65232265]
+[node name="RetryButton" type="TextureButton" parent="." unique_id=235154096]
 anchors_preset = -1
 anchor_left = -0.0025
 anchor_top = -0.032222223
-anchor_right = 0.0525
-offset_left = 638.0
-offset_top = 544.0
-offset_right = 917.0
-offset_bottom = 641.0
-text = "重來"
+anchor_right = 0.0325
+offset_left = 284.0
+offset_top = 747.0
+offset_right = 987.0
+offset_bottom = 954.0
+scale = Vector2(0.545, 0.545)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="." unique_id=505054249]
-offset_left = 1347.0
-offset_top = 653.0
-offset_right = 1576.0
-offset_bottom = 882.0
+offset_left = 1387.0
+offset_top = 283.0
+offset_right = 1616.0
+offset_bottom = 512.0
 text = "企劃 : 幻夜
 程式 : 收音機
 美術 : 零夜
@@ -55,13 +62,13 @@ text = "企劃 : 幻夜
 label_settings = SubResource("LabelSettings_wfns0")
 metadata/_edit_use_anchors_ = true
 
-[node name="HomeButton" type="Button" parent="." unique_id=1086051261]
+[node name="HomeButton" type="TextureButton" parent="." unique_id=921677866]
 anchors_preset = -1
 anchor_right = 0.055728074
 anchor_bottom = 0.034444444
-offset_left = 634.0
-offset_top = 659.0
-offset_right = 913.0
-offset_bottom = 756.0
-text = "爛遊戲不玩了 :("
+offset_left = 958.0
+offset_top = 721.0
+offset_right = 1624.8351
+offset_bottom = 921.0
+scale = Vector2(0.55, 0.55)
 metadata/_edit_use_anchors_ = true

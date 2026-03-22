@@ -282,6 +282,18 @@ func _on_drag_started():
 	# 視覺特效
 	modulate.a = 0.7
 	scale = Vector2(1.05, 1.05)
+	
+	top_level = true
+	z_index = 100
+	global_position = current_global_pos
+	
+	# 新增：開始拖曳時，確保 Tooltip 消失
+	var tooltip = get_tree().root.find_child("RuneTooltip", true, false)
+	if tooltip:
+		tooltip.hide_tooltip()
+	
+	modulate.a = 0.7
+	scale = Vector2(1.05, 1.05)
 
 func _on_drag_ended():
 	# 1. 同樣先記住現在在哪裡
@@ -297,3 +309,24 @@ func _on_drag_ended():
 	# 恢復視覺
 	modulate.a = 1.0
 	scale = Vector2(1.0, 1.0)
+
+func _ready():
+	# 連結原本就有的滑鼠訊號
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+func _on_mouse_entered():
+	# 增加檢查：如果正在拖曳中，就不顯示 Tooltip
+	if is_dragging:
+		return
+
+	# 尋找場景樹中的 Tooltip 節點 (這是一個快速作法，資工系建議用全域 Signal)
+	var tooltip = get_tree().root.find_child("RuneTooltip", true, false)
+	if tooltip:
+		tooltip.display(self.rune)
+
+func _on_mouse_exited():
+	var tooltip = get_tree().root.find_child("RuneTooltip", true, false)
+	if tooltip:
+		tooltip.hide_tooltip()
+		
