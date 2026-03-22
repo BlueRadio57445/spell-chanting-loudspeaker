@@ -2,7 +2,7 @@
 extends MovementModule
 class_name OrbitMovement
 
-@export var orbit_radius: float = 80.0
+@export var orbit_radius: float = 180.0
 @export var orbit_speed: float = 3.0
 
 var angle: float = 0.0
