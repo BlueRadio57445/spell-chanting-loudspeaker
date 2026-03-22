@@ -37,7 +37,6 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
 	#rune_inventory.add_rune(RuneRegistry.create_instance("debuff"))
-	#rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("energy_ball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("ice_ball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("poison_ball"))
@@ -45,27 +44,47 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("giant"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("orbit"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("deflect"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("kinetic_energy"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("meditation"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("blood_tribute"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("steadfast"))
-
+	rune_inventory.add_rune(RuneRegistry.create_instance("invisible"))
+	
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:
 		rune_executor.graph = rune_canvas.graph
 	)
 
-	rune_executor.casting_started.connect(func(id: String) -> void:
-		print("[Main] 施法開始: %s" % id)
-	)
-	rune_executor.casting_finished.connect(func() -> void:
-		print("[Main] 施法結束")
-	)
 	rune_executor.casting_failed.connect(func(reason: String) -> void:
 		print("[Main] 施法失敗: %s" % reason)
+	)
+	
+	# Main.gd 中的 _ready()
+	
+	rune_executor.casting_started.connect(func(id: String) -> void:
+		Player.Instance.is_casting = true
+		Player.Instance.anim.play("cast") # 觸發施法動畫
+		print("[Main] 施法開始: %s" % id)
+	)
+	
+	rune_executor.casting_finished.connect(func() -> void:
+		Player.Instance.is_casting = false # 施法結束，解除鎖定
+		# 這裡不需要手動 play("walk")，因為 Player 的 _physics_process 下一幀會自動處理
+		print("[Main] 施法結束")
 	)
 
 func _input(event: InputEvent) -> void:

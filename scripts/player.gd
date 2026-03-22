@@ -65,21 +65,19 @@ func _physics_process(_delta: float) -> void:
 	# 動畫部分
 	run_animated()
 
+var is_casting = false
 func run_animated():
-	# 優先檢查是否正在「釋放符文」
-	if anim.animation == "cast" and anim.is_playing():
-		# 正在播技能動畫，不被打斷
+	# 關鍵修正：如果正在施法，完全不執行後面的 walk/idle 邏輯
+	if is_casting:
 		return
 		
-	# 檢查是否有移動速度
 	if is_moving:
-		# 播放走路動畫
 		if anim.animation != "walk":
 			anim.play("walk")
-		
 	else:
-		anim.play("idle")
-
+		if anim.animation != "idle":
+			anim.play("idle")
+			
 func take_damage(amount):
 	if not can_take_damage or hp <= 0: return
 	
@@ -123,7 +121,7 @@ func attack_nearest_enemy():
 
 func _on_player_hurtbox_area_entered(area: Area2D) -> void:
 	print(area.name)
-	if area.is_in_group("Obstacle"):
+	if area.is_in_group("Obstacle") or area.is_in_group("Enemy"):
 		velocity = direction * -200 
 		move_and_slide() # 執行一次彈開
 		

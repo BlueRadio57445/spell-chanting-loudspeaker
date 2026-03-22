@@ -27,7 +27,8 @@ func _register_all() -> void:
 	_register("meditation", PassiveRunes.Meditation.new())
 	_register("blood_tribute", PassiveRunes.BloodTribute.new())
 	_register("steadfast", PassiveRunes.Steadfast.new())
-
+	_register("invisible", EffectRunes.Invisible.new())
+	
 func _register(id: String, rune: RuneBase) -> void:
 	_templates[id] = rune
 

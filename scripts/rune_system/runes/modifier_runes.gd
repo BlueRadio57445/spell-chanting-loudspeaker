@@ -3,7 +3,7 @@ class_name ModifierRunes
 class Giant extends RuneBase:
 	func _init() -> void:
 		rune_name = "巨化"
-		description = "投射物體積增大"
+		description = "投射物體積增大，傷害增加 50%"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.6, 0.0)
 		audio = preload("res://resources/Audio/符文音檔4.wav")
@@ -17,9 +17,9 @@ class Giant extends RuneBase:
 		]
 
 	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
-		var energy: float = inputs.get("energy", 1.0)
+		var energy: float = inputs.get("energy", 1.5)
 		var form: Dictionary = inputs.get("form", {})
-		form["size_scale"] = form.get("size_scale", 1.0) * 2.0
+		form["size_scale"] = form.get("size_scale", 1.0) * 3.0
 		return {"energy": energy, "form": form}
 
 class MultiShot extends RuneBase:
