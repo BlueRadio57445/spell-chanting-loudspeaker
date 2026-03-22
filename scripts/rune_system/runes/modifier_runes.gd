@@ -198,7 +198,7 @@ class Deflect extends RuneBase:
 class Trail extends RuneBase:
 	func _init() -> void:
 		rune_name = "燃燒軌跡"
-		description = "投射物移動時沿路留下火焰傷害區域"
+		description = "投射物移動時沿路留下火焰傷害區域\n\"哈哈哈!誰敢越界\""
 		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.35, 0.05)
@@ -226,7 +226,8 @@ class Trail extends RuneBase:
 class PoisonPool extends RuneBase:
 	func _init() -> void:
 		rune_name = "毒池"
-		description = "投射物命中或消失時留下持續的毒液區域"
+		description = "投射物命中或消失時留下持續的毒液區域\n\"特調濃湯\""
+		type_description = "後修飾符文，在釋放法術後為法術附魔，必須放在效果符文後面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.6, 0.0, 0.85)
 		audio = preload("res://resources/Audio/符文音檔5.wav")

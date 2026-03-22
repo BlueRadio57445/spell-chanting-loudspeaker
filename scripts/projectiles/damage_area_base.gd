@@ -47,7 +47,7 @@ func _create_poison_particles() -> CPUParticles2D:
 
 	var particles := CPUParticles2D.new()
 	particles.emitting = true
-	particles.amount = 20
+	particles.amount = 200
 	particles.lifetime = 1.2
 	particles.explosiveness = 0.0
 	particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_SPHERE
