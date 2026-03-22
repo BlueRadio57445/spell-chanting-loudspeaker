@@ -24,3 +24,6 @@ loot_weights = Dictionary[String, int]({
 position = Vector2(-0.5, -0.5000076)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_xxg2t")
+
+[node name="HurtCollision" parent="EnemyHurtBox" parent_id_path=PackedInt32Array(893333626) index="0" unique_id=739336120]
+position = Vector2(-1.5, -2)

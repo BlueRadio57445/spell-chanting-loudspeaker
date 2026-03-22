@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://boqnqj2ku44l2" path="res://scenes/RuneDrops.tscn" id="2_37sun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgmxi"]
-size = Vector2(64, 64)
+size = Vector2(53, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3s64"]
 size = Vector2(69, 69)
