@@ -59,6 +59,10 @@ class Meditation extends PassiveRuneBase:
 		]
 
 	func accumulate_time(delta: float) -> void:
+		# 如果遊戲目前是暫停狀態，直接返回，不執行後面的計時邏輯
+		if Engine.get_main_loop().root.get_tree().paused:
+			return
+			
 		if stored_charges >= max_charges:
 			return
 		_timer += delta
@@ -104,6 +108,7 @@ class BloodTribute extends PassiveRuneBase:
 			stored_charges += 1
 
 	func execute(_inputs: Dictionary, _context: Node) -> Dictionary:
+		
 		_hp_accumulated = 0.0
 		return _drain_charges()
 
