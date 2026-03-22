@@ -137,3 +137,39 @@ class Orbit extends RuneBase:
 		var form: Dictionary = inputs.get("form", {})
 		form["movement"] = "orbit"
 		return {"energy": energy, "form": form}
+
+
+class Shotgun extends RuneBase:
+	func _init() -> void:
+		rune_name = "霰彈"
+		description = "在原方向兩側各增加 15 度角的方向，共三發"
+		category = RuneEnums.RuneCategory.MODIFIER
+		icon_color = Color(1.0, 0.7, 0.2)
+		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
+		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var directions: Array = inputs.get("direction", [Main.Instance._get_aim_direction()])
+		var result: Array = []
+		for dir: Vector2 in directions:
+			result.append(dir.rotated(deg_to_rad(-15.0)))
+			result.append(dir)
+			result.append(dir.rotated(deg_to_rad(15.0)))
+		return {"direction": result}
+
+
+class Deflect extends RuneBase:
+	func _init() -> void:
+		rune_name = "偏折"
+		description = "將每個方向反轉 180 度"
+		category = RuneEnums.RuneCategory.MODIFIER
+		icon_color = Color(0.3, 0.7, 1.0)
+		ports_in = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR, false)]
+		ports_out = [RunePort.create("direction", RuneEnums.PortType.DIRECTION_VECTOR)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var directions: Array = inputs.get("direction", [Main.Instance._get_aim_direction()])
+		var result: Array = []
+		for dir: Vector2 in directions:
+			result.append(-dir)
+		return {"direction": result}
