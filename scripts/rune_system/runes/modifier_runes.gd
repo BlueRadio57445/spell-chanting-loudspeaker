@@ -169,7 +169,7 @@ class Shotgun extends RuneBase:
 class Deflect extends RuneBase:
 	func _init() -> void:
 		rune_name = "偏折"
-		description = "將每個方向反轉 180 度"
+		description = "創造正反兩個方向"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.3, 0.7, 1.0)
 		audio = preload("res://resources/Audio/符文音檔5.wav")
@@ -181,4 +181,5 @@ class Deflect extends RuneBase:
 		var result: Array = []
 		for dir: Vector2 in directions:
 			result.append(-dir)
+		result.append_array(directions)
 		return {"direction": result}
