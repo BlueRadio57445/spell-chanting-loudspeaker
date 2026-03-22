@@ -71,8 +71,8 @@ func explode_now():
 	# 設定為並行執行 (位移與縮放同時發生)
 	tween.set_parallel(true)
 	# 0.3 秒放大並移動到指定方位
-	tween.tween_property(part, "scale", Vector2(0.4, 0.4), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	tween.tween_property(part, "position", Vector2(-29, 38), 0.3)
+	tween.tween_property(part, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	tween.tween_property(part, "position", Vector2(-72, 94), 0.3)
 	
 	# 3. 動畫完成後的後續處理 (使用 chain 回到序列執行)
 	tween.set_parallel(false)

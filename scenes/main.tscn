@@ -199,153 +199,153 @@ shape = SubResource("RectangleShape2D_eb6dy")
 
 [node name="EnemyNode" type="Node2D" parent="GameViewportContainer/GameViewport/World" unique_id=202301041]
 
-[node name="Obstacles" type="Node2D" parent="GameViewportContainer/GameViewport/World" unique_id=169677233]
+[node name="Obstacles" type="Node2D" parent="GameViewportContainer/GameViewport" unique_id=169677233]
 
-[node name="Trees" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles" unique_id=229274002]
+[node name="Trees" type="Node2D" parent="GameViewportContainer/GameViewport/Obstacles" unique_id=229274002]
 
-[node name="Tree" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=913974894 instance=ExtResource("11_jbj1t")]
+[node name="Tree" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=913974894 instance=ExtResource("11_jbj1t")]
 
-[node name="Tree2" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=39672842 instance=ExtResource("11_jbj1t")]
+[node name="Tree2" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=39672842 instance=ExtResource("11_jbj1t")]
 position = Vector2(492, -447)
 
-[node name="Tree3" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=847551921 instance=ExtResource("11_jbj1t")]
+[node name="Tree3" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=847551921 instance=ExtResource("11_jbj1t")]
 position = Vector2(1142, -456)
 
-[node name="Tree4" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=817451889 instance=ExtResource("11_jbj1t")]
+[node name="Tree4" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=817451889 instance=ExtResource("11_jbj1t")]
 position = Vector2(1269, 334)
 
-[node name="Tree5" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1506507868 instance=ExtResource("11_jbj1t")]
+[node name="Tree5" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1506507868 instance=ExtResource("11_jbj1t")]
 position = Vector2(1851, -168)
 
-[node name="Tree6" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=2041713144 instance=ExtResource("11_jbj1t")]
+[node name="Tree6" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=2041713144 instance=ExtResource("11_jbj1t")]
 position = Vector2(747, 888)
 
-[node name="Tree7" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=402362895 instance=ExtResource("11_jbj1t")]
+[node name="Tree7" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=402362895 instance=ExtResource("11_jbj1t")]
 position = Vector2(1709, -788)
 
-[node name="Tree8" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=231502713 instance=ExtResource("11_jbj1t")]
+[node name="Tree8" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=231502713 instance=ExtResource("11_jbj1t")]
 position = Vector2(0, 616)
 
-[node name="Tree9" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1167833897 instance=ExtResource("11_jbj1t")]
+[node name="Tree9" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1167833897 instance=ExtResource("11_jbj1t")]
 position = Vector2(858, -1101)
 
-[node name="Tree10" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=392376298 instance=ExtResource("11_jbj1t")]
+[node name="Tree10" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=392376298 instance=ExtResource("11_jbj1t")]
 position = Vector2(148, -918)
 
-[node name="Tree11" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=613006385 instance=ExtResource("11_jbj1t")]
+[node name="Tree11" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=613006385 instance=ExtResource("11_jbj1t")]
 position = Vector2(-420, -474)
 
-[node name="Tree12" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1307018765 instance=ExtResource("11_jbj1t")]
+[node name="Tree12" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1307018765 instance=ExtResource("11_jbj1t")]
 position = Vector2(-728, -1154)
 
-[node name="Tree13" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1465114646 instance=ExtResource("11_jbj1t")]
+[node name="Tree13" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1465114646 instance=ExtResource("11_jbj1t")]
 position = Vector2(2244, -1113)
 
-[node name="Tree14" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1065056822 instance=ExtResource("11_jbj1t")]
+[node name="Tree14" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1065056822 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1741, -787)
 
-[node name="Tree15" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=510733203 instance=ExtResource("11_jbj1t")]
+[node name="Tree15" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=510733203 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1232, 59)
 
-[node name="Tree16" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1708938219 instance=ExtResource("11_jbj1t")]
+[node name="Tree16" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1708938219 instance=ExtResource("11_jbj1t")]
 position = Vector2(-366, 1173)
 
-[node name="Tree17" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=80340416 instance=ExtResource("11_jbj1t")]
+[node name="Tree17" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=80340416 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1076, 802)
 
-[node name="Tree18" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=884718748 instance=ExtResource("11_jbj1t")]
+[node name="Tree18" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=884718748 instance=ExtResource("11_jbj1t")]
 position = Vector2(-1873, 522)
 
-[node name="Tree19" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1747243105 instance=ExtResource("11_jbj1t")]
+[node name="Tree19" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1747243105 instance=ExtResource("11_jbj1t")]
 position = Vector2(-2276, -242)
 
-[node name="Tree20" parent="GameViewportContainer/GameViewport/World/Obstacles/Trees" unique_id=1513904657 instance=ExtResource("11_jbj1t")]
+[node name="Tree20" parent="GameViewportContainer/GameViewport/Obstacles/Trees" unique_id=1513904657 instance=ExtResource("11_jbj1t")]
 position = Vector2(1786, 901)
 
-[node name="Stones" type="Node2D" parent="GameViewportContainer/GameViewport/World/Obstacles" unique_id=446352500]
+[node name="Stones" type="Node2D" parent="GameViewportContainer/GameViewport/Obstacles" unique_id=446352500]
 
-[node name="Stone" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=990550171 instance=ExtResource("12_muem4")]
+[node name="Stone" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=990550171 instance=ExtResource("12_muem4")]
 position = Vector2(2331, 992)
 
-[node name="Stone2" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1755413590 instance=ExtResource("12_muem4")]
+[node name="Stone2" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1755413590 instance=ExtResource("12_muem4")]
 position = Vector2(-2373, 839)
 
-[node name="Stone3" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=146682964 instance=ExtResource("12_muem4")]
+[node name="Stone3" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=146682964 instance=ExtResource("12_muem4")]
 position = Vector2(-1286, 1314)
 
-[node name="Stone4" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=268641553 instance=ExtResource("12_muem4")]
+[node name="Stone4" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=268641553 instance=ExtResource("12_muem4")]
 position = Vector2(-2277, 1015)
 
-[node name="Stone5" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=939687476 instance=ExtResource("12_muem4")]
+[node name="Stone5" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=939687476 instance=ExtResource("12_muem4")]
 position = Vector2(-2406, 625)
 
-[node name="Stone6" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1318314219 instance=ExtResource("12_muem4")]
+[node name="Stone6" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1318314219 instance=ExtResource("12_muem4")]
 position = Vector2(-1522, 640)
 
-[node name="Stone7" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1979295488 instance=ExtResource("12_muem4")]
+[node name="Stone7" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1979295488 instance=ExtResource("12_muem4")]
 position = Vector2(-918, 1335)
 
-[node name="Stone8" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1171936198 instance=ExtResource("12_muem4")]
+[node name="Stone8" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1171936198 instance=ExtResource("12_muem4")]
 position = Vector2(-1134, 1356)
 
-[node name="Stone9" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=902965017 instance=ExtResource("12_muem4")]
+[node name="Stone9" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=902965017 instance=ExtResource("12_muem4")]
 position = Vector2(-1512, 1212)
 
-[node name="Stone10" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1181362409 instance=ExtResource("12_muem4")]
+[node name="Stone10" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1181362409 instance=ExtResource("12_muem4")]
 position = Vector2(-564, 363)
 
-[node name="Stone11" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=214310931 instance=ExtResource("12_muem4")]
+[node name="Stone11" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=214310931 instance=ExtResource("12_muem4")]
 position = Vector2(-837, 213)
 
-[node name="Stone12" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1365666232 instance=ExtResource("12_muem4")]
+[node name="Stone12" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1365666232 instance=ExtResource("12_muem4")]
 position = Vector2(-309, 151)
 
-[node name="Stone13" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=463987322 instance=ExtResource("12_muem4")]
+[node name="Stone13" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=463987322 instance=ExtResource("12_muem4")]
 position = Vector2(1122, 598)
 
-[node name="Stone14" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1855818712 instance=ExtResource("12_muem4")]
+[node name="Stone14" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1855818712 instance=ExtResource("12_muem4")]
 position = Vector2(191, 1020)
 
-[node name="Stone15" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=31395530 instance=ExtResource("12_muem4")]
+[node name="Stone15" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=31395530 instance=ExtResource("12_muem4")]
 position = Vector2(913, 1258)
 
-[node name="Stone16" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1409747545 instance=ExtResource("12_muem4")]
+[node name="Stone16" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1409747545 instance=ExtResource("12_muem4")]
 position = Vector2(1618, 25)
 
-[node name="Stone17" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=676415954 instance=ExtResource("12_muem4")]
+[node name="Stone17" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=676415954 instance=ExtResource("12_muem4")]
 position = Vector2(1999, 1210)
 
-[node name="Stone18" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1428474697 instance=ExtResource("12_muem4")]
+[node name="Stone18" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1428474697 instance=ExtResource("12_muem4")]
 position = Vector2(2204, 1142)
 
-[node name="Stone19" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1044988459 instance=ExtResource("12_muem4")]
+[node name="Stone19" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1044988459 instance=ExtResource("12_muem4")]
 position = Vector2(-1425, -275)
 
-[node name="Stone20" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2133951868 instance=ExtResource("12_muem4")]
+[node name="Stone20" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2133951868 instance=ExtResource("12_muem4")]
 position = Vector2(-1586, -539)
 
-[node name="Stone21" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2117946599 instance=ExtResource("12_muem4")]
+[node name="Stone21" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2117946599 instance=ExtResource("12_muem4")]
 position = Vector2(961, -910)
 
-[node name="Stone22" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1695676217 instance=ExtResource("12_muem4")]
+[node name="Stone22" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1695676217 instance=ExtResource("12_muem4")]
 position = Vector2(606, -1067)
 
-[node name="Stone23" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1235021261 instance=ExtResource("12_muem4")]
+[node name="Stone23" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1235021261 instance=ExtResource("12_muem4")]
 position = Vector2(1814, -527)
 
-[node name="Stone24" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=220205697 instance=ExtResource("12_muem4")]
+[node name="Stone24" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=220205697 instance=ExtResource("12_muem4")]
 position = Vector2(-370, -1212)
 
-[node name="Stone25" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=215894034 instance=ExtResource("12_muem4")]
+[node name="Stone25" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=215894034 instance=ExtResource("12_muem4")]
 position = Vector2(-125, -1303)
 
-[node name="Stone26" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1086361249 instance=ExtResource("12_muem4")]
+[node name="Stone26" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1086361249 instance=ExtResource("12_muem4")]
 position = Vector2(-2164, -1273)
 
-[node name="Stone27" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=2069320522 instance=ExtResource("12_muem4")]
+[node name="Stone27" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=2069320522 instance=ExtResource("12_muem4")]
 position = Vector2(-2396, -1217)
 
-[node name="Stone28" parent="GameViewportContainer/GameViewport/World/Obstacles/Stones" unique_id=1475472565 instance=ExtResource("12_muem4")]
+[node name="Stone28" parent="GameViewportContainer/GameViewport/Obstacles/Stones" unique_id=1475472565 instance=ExtResource("12_muem4")]
 position = Vector2(-2538, -1091)
 
 [node name="RuneUI" type="Panel" parent="." unique_id=2004242461]
