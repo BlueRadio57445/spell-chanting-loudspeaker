@@ -47,6 +47,7 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("fire_trail"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("poison_pool"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("deflect"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("kinetic_energy"))

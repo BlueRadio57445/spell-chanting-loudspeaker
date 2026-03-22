@@ -1,7 +1,7 @@
 # 燃燒軌跡後修飾：投射物移動時定期在原位置留下火焰傷害區域
 class_name TrailPostModifier extends PostModifier
 
-const DAMAGE_AREA_SCENE: PackedScene = preload("res://scenes/projectiles/damage_area.tscn")
+const DAMAGE_AREA_SCENE: PackedScene = preload("res://scenes/damage_areas/damage_area.tscn")
 const SPAWN_INTERVAL: float = 0.12  # 每隔多久留一個區域（秒）
 const AREA_DURATION: float = 2.0    # 火焰區域存在時間（秒）
 const AREA_DAMAGE: float = 3.0      # 每次 tick 傷害

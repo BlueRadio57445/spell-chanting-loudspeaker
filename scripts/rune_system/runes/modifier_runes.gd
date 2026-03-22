@@ -53,8 +53,11 @@ class MultiShot extends RuneBase:
 					spell["effect"], spell["effect_time"])
 				copy.apply_form(spell.get("form", {}))
 
-				for modifier: PostModifier in recorded_modifiers:
-					copy.add_child(modifier.clone())
+				for modifier_id: String in recorded_modifiers:
+					match modifier_id:
+						"quad_shot":   copy.add_child(QuadShotPostModifier.new())
+						"fire_trail":  copy.add_child(TrailPostModifier.new())
+						"poison_pool": copy.add_child(PoisonPoolPostModifier.new())
 
 				var copy_spell: Dictionary = {
 					"node": copy, "scene": scene,
@@ -62,6 +65,7 @@ class MultiShot extends RuneBase:
 					"direction": spell["direction"],
 					"damage": spell["damage"], "speed": spell["speed"],
 					"effect": spell["effect"], "effect_time": spell["effect_time"],
+					"post_modifiers": recorded_modifiers.duplicate(),
 				}
 				expanded.append(copy_spell)
 
@@ -93,10 +97,9 @@ class QuadShot extends RuneBase:
 			var proj: SpellNodeBase = node_obj as SpellNodeBase
 			var modifier: QuadShotPostModifier = QuadShotPostModifier.new()
 			proj.add_child(modifier)
-			# 記錄進 spell dict，供 MultiShot 等後續符文 clone 使用
 			if not spell.has("post_modifiers"):
 				spell["post_modifiers"] = []
-			(spell["post_modifiers"] as Array).append(modifier)
+			(spell["post_modifiers"] as Array).append("quad_shot")
 
 		return {"spell": spell_list}
 
@@ -208,5 +211,32 @@ class Trail extends RuneBase:
 			proj.add_child(modifier)
 			if not spell.has("post_modifiers"):
 				spell["post_modifiers"] = []
-			(spell["post_modifiers"] as Array).append(modifier)
+			(spell["post_modifiers"] as Array).append("fire_trail")
+		return {"spell": spell_list}
+
+
+class PoisonPool extends RuneBase:
+	func _init() -> void:
+		rune_name = "毒池"
+		description = "投射物命中或消失時留下持續的毒液區域"
+		category = RuneEnums.RuneCategory.MODIFIER
+		icon_color = Color(0.6, 0.0, 0.85)
+		audio = preload("res://resources/Audio/符文音檔5.wav")
+		ports_in = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var spell_list: Array = inputs.get("spell", [])
+		for spell: Dictionary in spell_list:
+			var node_obj: Variant = spell.get("node")
+			if not is_instance_valid(node_obj):
+				continue
+			var proj: SpellNodeBase = node_obj as SpellNodeBase
+			if proj == null:
+				continue
+			var modifier: PoisonPoolPostModifier = PoisonPoolPostModifier.new()
+			proj.add_child(modifier)
+			if not spell.has("post_modifiers"):
+				spell["post_modifiers"] = []
+			(spell["post_modifiers"] as Array).append("poison_pool")
 		return {"spell": spell_list}
