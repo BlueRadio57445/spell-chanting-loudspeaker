@@ -166,6 +166,86 @@ class Heal extends RuneBase:
 		print("[治療] 回復 %d 點生命值" % HEAL_AMOUNT)
 		return {"spell": []}
 
+class Arson extends RuneBase:
+	func _init() -> void:
+		rune_name = "縱火"
+		description = "消耗能量，在指定位置留下燃燒火焰\n\"燒吧，燒吧！\""
+		category = RuneEnums.RuneCategory.EFFECT
+		icon_color = Color(1.0, 0.45, 0.0)
+		audio = preload("res://resources/Audio/符文音檔1.wav")
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
+			RunePort.create("target", RuneEnums.PortType.TARGET, false),
+		]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		var damage: float = energy * 8.0
+		var form: Dictionary = inputs.get("form", {})
+		var target: Variant = inputs.get("target", null)
+		var pos: Vector2
+		if is_instance_valid(target) and target is Node2D:
+			pos = (target as Node2D).global_position
+		else:
+			pos = Player.Instance.global_position
+		var scene: PackedScene = preload("res://scenes/damage_areas/fire_damage_area.tscn")
+
+		var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+		area.global_position = pos
+		area.setup(Player.Instance, damage, "burn", 3.0, 5.0, 0.5, "fire")
+		area.apply_form(form)
+		Main.Instance.world.add_child(area)
+
+		var spell_list: Array = [{
+			"node": area, "scene": scene, "form": form,
+			"direction": Vector2.ZERO, "damage": damage,
+			"speed": 0.0, "effect": "burn", "effect_time": 3.0
+		}]
+		print("[縱火] 執行成功，消耗能量: %s" % energy)
+		return {"spell": spell_list}
+
+class IceDomain extends RuneBase:
+	func _init() -> void:
+		rune_name = "冰凍領域"
+		description = "消耗能量，在指定位置留下冰凍地帶，緩速範圍內敵人\n\"別想逃！\""
+		category = RuneEnums.RuneCategory.EFFECT
+		icon_color = Color(0.5, 0.8, 1.0)
+		audio = preload("res://resources/Audio/符文音檔2.wav")
+		ports_in = [
+			RunePort.create("energy", RuneEnums.PortType.ENERGY),
+			RunePort.create("form", RuneEnums.PortType.FORM, false),
+			RunePort.create("target", RuneEnums.PortType.TARGET, false),
+		]
+		ports_out = [RunePort.create("spell", RuneEnums.PortType.SPELL)]
+
+	func execute(inputs: Dictionary, _context: Node) -> Dictionary:
+		var energy: float = inputs.get("energy", 1.0)
+		var damage: float = energy * 5.0
+		var form: Dictionary = inputs.get("form", {})
+		var target: Variant = inputs.get("target", null)
+		var pos: Vector2
+		if is_instance_valid(target) and target is Node2D:
+			pos = (target as Node2D).global_position
+		else:
+			pos = Player.Instance.global_position
+		var scene: PackedScene = preload("res://scenes/damage_areas/ice_damage_area.tscn")
+
+		var area: DamageAreaBase = scene.instantiate() as DamageAreaBase
+		area.global_position = pos
+		area.setup(Player.Instance, damage, "slow", 3.0, 5.0, 0.5, "ice")
+		area.apply_form(form)
+		Main.Instance.world.add_child(area)
+
+		var spell_list: Array = [{
+			"node": area, "scene": scene, "form": form,
+			"direction": Vector2.ZERO, "damage": damage,
+			"speed": 0.0, "effect": "slow", "effect_time": 3.0
+		}]
+		print("[冰凍領域] 執行成功，消耗能量: %s" % energy)
+		return {"spell": spell_list}
+
 class Debuff extends RuneBase:
 	func _init() -> void:
 		rune_name = "詛咒"

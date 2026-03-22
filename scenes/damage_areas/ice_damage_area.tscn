@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bfou1csmw52bn"]
+
+[ext_resource type="Script" uid="uid://c1gb18wuxgkru" path="res://scripts/projectiles/damage_area_base.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://fv6va1esu375" path="res://resources/DamageAreas/ice_area.png" id="2_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0"]
+radius = 100.0
+
+[node name="IceDamageArea" type="Area2D" unique_id=306233033]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=364229846]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174052192]
+shape = SubResource("CircleShape2D_0")

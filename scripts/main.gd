@@ -54,6 +54,8 @@ func _ready() -> void:
 	rune_inventory.add_rune(RuneRegistry.create_instance("meditation"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("blood_tribute"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("steadfast"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("arson"))
+	rune_inventory.add_rune(RuneRegistry.create_instance("ice_domain"))
 
 	# 圖變更時同步給 executor
 	rune_canvas.graph_changed.connect(func() -> void:

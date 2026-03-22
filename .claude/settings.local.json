@@ -16,7 +16,9 @@
       "mcp__godot__stop_project",
       "WebFetch(domain:docs.comfy.org)",
       "Bash(xargs grep:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "mcp__godot__save_scene",
+      "mcp__godot__get_uid"
     ]
   }
 }

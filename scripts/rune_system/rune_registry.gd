@@ -24,6 +24,8 @@ func _register_all() -> void:
 	_register("shotgun", ModifierRunes.Shotgun.new())
 	_register("deflect", ModifierRunes.Deflect.new())
 	_register("heal", EffectRunes.Heal.new())
+	_register("arson", EffectRunes.Arson.new())
+	_register("ice_domain", EffectRunes.IceDomain.new())
 	_register("debuff", EffectRunes.Debuff.new())
 	_register("kinetic_energy", PassiveRunes.KineticEnergy.new())
 	_register("meditation", PassiveRunes.Meditation.new())
