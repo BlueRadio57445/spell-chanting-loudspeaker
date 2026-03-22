@@ -3,7 +3,7 @@ class_name ModifierRunes
 class Giant extends RuneBase:
 	func _init() -> void:
 		rune_name = "巨化"
-		description = "投射物體積增大"
+		description = "投射物體積增大\n\"登愣！大!還要更大！\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.6, 0.0)
 		audio = preload("res://resources/Audio/符文音檔4.wav")
@@ -25,7 +25,7 @@ class Giant extends RuneBase:
 class MultiShot extends RuneBase:
 	func _init() -> void:
 		rune_name = "多段連射"
-		description = "每隔 100ms 連射同方向法術，共三發"
+		description = "每隔 100ms 連射同方向法術，共三發\n\"噠噠噠噠噠！機關槍連發\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.8, 0.2)
 		audio = preload("res://resources/Audio/符文音檔7.wav")
@@ -75,7 +75,7 @@ class MultiShot extends RuneBase:
 class QuadShot extends RuneBase:
 	func _init() -> void:
 		rune_name = "四射"
-		description = "命中時朝四個隨機方向發射小投射物"
+		description = "命中時朝四個隨機方向發射小投射物\n\"劈哩啪啦！魅力四射\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.9, 0.9, 0.2)
 		audio = preload("res://resources/Audio/符文音檔5.wav")
@@ -103,7 +103,7 @@ class QuadShot extends RuneBase:
 class Boomerang extends RuneBase:
 	func _init() -> void:
 		rune_name = "迴力"
-		description = "投射物穿透敵人，抵達最大射程後回追玩家"
+		description = "投射物穿透敵人，抵達最大射程後回追玩家\n\"欸？你怎麼又飛回來了！\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.4, 0.9, 0.5)
 		audio = preload("res://resources/Audio/符文音檔4.wav")
@@ -126,7 +126,7 @@ class Boomerang extends RuneBase:
 class Orbit extends RuneBase:
 	func _init() -> void:
 		rune_name = "環繞"
-		description = "投射物環繞玩家旋轉"
+		description = "投射物環繞玩家旋轉\n\"走開!別靠近我\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.2, 0.8, 0.9)
 		audio = preload("res://resources/Audio/符文音檔2.wav")
@@ -149,7 +149,7 @@ class Orbit extends RuneBase:
 class Shotgun extends RuneBase:
 	func _init() -> void:
 		rune_name = "霰彈"
-		description = "在原方向兩側各增加 15 度角的方向，共三發"
+		description = "在原方向兩側各增加 15 度角的方向，共三發\n\"喀嚓、轟！買一送二\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.7, 0.2)
 		audio = preload("res://resources/Audio/符文音檔4.wav")
@@ -169,7 +169,7 @@ class Shotgun extends RuneBase:
 class Deflect extends RuneBase:
 	func _init() -> void:
 		rune_name = "偏折"
-		description = "創造正反兩個方向"
+		description = "創造正反兩個方向\n\"背後偷襲!\""
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(0.3, 0.7, 1.0)
 		audio = preload("res://resources/Audio/符文音檔5.wav")

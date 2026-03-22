@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dugh1r6wh2m0e" path="res://scenes/ui/obstacles/tree.tscn" id="11_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://d338cnl1eac5w" path="res://scenes/ui/obstacles/stone.tscn" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bagidqd5jp0vo" path="res://scenes/EndMenu.tscn" id="13_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://dx1bqefval0a3" path="res://scenes/ui/RuneTooltip.tscn" id="17_yc10j"]
-[ext_resource type="PackedScene" uid="uid://6npm1oemat4a" path="res://scenes/ui/obstacles/tree2.tscn" id="20_gqmmt"]
+[ext_resource type="PackedScene" path="res://scenes/ui/RuneTooltip.tscn" id="17_yc10j"]
+[ext_resource type="PackedScene" path="res://scenes/ui/obstacles/tree2.tscn" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c4acrhpod6eko" path="res://scenes/ui/hp_bar.tscn" id="hp_bar"]
 [ext_resource type="Script" uid="uid://c8ckhoglbi3em" path="res://scripts/rune_system/passive_rune_tracker.gd" id="passive_tracker"]
 
