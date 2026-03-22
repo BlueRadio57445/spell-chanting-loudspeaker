@@ -34,32 +34,10 @@ func _ready() -> void:
 	rune_inventory.canvas = rune_canvas
 
 	# 測試：給玩家幾個初始符文
-	rune_inventory.add_rune(RuneRegistry.create_instance("fireball"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("heal"))
-	#rune_inventory.add_rune(RuneRegistry.create_instance("debuff"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("energy_ball"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("ice_ball"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("poison_ball"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("boomerang"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("giant"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("orbit"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("multi_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("quad_shot"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("fire_trail"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("poison_pool"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("shotgun"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("deflect"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("kinetic_energy"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("meditation"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("blood_tribute"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("steadfast"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("arson"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("ice_domain"))
-	rune_inventory.add_rune(RuneRegistry.create_instance("targeting"))
 	rune_inventory.add_rune(RuneRegistry.create_instance("invisible"))
 	
 	# 圖變更時同步給 executor
