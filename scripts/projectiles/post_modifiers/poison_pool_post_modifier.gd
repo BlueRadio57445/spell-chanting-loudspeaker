@@ -31,7 +31,7 @@ func _on_expire() -> void:
 	var parent: SpellNodeBase = get_parent() as SpellNodeBase
 	_spawn_pool(parent.global_position, parent.owner_node)
 
-const POOL_SCALE: float = 2.5
+const POOL_SCALE: float = 5
 
 func _spawn_pool(pos: Vector2, pool_owner: Node2D) -> void:
 	var area: DamageAreaBase = DAMAGE_AREA_SCENE.instantiate() as DamageAreaBase
