@@ -1,23 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://uogdmcbxkaxg"]
 
 [ext_resource type="Script" uid="uid://bo7voiolb4676" path="res://scripts/projectiles/projectile_base.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bb66oaev8uay1" path="res://resources/Projectile/fire.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://b45g74q0vlye4" path="res://resources/Projectile/lightning.png" id="2_oh12e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_col"]
 radius = 5.0
 
-[node name="Lightning" type="Area2D"]
+[node name="Lightning" type="Area2D" unique_id=52622800]
 collision_mask = 5
 script = ExtResource("1_script")
-effect = "None"
-effect_time = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1706476205]
 scale = Vector2(0.07, 0.07)
-modulate = Color(0.6, 0.9, 1.0, 1.0)
-texture = ExtResource("2_tex")
+texture = ExtResource("2_oh12e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610578344]
 shape = SubResource("CircleShape2D_col")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

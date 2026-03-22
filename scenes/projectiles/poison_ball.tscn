@@ -1,23 +1,22 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://drrbke6lodmgo"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/penetrating_projectile.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bb66oaev8uay1" path="res://resources/Projectile/fire.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bwotial16b8mw" path="res://scripts/projectiles/penetrating_projectile.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dj315omnecxqs" path="res://resources/Projectile/poison.png" id="2_yfp47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_col"]
 radius = 8.0
 
-[node name="PoisonBall" type="Area2D"]
+[node name="PoisonBall" type="Area2D" unique_id=399954700]
 collision_mask = 5
 script = ExtResource("1_script")
 effect = "poison"
 effect_time = 3.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1102098264]
 scale = Vector2(0.109375, 0.109375)
-modulate = Color(0.4, 1.0, 0.2, 1.0)
-texture = ExtResource("2_tex")
+texture = ExtResource("2_yfp47")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=307489267]
 shape = SubResource("CircleShape2D_col")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
