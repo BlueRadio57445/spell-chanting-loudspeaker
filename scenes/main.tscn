@@ -78,10 +78,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
-size = Vector2(33, 71)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yc10j"]
-size = Vector2(56, 72)
+size = Vector2(48, 71)
 
 [node name="root" type="Control" unique_id=619365517]
 layout_mode = 3
@@ -250,22 +247,20 @@ drag_vertical_enabled = true
 script = ExtResource("4_muem4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=1391518190]
-position = Vector2(-8.000009, -2.499999)
+position = Vector2(1, -2.5)
 scale = Vector2(0.21199995, 0.21000002)
 sprite_frames = SubResource("SpriteFrames_trceg")
 animation = &"cast"
 
-[node name="PlayerHurtbox" type="Area2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=1607777653]
+[node name="PlayerHurtbox" type="Area2D" parent="GameViewportContainer/GameViewport/World/Player/AnimatedSprite2D" unique_id=1607777653]
+position = Vector2(-4.717041, 11.904724)
+scale = Vector2(4.716982, 4.7619042)
 collision_layer = 9
 collision_mask = 9
 
-[node name="HurtCollision" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" unique_id=743019441]
-position = Vector2(3.5, 0.5)
+[node name="HurtCollision" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player/AnimatedSprite2D/PlayerHurtbox" unique_id=743019441]
+position = Vector2(-9.536743e-07, 0)
 shape = SubResource("RectangleShape2D_eb6dy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameViewportContainer/GameViewport/World/Player" unique_id=660872986]
-position = Vector2(5, 0)
-shape = SubResource("RectangleShape2D_yc10j")
 
 [node name="Spawner" parent="GameViewportContainer/GameViewport/World" unique_id=82593178 instance=ExtResource("4_o6xl0")]
 
@@ -3136,4 +3131,4 @@ stream = ExtResource("22_jscy8")
 volume_db = -15.0
 autoplay = true
 
-[connection signal="area_entered" from="GameViewportContainer/GameViewport/World/Player/PlayerHurtbox" to="GameViewportContainer/GameViewport/World/Player" method="_on_player_hurtbox_area_entered"]
+[connection signal="area_entered" from="GameViewportContainer/GameViewport/World/Player/AnimatedSprite2D/PlayerHurtbox" to="GameViewportContainer/GameViewport/World/Player" method="_on_player_hurtbox_area_entered"]

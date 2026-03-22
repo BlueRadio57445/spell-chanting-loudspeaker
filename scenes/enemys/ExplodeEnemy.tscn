@@ -25,6 +25,9 @@ position = Vector2(3.000006, -6.499997)
 scale = Vector2(0.15199997, 0.14600001)
 texture = ExtResource("3_1mn1v")
 
+[node name="CharCollision" parent="." index="1" unique_id=1190225617]
+position = Vector2(1.5, 5.5)
+
 [node name="ParticleSprite2D" type="Sprite2D" parent="." index="3" unique_id=1111127945]
 position = Vector2(-72, 94)
 scale = Vector2(1e-05, 1e-05)

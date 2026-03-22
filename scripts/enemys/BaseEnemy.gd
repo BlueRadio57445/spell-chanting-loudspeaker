@@ -29,6 +29,8 @@ func _ready():
 	player = get_tree().root.find_child("Player", true, false)
 	_setup_effect_icons()
 	setup_enemy() # 留給子類別初始化的「鉤子」
+	var muti = min(max(Spawner.Instance._elapsed_time, 5000) / 200, 1)
+	health = muti * health
 
 func _setup_effect_icons() -> void:
 	var effect_textures: Dictionary = {

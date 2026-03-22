@@ -1,17 +1,20 @@
 extends Node2D
 
+class_name Spawner
 @export var enemy_scenes: Array[PackedScene] = []
 @export var spawn_radius = 1000.0
 
 # --- 難度控制參數 ---
 @export var start_wait_time: float = 4.0   # 初始間隔
-@export var end_wait_time: float = 1.0     # 最終間隔
-@export var total_ramp_time: float = 300.0 # 達到最高難度所需秒數
+@export var end_wait_time: float = 0.1     # 最終間隔
+@export var total_ramp_time: float = 400.0 # 達到最高難度所需秒數
 
 var player = null
 var _elapsed_time: float = 0.0 # 紀錄遊戲開始後經過的時間
 
 @onready var spawn_timer = $SpawnTimer
+
+static var Instance : Spawner
 
 func _ready():
 	player = get_tree().root.find_child("Player", true, false)
@@ -20,6 +23,8 @@ func _ready():
 	# 初始化 Timer 時間
 	spawn_timer.wait_time = start_wait_time
 	spawn_timer.start()
+	
+	Instance = self
 
 func _process(delta: float):
 	if _elapsed_time < total_ramp_time:
