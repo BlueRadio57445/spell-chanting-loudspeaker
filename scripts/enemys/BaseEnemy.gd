@@ -38,11 +38,11 @@ func _setup_effect_icons() -> void:
 		"poison": preload("res://resources/EffectIcon/poison.png"),
 	}
 	var order: Array = ["burn", "slow", "freeze", "poison"]
-	var icon_size: float = 5.0
+	var icon_size: float = 2
 	var spacing: float = 20.0
 	var total_width: float = (order.size() - 1) * spacing
 	var container := Node2D.new()
-	container.position = Vector2(25.0, -20.0)
+	container.position = Vector2(10.0, -15.0)
 	add_child(container)
 	for i: int in order.size():
 		var effect: String = order[i]
