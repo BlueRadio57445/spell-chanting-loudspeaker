@@ -42,7 +42,7 @@ func _setup_effect_icons() -> void:
 	var spacing: float = 20.0
 	var total_width: float = (order.size() - 1) * spacing
 	var container := Node2D.new()
-	container.position = Vector2(0.0, -52.0)
+	container.position = Vector2(25.0, -20.0)
 	add_child(container)
 	for i: int in order.size():
 		var effect: String = order[i]

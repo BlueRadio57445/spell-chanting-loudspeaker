@@ -31,7 +31,7 @@ func _process(_delta):
 func _update_position():
 	var mouse_pos = get_global_mouse_position()
 	var screen_size = get_viewport_rect().size
-	var offset_y = -200.0 # 預設上方 200px
+	var offset_y = -300.0 # 預設上方 200px
 	
 	# 邊界檢查：如果上方空間不足（滑鼠 y 座標小於 250 之類的）
 	if mouse_pos.y + offset_y < 50:

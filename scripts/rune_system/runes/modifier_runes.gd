@@ -3,7 +3,7 @@ class_name ModifierRunes
 class Giant extends RuneBase:
 	func _init() -> void:
 		rune_name = "巨化"
-		description = "投射物體積增大，傷害增加 50%"\n\"登愣！大!還要更大！\""
+		description = "投射物體積增大，傷害增加 50%\n\"登愣！大!還要更大！\""
 		type_description="前修飾符文，描述法術的釋放型態，必須放在效果符文前面"
 		category = RuneEnums.RuneCategory.MODIFIER
 		icon_color = Color(1.0, 0.6, 0.0)
