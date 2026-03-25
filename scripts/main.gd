@@ -63,7 +63,23 @@ func _ready() -> void:
 		print("[Main] 施法結束")
 	)
 
+func _give_all_runes() -> void:
+	var all_runes: Array[String] = [
+		"fireball", "energy_ball", "ice_ball", "poison_ball", "boomerang",
+		"giant", "orbit", "multi_shot", "quad_shot", "fire_trail", "poison_pool",
+		"targeting", "shotgun", "deflect", "heal", "arson", "ice_domain", "debuff",
+		"kinetic_energy", "meditation", "blood_tribute", "steadfast", "invisible",
+	]
+	for id: String in all_runes:
+		rune_inventory.add_rune(RuneRegistry.create_instance(id))
+	print("[Main] 已獲得所有符文")
+
 func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var key_event: InputEventKey = event as InputEventKey
+		if key_event.pressed and not key_event.echo and key_event.keycode == KEY_F1:
+			_give_all_runes()
+
 	if event.is_action_pressed("pause"):  # 空白鍵
 		get_tree().paused = !get_tree().paused
 		_toggle_rune_ui_fullscreen()
