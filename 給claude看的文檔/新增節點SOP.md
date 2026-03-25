@@ -247,6 +247,21 @@ _register("my_rune_id", MyRunes.MyRune.new())
 
 id 規則：`snake_case`，全小寫，和腳本 class 名稱語義對應。
 
+### 1.5 加入一鍵獲取清單
+
+編輯 `scripts/main.gd`，在 `_give_all_runes()` 的 `all_runes` 陣列末尾加上新 id：
+
+```gdscript
+var all_runes: Array[String] = [
+    ...,
+    "my_rune_id",  # ← 新增這行
+]
+```
+
+> **注意：** STARTER 類型符文（`starter_q/w/e/r`）不加入此清單，只加 EFFECT / MODIFIER / PASSIVE_TRIGGER。
+
+按遊戲中的 **F1** 即可一鍵獲得清單內所有符文。
+
 ---
 
 ## 2. 新增投射物場景
